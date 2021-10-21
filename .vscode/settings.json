@@ -1,0 +1,11 @@
+{
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+		"editor.formatOnSave": true
+	},
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"eslint.run": "onType",
+	"eslint.format.enable": true,
+	"typescript.tsdk": "node_modules/typescript/lib"
+}

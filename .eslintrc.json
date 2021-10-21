@@ -1,0 +1,37 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "jsx": true,
+        "useJSXTextNode": true,
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["@typescript-eslint"],
+    "extends": ["plugin:@typescript-eslint/recommended"],
+    "rules": {
+        "array-bracket-spacing": "off",
+        "arrow-spacing": "warn",
+        "block-spacing": ["warn", "always"],
+        "camelcase": ["warn", { "properties": "always" }],
+        "comma-dangle": ["warn", "always-multiline"],
+        "comma-spacing": "warn",
+        "comma-style": ["warn", "last"],
+        "computed-property-spacing": ["warn", "never"],
+        "consistent-this": "off",
+        "eol-last": "warn",
+        "indent": ["error", "tab",
+            { "SwitchCase": 1 }
+        ],
+        "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
+        "keyword-spacing": "warn",
+        "linebreak-style": ["warn", "windows"],
+        "new-parens": "warn",
+        "no-cond-assign": "warn",
+        "no-spaced-func": "warn",
+        "object-curly-spacing": ["warn", "always"],
+        "semi": ["warn", "never"],
+        "sort-imports": "off",
+        "yoda": "warn"
+    }
+}
