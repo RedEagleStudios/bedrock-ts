@@ -31,6 +31,7 @@
         "no-spaced-func": "warn",
         "object-curly-spacing": ["warn", "always"],
         "semi": ["warn", "never"],
+        "space-before-blocks": "warn",
         "sort-imports": "off",
         "yoda": "warn"
     }
