@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@types/node": "^16.11.10"
+    "@types/node": "^16.11.10",
+    "concurrently": "^6.4.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",
@@ -15,7 +16,9 @@
     "typescript": "^4.5.2"
   },
   "scripts": {
-    "watch": "./node_modules/.bin/tsc-watch --onSuccess \"node ./dist/core\" | ts-cleaner --watch"
+    "tsc-watch": "tsc-watch --onSuccess \"node ./dist/core\"",
+    "ts-cleaner": "ts-cleaner --watch",
+    "serve": "concurrently \"npm:tsc-watch\" \"npm:ts-cleaner\""
   },
   "author": "ink0rr",
   "license": "ISC"
