@@ -10,11 +10,12 @@
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.3.0",
+    "ts-cleaner": "^1.0.5",
     "tsc-watch": "^4.5.0",
     "typescript": "^4.5.2"
   },
   "scripts": {
-    "watch": "./node_modules/.bin/tsc-watch --onSuccess \"node ./dist/core\""
+    "watch": "./node_modules/.bin/tsc-watch --onSuccess \"node ./dist/core\" | ts-cleaner --watch"
   },
   "author": "ink0rr",
   "license": "ISC"
