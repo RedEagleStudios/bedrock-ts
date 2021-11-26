@@ -4,14 +4,14 @@ type FormatVersion =
 
 type Description = {
 	identifier: string
-	is_spawnable?: boolean
-	is_summonable?: boolean
-	is_experimental?: boolean
+	isSpawnable?: boolean
+	isSummonable?: boolean
+	isExperimental?: boolean
 }
 
 type ComponentDeclaration = {
-	"minecraft:health": MCHealth,
-	"minecraft:collision_box": MCCollisionBox,
+	MCHealth: MCHealth,
+	MCHealth: MCCollisionBox,
 }
 
 type Components = Partial<ComponentDeclaration>
@@ -21,7 +21,7 @@ type ComponentGroups = {
 }
 
 type ComponentGroupKeys = {
-	component_groups: string[]
+	componentGroups: string[]
 }
 
 type EventBase = {
@@ -44,7 +44,7 @@ type EventProps = EventBase & {
 }
 
 type DefaultEvents = {
-	"minecraft:entity_spawned"?: EventProps
+	MCEntitySpawned?: EventProps
 }
 
 type Events = DefaultEvents & {
@@ -53,12 +53,12 @@ type Events = DefaultEvents & {
 
 type Entity = {
 	description: Description;
-	component_groups?: ComponentGroups;
+	componentGroups?: ComponentGroups;
 	components?: Components;
 	events?: Events;
 }
 
 type EntityBehavior = {
-	format_version: string
-	"minecraft:entity": Entity
+	formatVersion: string
+	MCEntity: Entity
 }
