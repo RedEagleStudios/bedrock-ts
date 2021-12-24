@@ -1,11 +1,12 @@
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"command": "npm run serve",
-			"name": "Serve",
-			"request": "launch",
-			"type": "node-terminal"
-		}
-	]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Serve",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "yarn",
+            "runtimeArgs": ["run", "serve"],
+        },
+    ]
 }

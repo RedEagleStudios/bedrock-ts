@@ -9,5 +9,9 @@
     "skipLibCheck": true,
     "outDir": "dist",
     "sourceMap": true
+  },
+  "ts-node": {
+    "files": true,
+    "transpileOnly": true,
   }
 }
