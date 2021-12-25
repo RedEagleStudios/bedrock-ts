@@ -1,0 +1,24 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"jsx": true,
+		"useJSXTextNode": true,
+		"ecmaVersion": 2018,
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"plugins": ["@typescript-eslint", "@typescript-eslint/eslint-plugin", "prettier", "simple-import-sort"],
+	"extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+	"rules": {
+		"prettier/prettier": [
+			"warn",
+			{
+				"endOfLine": "auto",
+				"printWidth": 120,
+				"semi": false,
+				"tabWidth": 4,
+				"useTabs": true
+			}
+		]
+	}
+}

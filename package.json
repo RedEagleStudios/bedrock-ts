@@ -1,21 +1,25 @@
 {
-  "name": "bedrock-ts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.ts",
-  "dependencies": {
-    "@types/node": "^16.11.10"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
-    "eslint": "^8.3.0",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.5.2"
-  },
-  "scripts": {
-    "serve": "ts-node-dev --respawn --transpile-only --watch src src/core/index.ts"
-  },
-  "author": "ink0rr",
-  "license": "ISC"
+	"name": "bedrock-ts",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.ts",
+	"dependencies": {
+		"@types/node": "^16.11.10"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.4.0",
+		"@typescript-eslint/parser": "^5.4.0",
+		"eslint": "^8.3.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-simple-import-sort": "^7.0.0",
+		"prettier": "^2.5.1",
+		"ts-node-dev": "^1.1.8",
+		"typescript": "^4.5.2"
+	},
+	"scripts": {
+		"serve": "ts-node-dev --respawn --transpile-only --watch src src/core/index.ts"
+	},
+	"author": "ink0rr",
+	"license": "ISC"
 }
