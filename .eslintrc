@@ -7,7 +7,7 @@
 		"sourceType": "module",
 		"project": "./tsconfig.json"
 	},
-	"plugins": ["@typescript-eslint", "@typescript-eslint/eslint-plugin", "prettier", "simple-import-sort"],
+	"plugins": ["@typescript-eslint", "@typescript-eslint/eslint-plugin", "prettier"],
 	"extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
 	"rules": {
 		"prettier/prettier": [
@@ -17,7 +17,8 @@
 				"printWidth": 120,
 				"semi": false,
 				"tabWidth": 4,
-				"useTabs": true
+				"useTabs": true,
+				"plugins": ["prettier-plugin-organize-imports"]
 			}
 		]
 	}
