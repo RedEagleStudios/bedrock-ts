@@ -14,11 +14,12 @@
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-simple-import-sort": "^7.0.0",
 		"prettier": "^2.5.1",
+		"ts-node": "^10.4.0",
 		"ts-node-dev": "^1.1.8",
 		"typescript": "^4.5.2"
 	},
 	"scripts": {
-		"serve": "ts-node-dev --respawn --transpile-only --watch src src/core/index.ts"
+		"serve": "ts-node-dev --respawn --transpile-only --watch packages packages/playground/main.ts"
 	},
 	"author": "ink0rr",
 	"license": "ISC"
