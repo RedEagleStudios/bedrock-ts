@@ -3,8 +3,8 @@ import { Identifier } from "../../compiler/bedrock/entity/Identifier"
 import { RPEntity } from "../../compiler/bedrock/entity/rp/RPEntity"
 import { SimpleEntity } from "../../compiler/bedrock/entity/SimpleEntity"
 
-export class Test implements SimpleEntity {
-	identifier: Identifier = "minecraft:att"
+export class Dummy implements SimpleEntity {
+	identifier: Identifier = "minecraft:dummy"
 	createBP(): BPEntity {
 		return {
 			formatVersion: "1.16.0",
