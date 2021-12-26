@@ -1,7 +1,7 @@
+import { existsSync, mkdirSync, rmSync, writeFileSync } from "fs"
 import { MCAddon } from "../../bedrock/minecraft/MCAddon"
-import { mkDirOptions } from "../../constants/mkDirOptions"
+import { recursive } from "../../constants/fsOptions"
 import "../extensions/string"
-import { fsMkDir, fsWriteFile } from "../utils/fs"
 
 export class Generator {
 	private addon: MCAddon
@@ -18,25 +18,30 @@ export class Generator {
 		this.pathRP = `./out/${this.name} RP`
 	}
 
-	public async generate() {
-		await fsMkDir(`${this.pathBP}`, mkDirOptions)
-		await fsMkDir(`${this.pathRP}`, mkDirOptions)
+	public generate() {
+		// TODO - Find a way to only delete the files that are not in the addon
+		;[this.pathBP, this.pathRP].map((e) => {
+			if (existsSync(e)) {
+				rmSync(e, recursive)
+			}
+			mkdirSync(e, recursive)
+		})
 
 		this.generateEntities()
 	}
 
 	private generateEntities() {
-		fsMkDir(`${this.pathBP}/entities`, mkDirOptions)
-		fsMkDir(`${this.pathRP}/entity`, mkDirOptions)
+		const bpEntityPath = mkdirSync(`${this.pathBP}/entities`, recursive)
+		const rpEntityPath = mkdirSync(`${this.pathRP}/entity`, recursive)
 
-		const entities = this.addon.entities
-		entities.forEach((entity) => {
+		this.addon.entities.forEach((entity) => {
 			const identifier = entity.identifier.removeNamespace()
+
 			const bpJson = JSON.stringify(entity.createBP(), null, 2).formatKey()
-			fsWriteFile(`${this.pathBP}/entities/${identifier}.json`, bpJson)
+			writeFileSync(`${bpEntityPath}/${identifier}.json`, bpJson)
 
 			const rpJson = JSON.stringify(entity.createRP(), null, 2).formatKey()
-			fsWriteFile(`${this.pathRP}/entity/${identifier}.json`, rpJson)
+			writeFileSync(`${rpEntityPath}/${identifier}.json`, rpJson)
 		})
 	}
 }
