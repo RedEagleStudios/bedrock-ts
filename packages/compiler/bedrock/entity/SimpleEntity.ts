@@ -1,6 +1,6 @@
-import { BPEntity } from "./bp/BPEntity"
-import { Identifier } from "./Identifier"
-import { RPEntity } from "./rp/RPEntity"
+import { Identifier } from "../identifier/Identifier"
+import { BPEntity } from "./BPEntity"
+import { RPEntity } from "./RPEntity"
 
 export interface SimpleEntity {
 	identifier: Identifier

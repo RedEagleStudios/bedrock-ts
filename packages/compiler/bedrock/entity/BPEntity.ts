@@ -1,5 +1,5 @@
-import { Identifier } from "../Identifier"
-import { MCCollisionBox, MCHealth } from "./components"
+import { Identifier } from "../identifier/Identifier"
+import { Components } from "./components"
 
 export type BPEntity = {
 	formatVersion: FormatVersion
@@ -24,11 +24,6 @@ export type BPDescription = {
 
 export type ComponentGroups = {
 	[k: string]: Components
-}
-
-export type Components = {
-	MCHealth?: MCHealth
-	MCCollisionBox?: MCCollisionBox
 }
 
 export type Events = {

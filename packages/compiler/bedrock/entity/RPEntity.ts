@@ -1,11 +1,11 @@
-import { Identifier } from "../Identifier"
+import { Identifier } from "../identifier/Identifier"
+
+type FormatVersion = "1.10.0"
 
 export type RPEntity = {
 	formatVersion: FormatVersion
 	MCClientEntity: MCClientEntity
 }
-
-type FormatVersion = "1.10.0"
 
 export type MCClientEntity = {
 	description: RPDescription

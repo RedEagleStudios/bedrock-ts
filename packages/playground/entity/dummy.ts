@@ -1,7 +1,7 @@
-import { BPEntity } from "../../compiler/bedrock/entity/bp/BPEntity"
-import { Identifier } from "../../compiler/bedrock/entity/Identifier"
-import { RPEntity } from "../../compiler/bedrock/entity/rp/RPEntity"
+import { BPEntity } from "../../compiler/bedrock/entity/BPEntity"
+import { RPEntity } from "../../compiler/bedrock/entity/RPEntity"
 import { SimpleEntity } from "../../compiler/bedrock/entity/SimpleEntity"
+import { Identifier } from "../../compiler/bedrock/identifier/Identifier"
 
 export class Dummy implements SimpleEntity {
 	identifier: Identifier = "minecraft:dummy"
