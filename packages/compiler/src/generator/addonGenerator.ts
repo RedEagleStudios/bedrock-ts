@@ -1,14 +1,16 @@
-import { existsSync, mkdirSync, rmSync } from "fs"
+import { copyFileSync, existsSync, mkdirSync, rmSync } from "fs"
 import { MCAddon } from "../../bedrock/minecraft/MCAddon"
 import { recursive } from "../../constants/fsOptions"
 import { writeJson } from "../utils/writeJson"
 import { manifestGenerator } from "./manifestGenerator"
 
 export class AddonGenerator {
+	private cache: string
 	private pathBP: string
 	private pathRP: string
 
 	constructor(private addon: MCAddon) {
+		this.cache = `./out/.${addon.packName}`
 		this.pathBP = `./out/${addon.packName} BP`
 		this.pathRP = `./out/${addon.packName} RP`
 	}
@@ -27,9 +29,17 @@ export class AddonGenerator {
 	}
 
 	private writeManifests() {
-		const { bpManifest, rpManifest } = manifestGenerator()
-		writeJson(`${this.pathBP}/manifest.json`, bpManifest)
-		writeJson(`${this.pathRP}/manifest.json`, rpManifest)
+		const bpManifestCache = `${this.cache}/manifest-bp.json`
+		const rpManifestCache = `${this.cache}/manifest-rp.json`
+		if (!existsSync(bpManifestCache) || !existsSync(rpManifestCache)) {
+			const { bpManifest, rpManifest } = manifestGenerator()
+			mkdirSync(this.cache, recursive)
+
+			writeJson(bpManifestCache, bpManifest)
+			writeJson(rpManifestCache, rpManifest)
+		}
+		copyFileSync(bpManifestCache, `${this.pathBP}/manifest.json`)
+		copyFileSync(rpManifestCache, `${this.pathRP}/manifest.json`)
 	}
 
 	private writeEntities() {
