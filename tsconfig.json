@@ -8,7 +8,6 @@
 		"strict": true
 	},
 	"ts-node": {
-		"files": true,
-		"transpileOnly": true
+		"files": true
 	}
 }

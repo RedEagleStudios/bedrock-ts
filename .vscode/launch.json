@@ -2,6 +2,13 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Dev",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "yarn",
+			"runtimeArgs": ["run", "dev"]
+		},
+		{
 			"name": "Serve",
 			"type": "node",
 			"request": "launch",
