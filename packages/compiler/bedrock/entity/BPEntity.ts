@@ -1,5 +1,6 @@
 import { Identifier } from "../identifier/Identifier"
 import { Components } from "./components"
+import { Filters } from "./filters"
 
 export type BPEntity = {
 	formatVersion: FormatVersion
@@ -38,6 +39,7 @@ export type Event = {
 	add?: EventAddOrRemove
 	remove?: EventAddOrRemove
 	trigger?: string
+	filters?: Filters
 }
 
 export type EventAddOrRemove = {
