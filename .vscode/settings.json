@@ -10,6 +10,7 @@
 	"editor.tabSize": 4,
 	"editor.tabCompletion": "onlySnippets",
 	"editor.wordBasedSuggestions": false,
+	"files.eol": "\n",
 
 	"editor.rulers": [120],
 	"eslint.run": "onType",
