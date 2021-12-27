@@ -1,3 +1,4 @@
+import FastGlob from "fast-glob"
 import { copyFileSync, existsSync, mkdirSync, rmSync } from "fs"
 import { MCAddon } from "../../bedrock/minecraft/MCAddon"
 import { recursive } from "../../constants/fsOptions"
@@ -16,12 +17,15 @@ export class AddonGenerator {
 	}
 
 	public generate() {
-		// TODO - Find a way to only delete the files that are not in the addon
 		;[this.pathBP, this.pathRP].map((e) => {
 			if (existsSync(e)) {
-				rmSync(e, recursive)
+				FastGlob.sync(`${e}/*`, {
+					deep: 1,
+					onlyDirectories: true,
+				}).forEach((path) => rmSync(path, recursive))
+			} else {
+				mkdirSync(e, recursive)
 			}
-			mkdirSync(e, recursive)
 		})
 
 		this.writeManifests()

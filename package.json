@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.ts",
 	"dependencies": {
-		"@types/node": "^16.11.10"
+		"@types/node": "^16.11.10",
+		"fast-glob": "^3.2.7"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^5.4.0",
