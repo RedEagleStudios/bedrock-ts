@@ -7,8 +7,10 @@ export function writeJson<T>(file: PathOrFileDescriptor, data: T): void {
 
 function formatJsonKey(str: string): string {
 	return str.replace(/"([^"]+)":/g, (key) => {
-		// * Temporary workaround to ignore component group keys
-		if (key.match(/.*_component/)) return key
+		// * Temporary workaround to ignore component group and event keys
+		if (key.match(/".*_component"/) || key.match(/".*_event"/)) {
+			return key
+		}
 
 		return key
 			.replace(/MC/, "minecraft:")

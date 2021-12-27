@@ -32,7 +32,7 @@ export class Dummy implements SimpleEntity {
 					MCHealth: {},
 				},
 				events: {
-					bla: {
+					bla_event: {
 						add: {
 							componentGroups: ["test_component"],
 						},
