@@ -1,17 +1,19 @@
 import { PathOrFileDescriptor, writeFileSync } from "fs"
 
-export function writeJson<T>(file: PathOrFileDescriptor, data: T) {
+export function writeJson<T>(file: PathOrFileDescriptor, data: T): void {
 	const json = JSON.stringify(data, null, 2)
-	writeFileSync(file, formatKey(json))
+	writeFileSync(file, formatJsonKey(json))
 }
 
-function formatKey(str: string): string {
-	return str
-		.replace(/"([^"]+)":/g, (key) => {
-			return key
-				.replace(/MC/, "minecraft:")
-				.replace(/(?<=.)(?=[A-Z])/g, "_")
-				.replace(/:_/, ":")
-		})
-		.toLowerCase()
+function formatJsonKey(str: string): string {
+	return str.replace(/"([^"]+)":/g, (key) => {
+		// * Temporary workaround to ignore component group keys
+		if (key.match(/.*_component/)) return key
+
+		return key
+			.replace(/MC/, "minecraft:")
+			.replace(/_/g, ".")
+			.replace(/([a-z])([A-Z])/g, "$1_$2")
+			.toLowerCase()
+	})
 }

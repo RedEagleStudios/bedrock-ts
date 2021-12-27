@@ -22,8 +22,11 @@ export type BPDescription = {
 	isExperimental?: boolean
 }
 
+// * Temporary workaround to ignore component group keys
+export type ComponentGroupKey = `${string}_component`
+
 export type ComponentGroups = {
-	[k: string]: Components
+	[k: ComponentGroupKey]: Components
 }
 
 export type Events = {
@@ -37,5 +40,5 @@ export type Event = {
 }
 
 export type ComponentGroupKeys = {
-	componentGroups: string[]
+	componentGroups: ComponentGroupKey[]
 }

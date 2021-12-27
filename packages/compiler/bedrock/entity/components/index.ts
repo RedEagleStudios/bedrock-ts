@@ -11,8 +11,11 @@ import { MCIsSheared } from "./dummies/MCIsSheared"
 import { MCIsStunned } from "./dummies/MCIsStunned"
 import { MCIsTamed } from "./dummies/MCIsTamed"
 import { MCOutOfControl } from "./dummies/MCOutOfControl"
+import { MCBehavior_FollowParent } from "./MCBehavior_FollowParent"
 import { MCCollisionBox } from "./MCCollisionBox"
 import { MCHealth } from "./MCHealth"
+import { MCJump_Static } from "./MCJump_Static"
+import { MCNavigation_Generic } from "./MCNavigation_Generic"
 
 export type Components = {
 	MCCanClimb?: MCCanClimb
@@ -28,6 +31,9 @@ export type Components = {
 	MCIsStunned?: MCIsStunned
 	MCIsTamed?: MCIsTamed
 	MCOutOfControl?: MCOutOfControl
+	MCBehavior_FollowParent?: MCBehavior_FollowParent
 	MCCollisionBox?: MCCollisionBox
 	MCHealth?: MCHealth
+	MCJump_Static?: MCJump_Static
+	MCNavigation_Generic?: MCNavigation_Generic
 }

@@ -13,17 +13,19 @@ export class Dummy implements SimpleEntity {
 					identifier: this.identifier,
 				},
 				componentGroups: {
-					bla: {
+					test_component: {
 						MCHealth: {
 							max: 1,
 							value: 1,
 						},
 					},
-					something: {
+					test2_component: {
 						MCCollisionBox: {
 							height: 1,
 							width: 1,
 						},
+						MCBehavior_FollowParent: {},
+						MCJump_Static: {},
 					},
 				},
 				components: {
@@ -32,10 +34,10 @@ export class Dummy implements SimpleEntity {
 				events: {
 					bla: {
 						add: {
-							componentGroups: ["bla"],
+							componentGroups: ["test_component"],
 						},
 						remove: {
-							componentGroups: ["something"],
+							componentGroups: ["test2_component"],
 						},
 					},
 				},
