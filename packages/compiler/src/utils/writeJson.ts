@@ -6,16 +6,25 @@ export function writeJson<T>(file: PathOrFileDescriptor, data: T): void {
 }
 
 function formatJsonKey(str: string): string {
-	return str.replace(/"([^"]+)":/g, (key) => {
-		// * Temporary workaround to ignore component group and event keys
-		if (key.match(/".*_component"/) || key.match(/".*_event"/)) {
-			return key
-		}
+	const pairs: string[][] = []
 
-		return key
+	let res = str.replace(/"([^"]+)":/g, (key) => {
+		const newKey = key
 			.replace(/MC/, "minecraft:")
 			.replace(/_/g, ".")
 			.replace(/([a-z])([A-Z])/g, "$1_$2")
 			.toLowerCase()
+
+		if (!key.match(/MC/)) {
+			pairs.push([key, newKey].map((v) => v.replace(/:/, "")))
+		}
+		return newKey
 	})
+
+	pairs.forEach((pair) => {
+		const keyRegex = new RegExp(`${pair[0]}(?!:)`, "g")
+		res = res.replace(keyRegex, pair[1])
+	})
+
+	return res
 }
