@@ -19,7 +19,7 @@ export class Dummy implements SimpleEntity {
 							value: 1,
 						},
 					},
-					test2_component: {
+					testComponent: {
 						MCCollisionBox: {
 							height: 1,
 							width: 1,
@@ -32,12 +32,12 @@ export class Dummy implements SimpleEntity {
 					MCHealth: {},
 				},
 				events: {
-					bla_event: {
+					testEvent: {
 						add: {
 							componentGroups: ["test_component"],
 						},
 						remove: {
-							componentGroups: ["test2_component"],
+							componentGroups: ["testComponent"],
 						},
 					},
 				},
@@ -46,11 +46,24 @@ export class Dummy implements SimpleEntity {
 	}
 
 	createRP(): RPEntity {
+		const entityName = this.identifier.removeNamespace()
 		return {
 			formatVersion: "1.10.0",
 			MCClientEntity: {
 				description: {
 					identifier: this.identifier,
+					textures: {
+						default: `textures/entity/${entityName}`,
+					},
+					animations: {
+						walk: `animation.${entityName}.walk`,
+						idle: `animation.${entityName}.idle`,
+						controller: `controller.animation.${entityName}`,
+					},
+					scripts: {
+						animate: ["controller"],
+					},
+					renderControllers: ["controller.render.entity"],
 				},
 			},
 		}
