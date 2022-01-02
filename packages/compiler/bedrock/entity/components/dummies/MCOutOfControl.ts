@@ -1,1 +1,3 @@
-export type MCOutOfControl = Record<string, undefined>
+export interface MCOutOfControl {
+	[key: symbol]: never
+}

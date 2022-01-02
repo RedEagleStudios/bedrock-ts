@@ -2,42 +2,42 @@ import { Identifier } from "../identifier/Identifier"
 import { Components } from "./components"
 import { Filters } from "./filters"
 
-export type BPEntity = {
+type FormatVersion = "1.16.0" | "1.17.0"
+
+export interface BPEntity {
 	formatVersion: FormatVersion
 	MCEntity: MCEntity
 }
 
-type FormatVersion = "1.16.0" | "1.17.0"
-
-export type MCEntity = {
+export interface MCEntity {
 	description: BPDescription
 	componentGroups?: ComponentGroups
 	components?: Components
 	events?: Events
 }
 
-export type BPDescription = {
+export interface BPDescription {
 	identifier: Identifier
 	isSpawnable?: boolean
 	isSummonable?: boolean
 	isExperimental?: boolean
 }
 
-export type ComponentGroups = {
-	[k: string]: Components
+export interface ComponentGroups {
+	[key: string]: Components
 }
 
-export type Events = {
-	[k: string]: Event
+export interface Events {
+	[key: string]: Event
 }
 
-export type Event = {
+export interface Event {
 	add?: EventAddOrRemove
 	remove?: EventAddOrRemove
 	trigger?: string
-	filters?: Filters
+	filters?: Filters[]
 }
 
-export type EventAddOrRemove = {
+export interface EventAddOrRemove {
 	componentGroups: string[]
 }

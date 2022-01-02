@@ -1,3 +1,3 @@
-export type MCVariant = {
+export interface MCVariant {
 	value: number
 }

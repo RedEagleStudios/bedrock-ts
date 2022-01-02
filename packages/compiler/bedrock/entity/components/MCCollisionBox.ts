@@ -1,4 +1,4 @@
-export type MCCollisionBox = {
+export interface MCCollisionBox {
 	width?: number
 	height?: number
 }

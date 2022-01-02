@@ -61,7 +61,12 @@ export class Dummy implements SimpleEntity {
 						controller: `controller.animation.${entityName}`,
 					},
 					scripts: {
-						animate: ["controller"],
+						animate: [
+							"controller",
+							{
+								walk: "query.is_moving",
+							},
+						],
 					},
 					renderControllers: ["controller.render.entity"],
 				},

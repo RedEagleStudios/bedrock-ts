@@ -1,4 +1,4 @@
-export type MCHealth = {
+export interface MCHealth {
 	max?: number
 	value?: number
 }

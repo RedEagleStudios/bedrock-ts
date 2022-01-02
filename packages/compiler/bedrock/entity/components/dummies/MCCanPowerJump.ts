@@ -1,1 +1,3 @@
-export type MCCanPowerJump = Record<string, undefined>
+export interface MCCanPowerJump {
+	[key: symbol]: never
+}

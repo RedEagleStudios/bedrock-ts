@@ -1,1 +1,3 @@
-export type MCCanFly = Record<string, undefined>
+export interface MCCanFly {
+	[key: symbol]: never
+}

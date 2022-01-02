@@ -1,1 +1,3 @@
-export type MCIsTamed = Record<string, undefined>
+export interface MCIsTamed {
+	[key: symbol]: never
+}

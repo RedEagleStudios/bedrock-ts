@@ -3,7 +3,7 @@ import { FilterOperators } from "./FilterOperators"
 import { FilterSubject } from "./FilterSubject"
 import { FilterTests } from "./FilterTests"
 
-export type Filters = {
+export interface Filters {
 	test?: FilterTests
 	operator?: FilterOperators
 	subject?: FilterSubject
@@ -12,4 +12,4 @@ export type Filters = {
 	allOf?: Filters
 	anyOf?: Filters
 	noneOf?: Filters
-}[]
+}

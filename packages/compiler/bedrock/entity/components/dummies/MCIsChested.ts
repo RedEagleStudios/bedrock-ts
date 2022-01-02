@@ -1,1 +1,3 @@
-export type MCIsChested = Record<string, undefined>
+export interface MCIsChested {
+	[key: symbol]: never
+}

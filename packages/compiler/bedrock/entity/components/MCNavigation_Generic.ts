@@ -1,4 +1,4 @@
-export type MCNavigation_Generic = {
+export interface MCNavigation_Generic {
 	avoidDamageBlocks: boolean
 	avoidPortals: boolean
 	avoidSun: boolean

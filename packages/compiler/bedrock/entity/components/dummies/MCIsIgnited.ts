@@ -1,1 +1,3 @@
-export type MCIsIgnited = Record<string, undefined>
+export interface MCIsIgnited {
+	[key: symbol]: never
+}

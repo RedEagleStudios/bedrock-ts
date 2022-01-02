@@ -2,39 +2,39 @@ import { Identifier } from "../identifier/Identifier"
 
 type FormatVersion = "1.10.0"
 
-export type RPEntity = {
+export interface RPEntity {
 	formatVersion: FormatVersion
 	MCClientEntity: MCClientEntity
 }
 
-export type MCClientEntity = {
+export interface MCClientEntity {
 	description: RPDescription
 }
 
-export type RPDescription = {
+export interface RPDescription {
 	identifier: Identifier
 	materials?: Record<string, string>
 	textures?: Record<string, string>
 	geometry?: Geometry
 	animations?: Animations
 	scripts?: Scripts
-	renderControllers?: RenderControllers
+	renderControllers?: RenderControllers[]
 }
 
-export type Geometry = {
-	[k: string]: `geometry.${string}`
+export interface Geometry {
+	[key: string]: `geometry.${string}`
 }
 
-export type Animations = {
-	[k: string]: `animation.${string}` | `controller.animation.${string}`
+export interface Animations {
+	[key: string]: `animation.${string}` | `controller.animation.${string}`
 }
 
-export type Scripts = {
+export interface Scripts {
 	initialize?: string[]
 	preAnimation?: string[]
-	animate?: Animate
+	animate?: Animate[]
 }
 
-export type Animate = (string | Record<string, string>)[]
+export type Animate = string | Record<string, string>
 
-export type RenderControllers = `controller.render.${string}`[]
+export type RenderControllers = `controller.render.${string}`

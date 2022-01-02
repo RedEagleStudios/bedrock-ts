@@ -1,1 +1,3 @@
-export type MCIsSheared = Record<string, undefined>
+export interface MCIsSheared {
+	[key: symbol]: never
+}

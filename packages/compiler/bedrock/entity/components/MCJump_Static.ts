@@ -1,3 +1,3 @@
-export type MCJump_Static = {
+export interface MCJump_Static {
 	jumpPower?: number
 }

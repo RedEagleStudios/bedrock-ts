@@ -17,7 +17,7 @@ import { MCHealth } from "./MCHealth"
 import { MCJump_Static } from "./MCJump_Static"
 import { MCNavigation_Generic } from "./MCNavigation_Generic"
 
-export type Components = {
+export interface Components {
 	MCCanClimb?: MCCanClimb
 	MCCanFly?: MCCanFly
 	MCCanPowerJump?: MCCanPowerJump
