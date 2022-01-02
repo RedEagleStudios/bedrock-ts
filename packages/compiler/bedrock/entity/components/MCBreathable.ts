@@ -1,12 +1,12 @@
 export interface MCBreathable {
-	breathable_block_list?: string[]
-	breath_air?: boolean
-	breath_lava?: boolean
-	breath_solid?: boolean
-	breath_water?: boolean
+	breathes_air?: boolean
+	breathes_lava?: boolean
+	breathes_solid?: boolean
+	breathes_water?: boolean
+	breathe_block?: string[]
 	generates_bubbles?: boolean
 	inhale_time?: number
-	not_breathable_block_list?: string[]
+	non_breathe_blocks?: string[]
 	suffocate_time?: number
 	total_supply?: number
 }

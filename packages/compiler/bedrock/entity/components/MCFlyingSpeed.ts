@@ -1,3 +1,3 @@
 export interface MCFlyingSpeed {
-	value?: number
+	value: number
 }

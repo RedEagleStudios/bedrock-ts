@@ -1,10 +1,8 @@
-import { Filters } from "../filters"
-
 export interface MCBehavior_NearestAttackableTarget {
 	attack_interval?: number
 	attack_interval_min?: number
 	attack_owner?: boolean
-	entity_types?: string[]
+	entity_types?: MCBehavior_NearestAttackableTargetEntityType[]
 	must_reach?: boolean
 	must_see?: boolean
 	must_see_forget_duration?: number
@@ -17,6 +15,4 @@ export interface MCBehavior_NearestAttackableTarget {
 	target_search_height?: number
 	target_sneak_visibility_multiplier?: number
 	within_radius?: number
-	filters?: Filters[]
-	max_dist?: number
 }

@@ -1,6 +1,6 @@
 export interface MCBehavior_FollowOwner {
-	priority?: number
+	priority: number
 	speed_multiplier?: number
 	start_distance?: number
-	stop_dist?: number
+	stop_distance?: number
 }

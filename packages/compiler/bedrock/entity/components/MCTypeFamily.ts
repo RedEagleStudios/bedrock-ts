@@ -1,3 +1,3 @@
 export interface MCTypeFamily {
-	family?: string
+	family: string[]
 }

@@ -1,7 +1,5 @@
-import { EventTrigger } from "../events/EventTrigger"
-
 export interface MCTameable {
 	probability?: number
-	tame_event?: EventTrigger
-	tame_items?: string[]
+	tame_event?: MCEventFilter
+	tame_items: string[]
 }

@@ -1,6 +1,4 @@
-import { Vector2 } from "../../../types/Vector"
-
 export interface MCMovement_Jump {
-	jump_delay?: Vector2
+	jump_delay: number[]
 	max_turn?: number
 }

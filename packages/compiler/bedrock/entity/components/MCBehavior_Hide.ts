@@ -1,6 +1,6 @@
 export interface MCBehavior_Hide {
-	poi_type?: string
 	duration?: number
+	poi_type: string
 	speed_multiplier?: number
 	timeout_cooldown?: number
 }

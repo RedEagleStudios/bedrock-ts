@@ -1,8 +1,6 @@
-import { Vector2 } from "../../../types/Vector"
-
 export interface MCBehavior_Beg {
-	priority?: number
+	items: string[]
 	look_distance?: number
-	look_time?: Vector2
-	items?: string[]
+	look_time?: number[]
+	priority?: number
 }

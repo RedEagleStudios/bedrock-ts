@@ -1,7 +1,5 @@
-import { Vector2 } from "../../../types/Vector"
-
 export interface MCAttack {
-	damage?: number | Vector2
-	effect_name?: string
+	damage: number[]
 	effect_duration?: number
+	effect_name?: string
 }

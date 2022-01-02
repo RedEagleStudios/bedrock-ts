@@ -1,4 +1,4 @@
 export interface MCCollisionBox {
-	width?: number
-	height?: number
+	height: number
+	width: number
 }

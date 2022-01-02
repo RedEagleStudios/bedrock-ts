@@ -1,3 +1,3 @@
 export interface MCTransformation {
-	into?: string
+	into: string
 }
