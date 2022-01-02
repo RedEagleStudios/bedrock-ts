@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto"
 import { MCManifest } from "../../bedrock/manifest/MCManifest"
 
-export function manifestGenerator() {
+export function generateManifest() {
 	const bpId = randomUUID()
 	const rpId = randomUUID()
 	const bpModuleId = randomUUID()

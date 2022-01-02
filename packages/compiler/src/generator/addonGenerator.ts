@@ -2,8 +2,8 @@ import FastGlob from "fast-glob"
 import { copyFileSync, existsSync, mkdirSync, rmSync } from "fs"
 import { MCAddon } from "../../bedrock/minecraft/MCAddon"
 import { recursive } from "../../constants/fsOptions"
+import { generateManifest } from "../utils/generateManifest"
 import { writeJson } from "../utils/writeJson"
-import { manifestGenerator } from "./manifestGenerator"
 
 export class AddonGenerator {
 	private cache: string
@@ -36,7 +36,7 @@ export class AddonGenerator {
 		const bpManifestCache = `${this.cache}/manifest-bp.json`
 		const rpManifestCache = `${this.cache}/manifest-rp.json`
 		if (!existsSync(bpManifestCache) || !existsSync(rpManifestCache)) {
-			const { bpManifest, rpManifest } = manifestGenerator()
+			const { bpManifest, rpManifest } = generateManifest()
 			mkdirSync(this.cache, recursive)
 
 			writeJson(bpManifestCache, bpManifest)
