@@ -1,3 +1,3 @@
 export interface MCWaterMovement {
-	dragFractor?: number
+	drag_fractor?: number
 }

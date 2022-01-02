@@ -1,4 +1,4 @@
 export interface MCAdmireItem {
-	cooldownAfterBeingAttacked?: number
+	cooldown_after_being_attacked?: number
 	duration?: number
 }

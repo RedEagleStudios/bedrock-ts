@@ -1,3 +1,3 @@
 export interface MCMovement_Hover {
-	maxTurn?: number
+	max_turn?: number
 }

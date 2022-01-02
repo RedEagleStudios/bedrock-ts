@@ -1,3 +1,3 @@
 export interface MCBehavior_Scared {
-	soundInterval?: number
+	sound_interval?: number
 }

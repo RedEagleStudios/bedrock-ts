@@ -1,3 +1,3 @@
 export interface MCMovement_Sway {
-	maxTurn?: number
+	max_turn?: number
 }

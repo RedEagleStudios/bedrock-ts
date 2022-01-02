@@ -1,4 +1,4 @@
 export interface MCShooter {
-	auxVal?: number
+	aux_val?: number
 	def?: string
 }

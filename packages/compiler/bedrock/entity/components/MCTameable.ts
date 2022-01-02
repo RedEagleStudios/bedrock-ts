@@ -2,6 +2,6 @@ import { EventTrigger } from "../events/EventTrigger"
 
 export interface MCTameable {
 	probability?: number
-	tameEvent?: EventTrigger
-	tameItems?: string[]
+	tame_event?: EventTrigger
+	tame_items?: string[]
 }

@@ -1,7 +1,7 @@
 import { Vector2 } from "../../../types/Vector"
 
 export interface MCBehavior_RandomLookAround {
-	lookDistance?: number
-	lookTime?: Vector2
+	look_distance?: number
+	look_time?: Vector2
 	priority?: number
 }

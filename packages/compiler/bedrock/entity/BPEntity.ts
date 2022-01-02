@@ -5,22 +5,22 @@ import { Filters } from "./filters"
 type FormatVersion = "1.16.0" | "1.17.0"
 
 export interface BPEntity {
-	formatVersion: FormatVersion
+	format_version: FormatVersion
 	MCEntity: MCEntity
 }
 
 export interface MCEntity {
 	description: BPDescription
-	componentGroups?: ComponentGroups
+	component_groups?: ComponentGroups
 	components?: Components
 	events?: Events
 }
 
 export interface BPDescription {
 	identifier: Identifier
-	isSpawnable?: boolean
-	isSummonable?: boolean
-	isExperimental?: boolean
+	is_spawnable?: boolean
+	is_summonable?: boolean
+	is_experimental?: boolean
 }
 
 export interface ComponentGroups {
@@ -39,5 +39,5 @@ export interface Event {
 }
 
 export interface EventAddOrRemove {
-	componentGroups: string[]
+	component_groups: string[]
 }

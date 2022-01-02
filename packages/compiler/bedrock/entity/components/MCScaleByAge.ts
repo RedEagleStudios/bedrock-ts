@@ -1,4 +1,4 @@
 export interface MCScaleByAge {
-	startScale?: number
-	endScale?: number
+	start_scale?: number
+	end_scale?: number
 }

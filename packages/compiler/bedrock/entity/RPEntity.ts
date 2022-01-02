@@ -3,7 +3,7 @@ import { Identifier } from "../identifier/Identifier"
 type FormatVersion = "1.10.0"
 
 export interface RPEntity {
-	formatVersion: FormatVersion
+	format_version: FormatVersion
 	MCClientEntity: MCClientEntity
 }
 
@@ -18,7 +18,7 @@ export interface RPDescription {
 	geometry?: Geometry
 	animations?: Animations
 	scripts?: Scripts
-	renderControllers?: RenderControllers[]
+	render_controllers?: RenderControllers[]
 }
 
 export interface Geometry {
@@ -31,7 +31,7 @@ export interface Animations {
 
 export interface Scripts {
 	initialize?: string[]
-	preAnimation?: string[]
+	pre_animation?: string[]
 	animate?: Animate[]
 }
 

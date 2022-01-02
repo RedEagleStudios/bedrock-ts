@@ -1,9 +1,9 @@
 export interface MCEquipment {
 	table?: string
-	slotDropChance?: MCEquipmentSlotDropChance[]
+	slot_drop_chance?: MCEquipmentSlotDropChance[]
 }
 
 export interface MCEquipmentSlotDropChance {
-	dropChance?: number
+	drop_chance?: number
 	slot?: string
 }

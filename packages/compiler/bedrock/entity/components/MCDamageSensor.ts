@@ -6,8 +6,8 @@ export interface MCDamageSensor {
 
 export interface MCDamageSensorTrigger {
 	cause?: string
-	damageMultiplier?: number
-	dealsDamage?: boolean
-	onDamage?: EventFilter
-	onDamageSoundEvent?: string
+	damage_multiplier?: number
+	deals_damage?: boolean
+	on_damage?: EventFilter
+	on_damage_sound_event?: string
 }

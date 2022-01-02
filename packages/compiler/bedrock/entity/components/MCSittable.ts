@@ -1,4 +1,4 @@
 export interface MCSittable {
-	sitEvent?: string
-	standEvent?: string
+	sit_event?: string
+	stand_event?: string
 }

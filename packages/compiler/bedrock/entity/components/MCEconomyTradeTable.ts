@@ -1,16 +1,16 @@
 import { Vector2 } from "../../../types/Vector"
 
 export interface MCEconomyTradeTable {
-	convertTradesEconomy?: boolean
-	curedDiscount?: Vector2
-	displayName?: string
-	heroDemandDiscount?: number
-	maxCuredDiscount?: Vector2
-	maxNearbyCuredDiscount?: number
-	nearbyCuredDiscount?: number
-	newScreen?: boolean
-	persistTrades?: boolean
-	showTradeScreen?: boolean
+	convert_trades_economy?: boolean
+	cured_discount?: Vector2
+	display_name?: string
+	hero_demand_discount?: number
+	max_cured_discount?: Vector2
+	max_nearby_cured_discount?: number
+	nearby_cured_discount?: number
+	new_screen?: boolean
+	persist_trades?: boolean
+	show_trade_screen?: boolean
 	table?: string
-	useLegacyPriceFormula?: boolean
+	use_legacy_price_formula?: boolean
 }

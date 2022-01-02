@@ -3,10 +3,10 @@ import { EventTrigger } from "../events/EventTrigger"
 
 export interface MCTimer {
 	looping?: boolean
-	randomInterval?: boolean
-	randomTimeChoices?: MCTimerRandomTimeChoice[]
+	random_interval?: boolean
+	random_time_choices?: MCTimerRandomTimeChoice[]
 	time?: number | Vector2
-	timeDownEvent?: EventTrigger
+	time_down_event?: EventTrigger
 }
 
 export interface MCTimerRandomTimeChoice {

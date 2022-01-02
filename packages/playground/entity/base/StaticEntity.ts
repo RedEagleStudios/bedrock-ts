@@ -13,7 +13,7 @@ export class StaticEntity extends SimpleEntity {
 
 	public getBP(): BPEntity {
 		return {
-			formatVersion: "1.16.0",
+			format_version: "1.16.0",
 			MCEntity: {
 				description: {
 					identifier: this.identifier,
@@ -24,9 +24,9 @@ export class StaticEntity extends SimpleEntity {
 	}
 
 	public getRP(): RPEntity {
-		const entityName = this.identifier.removeNamespace()
+		const entity_name = this.identifier.removeNamespace()
 		return {
-			formatVersion: "1.10.0",
+			format_version: "1.10.0",
 			MCClientEntity: {
 				description: {
 					identifier: this.identifier,
@@ -34,12 +34,12 @@ export class StaticEntity extends SimpleEntity {
 						default: `entity_alphatest`,
 					},
 					textures: {
-						default: `textures/entity/${entityName}`,
+						default: `textures/entity/${entity_name}`,
 					},
 					geometry: {
-						model: `geometry.${entityName}`,
+						model: `geometry.${entity_name}`,
 					},
-					renderControllers: ["controller.render.default"],
+					render_controllers: ["controller.render.default"],
 				},
 			},
 		}

@@ -1,3 +1,3 @@
 export interface MCMovement_Amphibious {
-	maxTurn?: number
+	max_turn?: number
 }

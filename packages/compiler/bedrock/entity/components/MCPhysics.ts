@@ -1,4 +1,4 @@
 export interface MCPhysics {
-	hasCollision?: boolean
-	hasGravity?: boolean
+	has_collision?: boolean
+	has_gravity?: boolean
 }

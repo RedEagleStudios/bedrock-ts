@@ -1,4 +1,4 @@
 export interface MCBehavior_MoveToPoi {
-	poiType?: string
-	speedMultiplier?: number
+	poi_type?: string
+	speed_multiplier?: number
 }

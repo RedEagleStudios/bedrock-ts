@@ -1,20 +1,20 @@
 import { Vector3 } from "../../../types/Vector"
 
 export interface MCRideable {
-	controllingSeat?: number
-	crouchingSkipInteract?: boolean
-	familyTypes?: string[]
-	interactText?: string
-	pullInEntities?: boolean
-	riderCanInteract?: boolean
-	seatCount?: number
+	controlling_seat?: number
+	crouching_skip_interact?: boolean
+	family_types?: string[]
+	interact_text?: string
+	pull_in_entities?: boolean
+	rider_can_interact?: boolean
+	seat_count?: number
 	seats?: MCRideableSeat[]
 }
 
 export interface MCRideableSeat {
-	lockRiderRotation?: number
-	maxRiderCount?: number
-	minRiderCount?: number
+	lock_rider_rotation?: number
+	max_rider_count?: number
+	min_rider_count?: number
 	position?: Vector3
-	rotateRiderBy?: number
+	rotate_rider_by?: number
 }

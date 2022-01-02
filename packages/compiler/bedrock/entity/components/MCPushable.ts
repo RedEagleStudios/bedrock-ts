@@ -1,4 +1,4 @@
 export interface MCPushable {
-	isPushable?: boolean
-	isPistonPushable?: boolean
+	is_pushable?: boolean
+	is_piston_pushable?: boolean
 }

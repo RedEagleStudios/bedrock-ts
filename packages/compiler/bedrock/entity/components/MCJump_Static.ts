@@ -1,3 +1,3 @@
 export interface MCJump_Static {
-	jumpPower?: number
+	jump_power?: number
 }

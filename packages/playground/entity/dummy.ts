@@ -8,37 +8,29 @@ export class Dummy extends SimpleEntity {
 
 	public getBP(): BPEntity {
 		return {
-			formatVersion: "1.16.0",
+			format_version: "1.16.0",
 			MCEntity: {
 				description: {
 					identifier: this.identifier,
 				},
-				componentGroups: {
+				component_groups: {
 					test_component: {
 						MCHealth: {
 							max: 1,
 							value: 1,
 						},
 					},
-					testComponent: {
-						MCCollisionBox: {
-							height: 1,
-							width: 1,
-						},
-						MCBehavior_FollowParent: {},
-						MCJump_Static: {},
-					},
 				},
 				components: {
 					MCHealth: {},
 				},
 				events: {
-					testEvent: {
+					test_event: {
 						add: {
-							componentGroups: ["test_component"],
+							component_groups: ["test_component"],
 						},
 						remove: {
-							componentGroups: ["testComponent"],
+							component_groups: ["test_component"],
 						},
 					},
 				},
@@ -47,9 +39,9 @@ export class Dummy extends SimpleEntity {
 	}
 
 	public getRP(): RPEntity {
-		const entityName = this.identifier.removeNamespace()
+		const entity_name = this.identifier.removeNamespace()
 		return {
-			formatVersion: "1.10.0",
+			format_version: "1.10.0",
 			MCClientEntity: {
 				description: {
 					identifier: this.identifier,
@@ -57,20 +49,20 @@ export class Dummy extends SimpleEntity {
 						default: `entity_alphatest`,
 					},
 					textures: {
-						default: `textures/entity/${entityName}`,
+						default: `textures/entity/${entity_name}`,
 					},
 					geometry: {
-						model: `geometry.${entityName}`,
+						model: `geometry.${entity_name}`,
 					},
 					animations: {
-						walk: `animation.${entityName}.walk`,
-						idle: `animation.${entityName}.idle`,
-						controller: `controller.animation.${entityName}`,
+						walk: `animation.${entity_name}.walk`,
+						idle: `animation.${entity_name}.idle`,
+						controller: `controller.animation.${entity_name}`,
 					},
 					scripts: {
 						animate: ["controller"],
 					},
-					renderControllers: ["controller.render.default"],
+					render_controllers: ["controller.render.default"],
 				},
 			},
 		}

@@ -1,14 +1,14 @@
 import { Filters } from "../filters"
 
 export interface MCBehavior_HurtByTarget {
-	alertSameType?: boolean
-	entityTypes?: string[]
-	hurtOwner?: boolean
+	alert_same_type?: boolean
+	entity_types?: string[]
+	hurt_owner?: boolean
 	priority?: number
 	filters?: Filters[]
-	maxDist?: number
-	mustSee?: boolean
-	mustSeeForgetDuration?: number
-	sprintSpeedMultiplier?: number
-	walkSpeedMultiplier?: number
+	max_dist?: number
+	must_see?: boolean
+	must_see_forget_duration?: number
+	sprint_speed_multiplier?: number
+	walk_speed_multiplier?: number
 }

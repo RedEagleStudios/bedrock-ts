@@ -1,5 +1,5 @@
 export interface MCManifest {
-	formatVersion: number
+	format_version: number
 	header: MCManifestHeader
 	modules: MCManifestModules[]
 	dependencies: MCManifestDependencies[]
@@ -10,7 +10,7 @@ export interface MCManifestHeader {
 	name: string
 	uuid: string
 	version: number[]
-	minEngineVersion?: number[]
+	min_engine_version?: number[]
 }
 
 export interface MCManifestModules {

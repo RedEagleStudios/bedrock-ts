@@ -6,21 +6,21 @@ export interface MCInteract {
 }
 
 export interface MCInteractInteractions {
-	addItems?: string
+	add_items?: string
 	cooldown?: number
-	hurtItem?: number
-	interactText?: string
-	particleOnStart?: string
-	playSounds?: string
-	spawnEntities?: string
-	spawnItems?: string
+	hurt_item?: number
+	interact_text?: string
+	particle_on_start?: string
+	play_sounds?: string
+	spawn_entities?: string
+	spawn_items?: string
 	swing?: boolean
-	transformToItem?: string
-	useItem?: boolean
+	transform_to_item?: string
+	use_item?: boolean
 	filters?: Filters
-	onInteract?: EventFilter
+	on_interact?: EventFilter
 	table?: string
-	particleOffsetTowardsInteractor?: boolean
-	particleType?: string
-	particleYOffset?: number
+	particle_offset_towards_interactor?: boolean
+	particle_type?: string
+	particle_y_offset?: number
 }

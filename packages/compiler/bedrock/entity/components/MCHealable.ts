@@ -2,11 +2,11 @@ import { Filters } from "../filters"
 
 export interface MCHealable {
 	filters?: Filters[]
-	forceUse?: boolean
+	force_use?: boolean
 	items?: MCHealableItem[]
 }
 
 export interface MCHealableItem {
 	item?: string
-	healAmount?: number
+	heal_amount?: number
 }

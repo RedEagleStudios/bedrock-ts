@@ -1,8 +1,8 @@
 export interface MCNameable {
 	renaming?: boolean
-	alwaysShow?: boolean
-	defaultOnNamedEvent?: string
-	nameActions?: MCNameableNameAction[]
+	always_show?: boolean
+	default_on_named_event?: string
+	name_actions?: MCNameableNameAction[]
 }
 
 export interface MCNameableNameAction {

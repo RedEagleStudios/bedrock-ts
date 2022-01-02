@@ -1,3 +1,3 @@
 export interface MCMovement_Generic {
-	maxTurn?: number
+	max_turn?: number
 }
