@@ -18,6 +18,9 @@ import { MCJump_Static } from "./MCJump_Static"
 import { MCNavigation_Generic } from "./MCNavigation_Generic"
 
 export interface Components {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	[key: `minecraft:${string}`]: any // Allows adding raw json components
+
 	MCCanClimb?: MCCanClimb
 	MCCanFly?: MCCanFly
 	MCCanPowerJump?: MCCanPowerJump
