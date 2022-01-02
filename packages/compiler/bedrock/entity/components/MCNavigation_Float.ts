@@ -1,4 +1,4 @@
-export interface MCNavigation_Generic {
+export interface MCNavigation_Float {
 	avoidDamageBlocks?: boolean
 	avoidPortals?: boolean
 	avoidSun?: boolean

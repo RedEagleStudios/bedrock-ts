@@ -1,3 +1,3 @@
-export interface MCVariant {
+export interface MCSkinId {
 	value: number
 }
