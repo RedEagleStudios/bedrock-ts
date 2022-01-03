@@ -1,6 +1,8 @@
+import { Filter } from "../filters"
 import { FilterSubject } from "../filters/FilterSubject"
 
-export interface EventTrigger {
+export interface EventTriggerFiltered {
 	event: string
 	target?: FilterSubject
+	filters?: Filter[]
 }

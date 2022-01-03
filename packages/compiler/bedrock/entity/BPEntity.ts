@@ -1,6 +1,6 @@
 import { Identifier } from "../identifier/Identifier"
 import { Components } from "./components"
-import { Filters } from "./filters"
+import { Filter } from "./filters"
 
 type FormatVersion = "1.16.0" | "1.17.0"
 
@@ -35,7 +35,7 @@ export interface Event {
 	add?: EventAddOrRemove
 	remove?: EventAddOrRemove
 	trigger?: string
-	filters?: Filters[]
+	filters?: Filter[]
 }
 
 export interface EventAddOrRemove {
