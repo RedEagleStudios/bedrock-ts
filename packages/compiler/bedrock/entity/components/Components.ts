@@ -30,7 +30,6 @@ import {
 	MCEconomyTradeTable,
 	MCEnvironmentSensor,
 	MCEquipment,
-	MCEquipmentSlotChance,
 	MCEventFilter,
 	MCExplode,
 	MCFilter,
@@ -94,7 +93,6 @@ import {
 	MCSittable,
 	MCSkinId,
 	MCSpawnEntity,
-	MCSpawnEntityEntity,
 	MCStackable,
 	MCTameable,
 	MCTamemount,
@@ -139,7 +137,6 @@ export interface Components {
 	MCEconomyTradeTable?: MCEconomyTradeTable
 	MCEnvironmentSensor?: MCEnvironmentSensor
 	MCEquipment?: MCEquipment
-	MCEquipmentSlotChance?: MCEquipmentSlotChance
 	MCEventFilter?: MCEventFilter
 	MCExplode?: MCExplode
 	MCFilter?: MCFilter
@@ -203,7 +200,6 @@ export interface Components {
 	MCSittable?: MCSittable
 	MCSkinId?: MCSkinId
 	MCSpawnEntity?: MCSpawnEntity
-	MCSpawnEntityEntity?: MCSpawnEntityEntity
 	MCStackable?: MCStackable
 	MCTameable?: MCTameable
 	MCTamemount?: MCTamemount
