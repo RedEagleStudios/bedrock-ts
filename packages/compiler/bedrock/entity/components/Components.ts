@@ -77,7 +77,7 @@ import {
 	MCSpawnEntity,
 	MCStackable,
 	MCTameable,
-	MCTameMount,
+	MCTamemount,
 	MCTickWorld,
 	MCTimer,
 	MCTransformation,
@@ -182,7 +182,7 @@ export interface Components {
 	MCSpawnEntity?: MCSpawnEntity
 	MCStackable?: MCStackable
 	MCTameable?: MCTameable
-	MCTameMount?: MCTameMount
+	MCTamemount?: MCTamemount
 	MCTickWorld?: MCTickWorld
 	MCTimer?: MCTimer
 	MCTransformation?: MCTransformation
