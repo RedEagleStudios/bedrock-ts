@@ -12,7 +12,7 @@ export interface BPEntity {
 export interface MCEntity {
 	description: BPDescription
 	component_groups?: ComponentGroups
-	components?: Components
+	components: Components
 	events?: Events
 }
 
