@@ -9,7 +9,7 @@ export interface Filter {
 	subject?: FilterSubject
 	domain?: FilterDomain
 	value?: number | string
-	allOf?: Filter[]
-	anyOf?: Filter[]
-	noneOf?: Filter[]
+	all_of?: Filter[]
+	any_of?: Filter[]
+	none_of?: Filter[]
 }
