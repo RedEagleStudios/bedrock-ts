@@ -1,6 +1,7 @@
 import { PathOrFileDescriptor, writeFileSync } from "fs"
 
 export function writeJson<T>(file: PathOrFileDescriptor, data: T): void {
+	if (!data) return
 	const json = JSON.stringify(data, null, 2)
 	writeFileSync(file, formatJsonKey(json))
 }
