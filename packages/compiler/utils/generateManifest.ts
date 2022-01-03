@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto"
-import { MCManifest } from "../../bedrock/manifest/MCManifest"
+import { MCManifest } from "../bedrock/manifest/MCManifest"
 
 export function generateManifest() {
 	const bpId = randomUUID()

@@ -15,11 +15,11 @@ export function indexComponents(): void {
 		deep: 1,
 		onlyFiles: true,
 	}).forEach((path) => {
-		if (path.match(/(index|dummy).ts/i)) return
+		if (path.match("index")) return
 		path = path.split("/")[6].replace(".ts", "")
 		appendFileSync(index, `export * from "./${path}"\n`)
 
-		if (path.match(/Components.ts/)) return
+		if (path.match("Components")) return
 		appendFileSync(components, `${path.replace(/(.*)/, "$1?: $1")}\n`)
 	})
 	appendFileSync(components, `}\n`)

@@ -1,6 +1,6 @@
 import FastGlob from "fast-glob"
 import { copyFileSync, existsSync, mkdirSync, rmSync } from "fs"
-import { MCAddon } from "../../bedrock/minecraft/MCAddon"
+import { MCAddon } from "../bedrock/minecraft/MCAddon"
 import { recursive } from "../constants/fsOptions"
 import { generateManifest } from "../utils/generateManifest"
 import { writeJson } from "../utils/writeJson"

@@ -1,4 +1,4 @@
-export type FilterTests =
+export type FilterTest =
 	| "clock_time"
 	| "distance_to_nearest_player"
 	| "has_ability"

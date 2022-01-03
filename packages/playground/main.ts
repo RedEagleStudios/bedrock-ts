@@ -1,5 +1,5 @@
 import { MCAddon } from "../compiler/bedrock/minecraft/MCAddon"
-import { makeAddon } from "../compiler/src/main"
+import { makeAddon } from "../compiler/main"
 import { StaticEntity } from "./entity/base/StaticEntity"
 import { Dummy } from "./entity/dummy"
 

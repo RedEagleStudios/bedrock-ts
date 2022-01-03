@@ -1,4 +1,4 @@
-import { MCAddon } from "../bedrock/minecraft/MCAddon"
+import { MCAddon } from "./bedrock/minecraft/MCAddon"
 import "./extensions/string"
 import { AddonGenerator } from "./generator/addonGenerator"
 

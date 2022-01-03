@@ -1,11 +1,11 @@
 import { FilterDomain } from "./FilterDomain"
-import { FilterOperators } from "./FilterOperators"
+import { FilterOperator } from "./FilterOperator"
 import { FilterSubject } from "./FilterSubject"
-import { FilterTests } from "./FilterTests"
+import { FilterTest } from "./FilterTest"
 
 export interface Filter {
-	test?: FilterTests
-	operator?: FilterOperators
+	test?: FilterTest
+	operator?: FilterOperator
 	subject?: FilterSubject
 	domain?: FilterDomain
 	value?: number | string
