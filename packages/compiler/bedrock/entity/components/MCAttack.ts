@@ -1,5 +1,5 @@
 export interface MCAttack {
-	damage: number[]
+	damage: number | Range
 	effect_duration?: number
 	effect_name?: string
 }

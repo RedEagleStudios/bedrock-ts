@@ -2,7 +2,7 @@ export interface MCRideableSeats {
 	lock_rider_rotation?: number
 	max_rider_count?: number
 	min_rider_count?: number
-	position: number[]
+	position: Vector3
 	rotate_rider_by?: number
 }
 

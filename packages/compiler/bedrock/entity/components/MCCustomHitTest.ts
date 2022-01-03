@@ -1,6 +1,6 @@
 export interface MCCustomHitTestHitbox {
 	height?: number
-	pivot?: number[]
+	pivot?: Vector3
 	width?: number
 }
 

@@ -1,9 +1,9 @@
 export interface MCEconomyTradeTable {
 	convert_trades_economy?: boolean
-	cured_discount?: number[]
+	cured_discount?: Range
 	display_name?: string
 	hero_demand_discount?: number
-	max_cured_discount?: number[]
+	max_cured_discount?: Range
 	max_nearby_cured_discount?: number
 	nearby_cured_discount?: number
 	new_screen?: boolean
