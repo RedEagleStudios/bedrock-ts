@@ -1,3 +1,12 @@
+export interface MCTameMountAutoRejectItem {
+	item: string
+}
+
+export interface MCTameMountFeedItem {
+	item: string
+	temper_mod: number
+}
+
 export interface MCTameMount {
 	auto_reject_items: MCTameMountAutoRejectItem[]
 	feed_items: MCTameMountFeedItem[]

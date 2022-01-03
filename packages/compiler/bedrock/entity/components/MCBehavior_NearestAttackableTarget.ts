@@ -1,3 +1,10 @@
+export interface MCBehavior_NearestAttackableTargetEntityType {
+	filters?: MCFilter
+	max_dist?: number
+	must_see?: boolean
+	must_see_forget_duration?: number
+}
+
 export interface MCBehavior_NearestAttackableTarget {
 	attack_interval?: number
 	attack_interval_min?: number

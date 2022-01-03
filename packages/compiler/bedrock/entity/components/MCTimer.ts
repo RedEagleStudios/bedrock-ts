@@ -1,3 +1,13 @@
+export interface MCTimerRandomTimeChoice {
+	value?: number
+	weight?: number
+}
+
+export interface MCTimerTimeDownEvent {
+	event?: string
+	target?: string
+}
+
 export interface MCTimer {
 	looping?: boolean
 	randomInterval?: boolean

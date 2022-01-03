@@ -1,3 +1,10 @@
+import { MCFilter } from "."
+
+export interface MCDespawnDespawnFromDistance {
+	max_distance?: number
+	min_distance?: number
+}
+
 export interface MCDespawn {
 	despawn_from_chance?: boolean
 	despawn_from_distance?: MCDespawnDespawnFromDistance

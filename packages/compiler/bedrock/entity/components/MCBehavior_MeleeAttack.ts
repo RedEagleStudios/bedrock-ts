@@ -1,3 +1,8 @@
+export interface MCBehavior_MeleeAttackOnAttack {
+	event?: string
+	target?: string
+}
+
 export interface MCBehavior_MeleeAttack {
 	attack_once?: boolean
 	attack_types?: string
