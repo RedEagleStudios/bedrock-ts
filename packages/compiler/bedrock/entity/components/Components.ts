@@ -107,9 +107,7 @@ import {
 } from "."
 
 export interface Components {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	[key: `minecraft:${string}`]: any // Allows adding raw json components
-
+	[key: `minecraft:${string}`]: unknown
 	MCAdmireItem?: MCAdmireItem
 	MCAttack?: MCAttack
 	MCBalloonable?: MCBalloonable
