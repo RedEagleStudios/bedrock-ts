@@ -21,7 +21,9 @@
 	},
 	"scripts": {
 		"dev": "ts-node-dev --respawn --transpile-only --watch packages packages/playground/main.ts",
-		"serve": "ts-node-dev --respawn --watch packages packages/playground/main.ts"
+		"serve": "ts-node-dev --respawn --watch packages packages/playground/main.ts",
+		"build": "ts-node packages/playground/main.ts",
+		"eslint": "eslint --fix packages"
 	},
 	"author": "ink0rr",
 	"license": "ISC"
