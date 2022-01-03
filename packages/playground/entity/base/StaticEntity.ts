@@ -11,19 +11,21 @@ export class StaticEntity extends SimpleEntity {
 		this.identifier = `minecraft:${name}`
 	}
 
-	public getBP(): BPEntity {
+	public createBP(): BPEntity {
 		return {
 			format_version: "1.16.0",
 			MCEntity: {
 				description: {
 					identifier: this.identifier,
 				},
-				components: {},
+				components: {
+					MCPhysics: {},
+				},
 			},
 		}
 	}
 
-	public getRP(): RPEntity {
+	public createRP(): RPEntity {
 		const entity_name = this.identifier.removeNamespace()
 		return {
 			format_version: "1.10.0",

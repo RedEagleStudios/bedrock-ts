@@ -6,7 +6,7 @@ import { Identifier } from "../../compiler/bedrock/identifier/Identifier"
 export class Dummy extends SimpleEntity {
 	identifier: Identifier = "minecraft:dummy"
 
-	public getBP(): BPEntity {
+	public createBP(): BPEntity {
 		return {
 			format_version: "1.16.0",
 			MCEntity: {
@@ -38,7 +38,7 @@ export class Dummy extends SimpleEntity {
 		}
 	}
 
-	public getRP(): RPEntity {
+	public createRP(): RPEntity {
 		const entity_name = this.identifier.removeNamespace()
 		return {
 			format_version: "1.10.0",

@@ -53,8 +53,8 @@ export class AddonGenerator {
 		this.addon.entities.forEach((entity) => {
 			const identifier = entity.identifier.removeNamespace()
 
-			writeJson(`${bpEntityPath}/${identifier}.json`, entity.getBP())
-			writeJson(`${rpEntityPath}/${identifier}.json`, entity.getRP())
+			writeJson(`${bpEntityPath}/${identifier}.json`, entity.createBP())
+			writeJson(`${rpEntityPath}/${identifier}.json`, entity.createRP())
 		})
 	}
 }

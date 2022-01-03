@@ -4,6 +4,6 @@ import { RPEntity } from "./RPEntity"
 
 export abstract class SimpleEntity {
 	public abstract identifier: Identifier
-	public abstract getBP(): BPEntity
-	public abstract getRP(): RPEntity
+	public abstract createBP(): BPEntity
+	public abstract createRP(): RPEntity
 }
