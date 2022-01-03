@@ -1,4 +1,4 @@
-import { MCFilter } from "."
+import { Filter } from "../filters"
 
 export interface MCDespawnDespawnFromDistance {
 	max_distance?: number
@@ -10,7 +10,7 @@ export interface MCDespawn {
 	despawn_from_distance?: MCDespawnDespawnFromDistance
 	despawn_from_inactivity?: boolean
 	despawn_from_simulation_edge?: boolean
-	filters?: MCFilter
+	filters?: Filter[]
 	min_range_inactivity_timer?: number
 	min_range_random_chance?: number
 	remove_child_entities?: boolean

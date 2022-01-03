@@ -30,9 +30,7 @@ import {
 	MCEconomyTradeTable,
 	MCEnvironmentSensor,
 	MCEquipment,
-	MCEventFilter,
 	MCExplode,
-	MCFilter,
 	MCFireImmune,
 	MCFloatsInLiquid,
 	MCFlyingSpeed,
@@ -137,9 +135,7 @@ export interface Components {
 	MCEconomyTradeTable?: MCEconomyTradeTable
 	MCEnvironmentSensor?: MCEnvironmentSensor
 	MCEquipment?: MCEquipment
-	MCEventFilter?: MCEventFilter
 	MCExplode?: MCExplode
-	MCFilter?: MCFilter
 	MCFireImmune?: MCFireImmune
 	MCFloatsInLiquid?: MCFloatsInLiquid
 	MCFlyingSpeed?: MCFlyingSpeed

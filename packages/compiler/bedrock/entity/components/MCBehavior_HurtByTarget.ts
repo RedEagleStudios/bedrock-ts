@@ -1,5 +1,7 @@
+import { Filter } from "../filters"
+
 export interface MCBehavior_HurtByTargetEntityType {
-	filters?: MCFilter
+	filters?: Filter[]
 	max_dist?: number
 	must_see?: boolean
 	must_see_forget_duration?: number

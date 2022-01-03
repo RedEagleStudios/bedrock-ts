@@ -1,12 +1,12 @@
-import { MCEventFilter } from "."
+import { EventTriggerFiltered } from "../events/EventTriggerFiltered"
 
-export interface MCDamageSensorItem {
+export interface MCDamageSensorTrigger {
 	cause?: string
 	damage_multiplier?: number
 	deals_damage?: boolean
-	on_damage?: MCEventFilter
+	on_damage?: EventTriggerFiltered
 }
 
 export interface MCDamageSensor {
-	triggers: MCDamageSensorItem[]
+	triggers: MCDamageSensorTrigger[]
 }
