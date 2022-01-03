@@ -28,8 +28,12 @@ import {
 	MCDamageSensor,
 	MCDespawn,
 	MCEconomyTradeTable,
+	MCEnvironmentSensor,
 	MCEquipment,
+	MCEquipmentSlotChance,
+	MCEventFilter,
 	MCExplode,
+	MCFilter,
 	MCFireImmune,
 	MCFloatsInLiquid,
 	MCFlyingSpeed,
@@ -37,15 +41,28 @@ import {
 	MCFrictionModifier,
 	MCHealable,
 	MCHealth,
+	MCHiddenWhenInvisible,
+	MCIllagerCaptain,
 	MCInputGroundControlled,
 	MCInstantDespawn,
 	MCInteract,
+	MCIsBaby,
+	MCIsCharged,
+	MCIsChested,
 	MCIsHiddenWhenInvisible,
+	MCIsIgnited,
+	MCIsIllagerCaptain,
+	MCIsSaddled,
+	MCIsSheared,
+	MCIsStunned,
+	MCIsTamed,
 	MCJump_Static,
 	MCKnockbackResistance,
 	MCLeashable,
 	MCLoot,
+	MCMarkVariant,
 	MCMovement,
+	MCMovement_,
 	MCMovement_Amphibious,
 	MCMovement_Basic,
 	MCMovement_Fly,
@@ -62,6 +79,7 @@ import {
 	MCNavigation_Hover,
 	MCNavigation_Swim,
 	MCNavigation_Walk,
+	MCOutOfControl,
 	MCPersistent,
 	MCPhysics,
 	MCPushable,
@@ -74,7 +92,9 @@ import {
 	MCShareable,
 	MCShooter,
 	MCSittable,
+	MCSkinId,
 	MCSpawnEntity,
+	MCSpawnEntityEntity,
 	MCStackable,
 	MCTameable,
 	MCTamemount,
@@ -82,23 +102,9 @@ import {
 	MCTimer,
 	MCTransformation,
 	MCTypeFamily,
+	MCVariant,
 	MCWaterMovement,
 } from "."
-import {
-	MCIsBaby,
-	MCIsCharged,
-	MCIsChested,
-	MCIsIgnited,
-	MCIsIllagerCaptain,
-	MCIsSaddled,
-	MCIsSheared,
-	MCIsStunned,
-	MCIsTamed,
-	MCMarkVariant,
-	MCOutOfControl,
-	MCSkinId,
-	MCVariant,
-} from "./dummies"
 
 export interface Components {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -133,8 +139,12 @@ export interface Components {
 	MCDamageSensor?: MCDamageSensor
 	MCDespawn?: MCDespawn
 	MCEconomyTradeTable?: MCEconomyTradeTable
+	MCEnvironmentSensor?: MCEnvironmentSensor
 	MCEquipment?: MCEquipment
+	MCEquipmentSlotChance?: MCEquipmentSlotChance
+	MCEventFilter?: MCEventFilter
 	MCExplode?: MCExplode
+	MCFilter?: MCFilter
 	MCFireImmune?: MCFireImmune
 	MCFloatsInLiquid?: MCFloatsInLiquid
 	MCFlyingSpeed?: MCFlyingSpeed
@@ -142,15 +152,28 @@ export interface Components {
 	MCFrictionModifier?: MCFrictionModifier
 	MCHealable?: MCHealable
 	MCHealth?: MCHealth
+	MCHiddenWhenInvisible?: MCHiddenWhenInvisible
+	MCIllagerCaptain?: MCIllagerCaptain
 	MCInputGroundControlled?: MCInputGroundControlled
 	MCInstantDespawn?: MCInstantDespawn
 	MCInteract?: MCInteract
+	MCIsBaby?: MCIsBaby
+	MCIsCharged?: MCIsCharged
+	MCIsChested?: MCIsChested
 	MCIsHiddenWhenInvisible?: MCIsHiddenWhenInvisible
+	MCIsIgnited?: MCIsIgnited
+	MCIsIllagerCaptain?: MCIsIllagerCaptain
+	MCIsSaddled?: MCIsSaddled
+	MCIsSheared?: MCIsSheared
+	MCIsStunned?: MCIsStunned
+	MCIsTamed?: MCIsTamed
 	MCJump_Static?: MCJump_Static
 	MCKnockbackResistance?: MCKnockbackResistance
 	MCLeashable?: MCLeashable
 	MCLoot?: MCLoot
+	MCMarkVariant?: MCMarkVariant
 	MCMovement?: MCMovement
+	MCMovement_?: MCMovement_
 	MCMovement_Amphibious?: MCMovement_Amphibious
 	MCMovement_Basic?: MCMovement_Basic
 	MCMovement_Fly?: MCMovement_Fly
@@ -167,6 +190,7 @@ export interface Components {
 	MCNavigation_Hover?: MCNavigation_Hover
 	MCNavigation_Swim?: MCNavigation_Swim
 	MCNavigation_Walk?: MCNavigation_Walk
+	MCOutOfControl?: MCOutOfControl
 	MCPersistent?: MCPersistent
 	MCPhysics?: MCPhysics
 	MCPushable?: MCPushable
@@ -179,7 +203,9 @@ export interface Components {
 	MCShareable?: MCShareable
 	MCShooter?: MCShooter
 	MCSittable?: MCSittable
+	MCSkinId?: MCSkinId
 	MCSpawnEntity?: MCSpawnEntity
+	MCSpawnEntityEntity?: MCSpawnEntityEntity
 	MCStackable?: MCStackable
 	MCTameable?: MCTameable
 	MCTamemount?: MCTamemount
@@ -187,18 +213,6 @@ export interface Components {
 	MCTimer?: MCTimer
 	MCTransformation?: MCTransformation
 	MCTypeFamily?: MCTypeFamily
-	MCWaterMovement?: MCWaterMovement
-	MCIsBaby?: MCIsBaby
-	MCIsCharged?: MCIsCharged
-	MCIsChested?: MCIsChested
-	MCIsIgnited?: MCIsIgnited
-	MCIsIllagerCaptain?: MCIsIllagerCaptain
-	MCIsSaddled?: MCIsSaddled
-	MCIsSheared?: MCIsSheared
-	MCIsStunned?: MCIsStunned
-	MCIsTamed?: MCIsTamed
-	MCMarkVariant?: MCMarkVariant
-	MCOutOfControl?: MCOutOfControl
-	MCSkinId?: MCSkinId
 	MCVariant?: MCVariant
+	MCWaterMovement?: MCWaterMovement
 }
