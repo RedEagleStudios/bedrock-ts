@@ -7,13 +7,13 @@ export function generateManifest() {
 	const bpModuleId = randomUUID()
 	const rpModuleuid = randomUUID()
 	const bpManifest: MCManifest = {
-		formatVersion: 2,
+		format_version: 2,
 		header: {
 			name: "pack.name",
 			description: "pack.description",
 			uuid: bpId,
 			version: [1, 0, 0],
-			minEngineVersion: [1, 16, 0],
+			min_engine_version: [1, 16, 0],
 		},
 		modules: [
 			{
@@ -30,13 +30,13 @@ export function generateManifest() {
 		],
 	}
 	const rpManifest: MCManifest = {
-		formatVersion: 2,
+		format_version: 2,
 		header: {
 			name: "pack.name",
 			description: "pack.description",
 			uuid: rpId,
 			version: [1, 0, 0],
-			minEngineVersion: [1, 16, 0],
+			min_engine_version: [1, 16, 0],
 		},
 		modules: [
 			{
