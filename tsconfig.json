@@ -8,6 +8,7 @@
 		"strict": true
 	},
 	"ts-node": {
-		"files": true
+		"files": true,
+		"pretty": true
 	}
 }
