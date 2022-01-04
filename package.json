@@ -2,7 +2,7 @@
 	"name": "bedrock-ts",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.ts",
+	"main": "src/index.ts",
 	"dependencies": {
 		"@types/node": "^16.11.10",
 		"fast-glob": "^3.2.7"
