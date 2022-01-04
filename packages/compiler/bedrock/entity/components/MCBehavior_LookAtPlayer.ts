@@ -1,3 +1,5 @@
+import { Range } from "../../../types"
+
 export interface MCBehavior_LookAtPlayer {
 	angle_of_view_horizontal?: number
 	angle_of_view_vertical?: number
