@@ -1,1 +1,0 @@
-type Range = [number, number]

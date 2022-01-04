@@ -1,1 +1,0 @@
-type Vector3 = [number, number, number]
