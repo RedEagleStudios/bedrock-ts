@@ -1,5 +1,3 @@
-import { Range } from "../../../types"
-
 export interface MCEconomyTradeTable {
 	convert_trades_economy?: boolean
 	cured_discount?: Range

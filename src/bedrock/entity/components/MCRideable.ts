@@ -1,5 +1,3 @@
-import { Vector3 } from "../../../types"
-
 export interface MCRideableSeats {
 	lock_rider_rotation?: number
 	max_rider_count?: number

@@ -1,5 +1,3 @@
-import { Range } from "../../../types"
-
 export interface MCTimerRandomTimeChoice {
 	value?: number
 	weight?: number

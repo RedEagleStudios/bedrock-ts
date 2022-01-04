@@ -1,5 +1,3 @@
-import { Range } from "../../../types"
-
 export interface MCBehavior_RandomLookAround {
 	look_distance?: number
 	look_time?: number | Range

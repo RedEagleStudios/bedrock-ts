@@ -1,5 +1,3 @@
-import { Vector3 } from "../../../types"
-
 export interface MCCustomHitTestHitbox {
 	height?: number
 	pivot?: Vector3
