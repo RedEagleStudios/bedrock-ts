@@ -3,7 +3,7 @@ import { appendFileSync, writeFileSync } from "fs"
 
 // Do not run on watch mode
 export function indexComponents(): void {
-	const dir = "./packages/compiler/bedrock/entity/components"
+	const dir = "./src/bedrock/entity/components"
 
 	const index = `${dir}/index.ts`
 	const components = `${dir}/Components.ts`
