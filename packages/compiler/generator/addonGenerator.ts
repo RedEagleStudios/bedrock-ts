@@ -29,6 +29,8 @@ export class AddonGenerator {
 		})
 
 		this.writeManifests()
+		this.writeAnimations()
+		this.writeAnimationControllers()
 		this.writeEntities()
 	}
 
@@ -44,6 +46,22 @@ export class AddonGenerator {
 		}
 		copyFileSync(bpManifestCache, `${this.pathBP}/manifest.json`)
 		copyFileSync(rpManifestCache, `${this.pathRP}/manifest.json`)
+	}
+
+	private writeAnimations() {
+		const bpAnimationPath = mkdirSync(`${this.pathBP}/animations`, recursive)
+
+		this.addon.animations.forEach((animation) => {
+			writeJson(`${bpAnimationPath}/${animation.fileName}.json`, animation.createAnimation())
+		})
+	}
+
+	private writeAnimationControllers() {
+		const bpControllerPath = mkdirSync(`${this.pathBP}/animation_controllers`, recursive)
+
+		this.addon.animationControllers.forEach((controller) => {
+			writeJson(`${bpControllerPath}/${controller.fileName}.json`, controller.createAnimationController())
+		})
 	}
 
 	private writeEntities() {
