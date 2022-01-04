@@ -1,6 +1,9 @@
+.idea/*
+build/
 node_modules/
 out/
-dist/
+src/**.js
 
 *.log
 *.js
+package-lock.json
