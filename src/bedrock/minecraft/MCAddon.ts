@@ -1,5 +1,5 @@
-import { CoreAnimation } from "../animation/SimpleAnimation"
-import { CoreAnimationController } from "../animation_controller/SimpleAnimationController"
+import { CoreAnimation } from "../animation/CoreAnimation"
+import { CoreAnimationController } from "../animation_controller/CoreAnimationController"
 import { CoreEntity } from "../entity/CoreEntity"
 
 export interface MCAddon {
