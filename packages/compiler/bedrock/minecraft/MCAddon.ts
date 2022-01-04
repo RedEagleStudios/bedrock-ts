@@ -1,6 +1,6 @@
-import { SimpleEntity } from "../entity/SimpleEntity"
+import { CoreEntity } from "../entity/CoreEntity"
 
 export interface MCAddon {
 	packName: string
-	entities: SimpleEntity[]
+	entities: CoreEntity[]
 }
