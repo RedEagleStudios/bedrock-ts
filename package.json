@@ -1,8 +1,25 @@
 {
 	"name": "bedrock-ts",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "",
-	"main": "src/index.ts",
+	"author": "ink0rr",
+	"license": "MIT",
+	"main": "build/main/index.js",
+	"types": "build/main/index.d.ts",
+	"files": [
+		"build/main",
+		"build/module"
+	],
+	"scripts": {
+		"build": "run-p build:*",
+		"build:main": "tsc -p tsconfig.json",
+		"build:module": "tsc -p tsconfig.module.json",
+		"fix": "run-s fix:*",
+		"fix:prettier": "prettier \"src/**/*.ts\" --write",
+		"fix:lint": "eslint src --ext .ts --fix",
+		"watch:build": "tsc -p tsconfig.json -w",
+		"reset-hard": "git clean -dfx && git reset --hard && yarn"
+	},
 	"dependencies": {
 		"@types/node": "^16.11.10",
 		"fast-glob": "^3.2.7"
@@ -15,16 +32,7 @@
 		"eslint-plugin-prettier": "^4.0.0",
 		"prettier": "^2.5.1",
 		"prettier-plugin-organize-imports": "^2.3.4",
-		"ts-node": "^10.4.0",
-		"ts-node-dev": "^1.1.8",
-		"typescript": "^4.5.2"
-	},
-	"scripts": {
-		"dev": "ts-node-dev --respawn --transpile-only --watch packages packages/playground/main.ts",
-		"serve": "ts-node-dev --respawn --watch packages packages/playground/main.ts",
-		"build": "ts-node packages/playground/main.ts",
-		"eslint": "eslint --fix packages"
-	},
-	"author": "ink0rr",
-	"license": "ISC"
+		"typescript": "^4.5.2",
+		"yarn-run-all": "^3.1.1"
+	}
 }

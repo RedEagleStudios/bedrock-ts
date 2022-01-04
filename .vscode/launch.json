@@ -2,20 +2,6 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Dev",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "yarn",
-			"runtimeArgs": ["run", "dev"]
-		},
-		{
-			"name": "Serve",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "yarn",
-			"runtimeArgs": ["run", "serve"]
-		},
-		{
 			"name": "Build",
 			"type": "node",
 			"request": "launch",
@@ -23,11 +9,18 @@
 			"runtimeArgs": ["run", "build"]
 		},
 		{
-			"name": "ESLint",
+			"name": "Fix",
 			"type": "node",
 			"request": "launch",
 			"runtimeExecutable": "yarn",
-			"runtimeArgs": ["run", "eslint"]
+			"runtimeArgs": ["run", "fix"]
+		},
+		{
+			"name": "Watch",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "yarn",
+			"runtimeArgs": ["run", "watch"]
 		}
 	]
 }
