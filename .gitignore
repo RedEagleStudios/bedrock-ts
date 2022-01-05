@@ -2,8 +2,9 @@
 build/
 node_modules/
 out/
+
 src/**.js
 
 *.log
-*.js
+*.tsbuildinfo
 package-lock.json

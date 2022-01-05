@@ -20,7 +20,7 @@
 			"type": "node",
 			"request": "launch",
 			"runtimeExecutable": "yarn",
-			"runtimeArgs": ["run", "watch"]
+			"runtimeArgs": ["run", "watch:build"]
 		}
 	]
 }
