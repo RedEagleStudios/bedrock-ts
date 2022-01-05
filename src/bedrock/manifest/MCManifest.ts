@@ -24,4 +24,11 @@ export interface MCManifestDependencies {
 	version: number[]
 }
 
+export interface MCManifestUUIDs {
+	bpHeader: string
+	rpHeader: string
+	bpModule: string
+	rpModule: string
+}
+
 type MCManifestType = "data" | "resources"

@@ -1,3 +1,5 @@
+import "./extensions/string"
+
 export * from "./bedrock/animation/BPAnimation"
 export * from "./bedrock/animation/CoreAnimation"
 export * from "./bedrock/animation_controller/BPAnimationController"
@@ -12,5 +14,6 @@ export * from "./bedrock/entity/RPEntity"
 export * from "./bedrock/identifier/Identifier"
 export * from "./bedrock/minecraft/MCAddon"
 export * from "./builder/entity/BPEntityBuilder"
+export * from "./extensions/string"
 export * from "./generator/AddonGenerator"
 export * from "./types"
