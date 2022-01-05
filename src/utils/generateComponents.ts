@@ -2,14 +2,14 @@ import FastGlob from "fast-glob"
 import { appendFileSync, writeFileSync } from "fs"
 
 // Do not run on watch mode
-export function indexComponents(): void {
+export function generateComponents(): void {
 	const dir = "./src/bedrock/entity/components"
 
 	const index = `${dir}/index.ts`
 	const components = `${dir}/Components.ts`
 
 	writeFileSync(index, "")
-	writeFileSync(components, "export interface Components {\n [key: `minecraft:${string}`]: unknown\n")
+	writeFileSync(components, "export interface Components {\n [key: ComponentKey]: unknown\n")
 
 	FastGlob.sync(`${dir}/*.ts`, {
 		deep: 1,
