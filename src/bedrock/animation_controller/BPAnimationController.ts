@@ -13,7 +13,7 @@ export interface AnimationControllerRecord {
 
 export interface AnimationController {
 	initial_state?: string
-	states?: StateRecord
+	states: StateRecord
 }
 
 export interface StateRecord {
