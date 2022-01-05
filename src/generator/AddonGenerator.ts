@@ -30,7 +30,7 @@ export class AddonGenerator {
 
 		this.writeManifests()
 		this.writeAnimations()
-		this.writeAnimationControllers()
+		this.writeAnimControllers()
 		this.writeEntities()
 	}
 
@@ -58,11 +58,11 @@ export class AddonGenerator {
 		})
 	}
 
-	private writeAnimationControllers() {
+	private writeAnimControllers() {
 		const bpControllerPath = mkdirSync(`${this.pathBP}/animation_controllers`, recursive)
 
-		this.addon.animationControllers.forEach((controller) => {
-			writeJson(`${bpControllerPath}/${controller.fileName}.json`, controller.createAnimationController())
+		this.addon.animControllers.forEach((controller) => {
+			writeJson(`${bpControllerPath}/${controller.fileName}.json`, controller.createAnimController())
 		})
 	}
 

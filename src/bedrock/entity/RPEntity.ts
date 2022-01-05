@@ -1,5 +1,5 @@
-import { AnimationControllerKey } from "../keys/AnimationControllerKey"
 import { AnimationKey } from "../keys/AnimationKey"
+import { AnimControllerKey } from "../keys/AnimControllerKey"
 import { GeometryKey } from "../keys/GeometryKey"
 import { Identifier } from "../keys/Identifier"
 import { RenderControllerKey } from "../keys/RenderControllerKey"
@@ -20,7 +20,7 @@ export interface RPDescription {
 	materials?: Record<string, string>
 	textures?: Record<string, string>
 	geometry?: Record<GeometryKey, string>
-	animations?: Record<string, AnimationKey | AnimationControllerKey>
+	animations?: Record<string, AnimationKey | AnimControllerKey>
 	scripts?: Scripts
 	render_controllers?: (RenderControllerKey | RenderControllerRecord)[]
 }

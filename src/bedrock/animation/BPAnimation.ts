@@ -4,14 +4,14 @@ type FormatVersion = "1.10.0"
 
 export interface BPAnimation {
 	format_version: FormatVersion
-	animations: AnimationRecord
+	animations: BPAnimationRecord
 }
 
-export interface AnimationRecord {
-	[key: AnimationKey]: Animation
+export interface BPAnimationRecord {
+	[key: AnimationKey]: BPAnimationItem
 }
 
-export interface Animation {
+export interface BPAnimationItem {
 	animation_length?: number
 	loop?: boolean
 	timeline?: AnimationTimeline
