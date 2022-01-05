@@ -1,6 +1,6 @@
 import { Identifier } from "../identifier/Identifier"
 import { Components } from "./components"
-import { Filter } from "./filters"
+import { Filter } from "./filters/Filter"
 
 type FormatVersion = "1.16.0" | "1.17.0"
 
@@ -13,7 +13,7 @@ export interface MCEntity {
 	description: BPDescription
 	component_groups?: ComponentGroups
 	components: Components
-	events?: Events
+	events?: EventRecord
 }
 
 export interface BPDescription {
@@ -27,17 +27,17 @@ export interface ComponentGroups {
 	[key: string]: Components
 }
 
-export interface Events {
+export interface EventRecord {
 	[key: string]: Event
 }
 
 export interface Event {
-	add?: EventAddOrRemove
-	remove?: EventAddOrRemove
+	add?: EventAction
+	remove?: EventAction
 	trigger?: string
 	filters?: Filter[]
 }
 
-export interface EventAddOrRemove {
+export interface EventAction {
 	component_groups: string[]
 }

@@ -1,4 +1,4 @@
-import { Range } from "../../../types"
+import { Range } from "../../../types/Range"
 
 export interface MCMovement_Jump {
 	jump_delay: Range

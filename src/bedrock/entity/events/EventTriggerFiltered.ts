@@ -1,4 +1,4 @@
-import { Filter } from "../filters"
+import { Filter } from "../filters/Filter"
 import { FilterSubject } from "../filters/FilterSubject"
 
 export interface EventTriggerFiltered {

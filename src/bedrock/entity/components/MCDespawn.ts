@@ -1,4 +1,4 @@
-import { Filter } from "../filters"
+import { Filter } from "../filters/Filter"
 
 export interface MCDespawnDespawnFromDistance {
 	max_distance?: number

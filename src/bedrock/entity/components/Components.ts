@@ -101,9 +101,10 @@ import {
 	MCVariant,
 	MCWaterMovement,
 } from "."
+import { ComponentKey } from "../../keys/ComponentKey"
 
 export interface Components {
-	[key: `minecraft:${string}`]: unknown
+	[key: ComponentKey]: unknown
 	MCAdmireItem?: MCAdmireItem
 	MCAttack?: MCAttack
 	MCBalloonable?: MCBalloonable

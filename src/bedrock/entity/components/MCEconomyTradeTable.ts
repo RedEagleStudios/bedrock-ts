@@ -1,4 +1,4 @@
-import { Range } from "../../../types"
+import { Range } from "../../../types/Range"
 
 export interface MCEconomyTradeTable {
 	convert_trades_economy?: boolean

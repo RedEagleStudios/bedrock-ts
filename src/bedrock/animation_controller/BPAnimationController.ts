@@ -1,15 +1,23 @@
+import { AnimationControllerKey } from "../keys/AnimationControllerKey"
+
 type FormatVersion = "1.10.0"
 
 export interface BPAnimationController {
 	format_version: FormatVersion
-	animation_controllers: Record<AnimationControllerKey, AnimationControllers>
+	animation_controllers: AnimationControllerRecord
 }
 
-export type AnimationControllerKey = `controller.animation.${string}`
+export interface AnimationControllerRecord {
+	[key: AnimationControllerKey]: AnimationController
+}
 
-export interface AnimationControllers {
+export interface AnimationController {
 	initial_state?: string
-	states?: Record<string, AnimationControllerState>
+	states?: StateRecord
+}
+
+export interface StateRecord {
+	[key: string]: AnimationControllerState
 }
 
 export interface AnimationControllerState {

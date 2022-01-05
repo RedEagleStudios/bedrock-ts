@@ -1,6 +1,8 @@
-import { AnimationKey } from "../animation/BPAnimation"
-import { AnimationControllerKey } from "../animation_controller/BPAnimationController"
 import { Identifier } from "../identifier/Identifier"
+import { AnimationControllerKey } from "../keys/AnimationControllerKey"
+import { AnimationKey } from "../keys/AnimationKey"
+import { GeometryKey } from "../keys/GeometryKey"
+import { RenderControllerKey } from "../keys/RenderControllerKey"
 
 type FormatVersion = "1.10.0"
 
@@ -18,12 +20,14 @@ export interface RPDescription {
 	materials?: Record<string, string>
 	textures?: Record<string, string>
 	geometry?: Record<GeometryKey, string>
-	animations?: Record<AnimationKey | AnimationControllerKey, string>
+	animations?: Record<string, AnimationKey | AnimationControllerKey>
 	scripts?: Scripts
-	render_controllers?: RenderControllers[]
+	render_controllers?: (RenderControllerKey | RenderControllerRecord)[]
 }
 
-export type GeometryKey = `geometry.${string}`
+export interface RenderControllerRecord {
+	[key: RenderControllerKey]: string
+}
 
 export interface Scripts {
 	initialize?: string[]
@@ -32,5 +36,3 @@ export interface Scripts {
 }
 
 export type Animate = string | Record<string, string>
-
-export type RenderControllers = `controller.render.${string}`

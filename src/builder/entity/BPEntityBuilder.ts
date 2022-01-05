@@ -1,4 +1,4 @@
-import { BPEntity, ComponentGroups, Events } from "../../bedrock/entity/BPEntity"
+import { BPEntity, ComponentGroups, EventRecord } from "../../bedrock/entity/BPEntity"
 import { Components } from "../../bedrock/entity/components"
 import { Identifier } from "../../bedrock/identifier/Identifier"
 
@@ -35,7 +35,7 @@ export class BPEntityBuilder {
 		}
 	}
 
-	public setEvents(events: Events) {
+	public setEvents(events: EventRecord) {
 		if (!this.behavior.MCEntity.events) this.behavior.MCEntity.events = {}
 		this.behavior.MCEntity.events = {
 			...this.behavior.MCEntity.events,

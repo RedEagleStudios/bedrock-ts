@@ -1,4 +1,4 @@
-import { Vector3 } from "../../../types"
+import { Vector3 } from "../../../types/Vector3"
 
 export interface MCCustomHitTestHitbox {
 	height?: number

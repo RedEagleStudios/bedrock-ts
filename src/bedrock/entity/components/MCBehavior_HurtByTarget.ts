@@ -1,4 +1,4 @@
-import { Filter } from "../filters"
+import { Filter } from "../filters/Filter"
 
 export interface MCBehavior_HurtByTargetEntityType {
 	filters?: Filter[]

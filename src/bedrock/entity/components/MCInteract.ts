@@ -1,5 +1,5 @@
 import { EventTriggerFiltered } from "../events/EventTriggerFiltered"
-import { Filter } from "../filters"
+import { Filter } from "../filters/Filter"
 
 export interface MCInteractInteractionAddItems {
 	table?: string
