@@ -1,4 +1,4 @@
-import { Identifier } from "../bedrock/identifier/Identifier"
+import { Identifier } from "../bedrock/keys/Identifier"
 
 declare global {
 	interface String {

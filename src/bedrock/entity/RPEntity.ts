@@ -1,7 +1,7 @@
-import { Identifier } from "../identifier/Identifier"
 import { AnimationControllerKey } from "../keys/AnimationControllerKey"
 import { AnimationKey } from "../keys/AnimationKey"
 import { GeometryKey } from "../keys/GeometryKey"
+import { Identifier } from "../keys/Identifier"
 import { RenderControllerKey } from "../keys/RenderControllerKey"
 
 type FormatVersion = "1.10.0"

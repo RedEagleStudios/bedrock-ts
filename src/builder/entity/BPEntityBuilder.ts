@@ -1,6 +1,6 @@
 import { BPEntity, ComponentGroups, EventRecord } from "../../bedrock/entity/BPEntity"
 import { Components } from "../../bedrock/entity/components"
-import { Identifier } from "../../bedrock/identifier/Identifier"
+import { Identifier } from "../../bedrock/keys/Identifier"
 
 export class BPEntityBuilder {
 	constructor(

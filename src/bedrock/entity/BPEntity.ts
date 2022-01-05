@@ -1,4 +1,4 @@
-import { Identifier } from "../identifier/Identifier"
+import { Identifier } from "../keys/Identifier"
 import { Components } from "./components"
 import { Filter } from "./filters/Filter"
 

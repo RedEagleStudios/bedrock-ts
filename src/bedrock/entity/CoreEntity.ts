@@ -1,4 +1,4 @@
-import { Identifier } from "../identifier/Identifier"
+import { Identifier } from "../keys/Identifier"
 import { BPEntity } from "./BPEntity"
 import { RPEntity } from "./RPEntity"
 
