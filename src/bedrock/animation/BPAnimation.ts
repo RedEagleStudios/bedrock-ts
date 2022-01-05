@@ -14,7 +14,7 @@ export interface BPAnimationRecord {
 export interface BPAnimationItem {
 	animation_length?: number
 	loop?: boolean
-	timeline?: AnimationTimeline
+	timeline: AnimationTimeline
 }
 
 export interface AnimationTimeline {

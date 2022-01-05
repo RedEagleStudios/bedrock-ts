@@ -17,14 +17,14 @@ export class BPAnimControllerBuilder {
 		return this.controller
 	}
 
-	public setItems(item: BPAnimControllerRecord) {
+	public setItems(items: BPAnimControllerRecord) {
 		this.controller.animation_controllers = {
 			...this.controller.animation_controllers,
-			...item,
+			...items,
 		}
 	}
 
-	public getItem(item: AnimControllerKey): BPAnimControllerItem {
-		return this.controller.animation_controllers[item]
+	public getItem(key: AnimControllerKey): BPAnimControllerItem {
+		return this.controller.animation_controllers[key]
 	}
 }

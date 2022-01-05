@@ -16,15 +16,13 @@ export class BPAnimControllerItemBuilder {
 	}
 
 	public setStates(states: BPAnimControllerStateRecord) {
-		const controller = this.controllerItem
-		controller.states = {
-			...controller.states,
+		this.controllerItem.states = {
+			...this.controllerItem.states,
 			...states,
 		}
 	}
 
 	public getState(state: string): BPAnimControllerState {
-		const controller = this.controllerItem
-		return controller.states[state]
+		return this.controllerItem.states[state]
 	}
 }
