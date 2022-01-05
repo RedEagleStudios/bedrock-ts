@@ -38,6 +38,8 @@ export class AddonGenerator {
 		const bpManifestCache = `${this.cache}/manifest-bp.json`
 		const rpManifestCache = `${this.cache}/manifest-rp.json`
 		if (!existsSync(bpManifestCache) || !existsSync(rpManifestCache)) {
+			console.log("Manifest cache not found, generating a new manifest")
+
 			const { bpManifest, rpManifest } = generateManifest(this.addon.uuids)
 			mkdirSync(this.cache, recursive)
 

@@ -1,14 +1,17 @@
 import { randomUUID } from "crypto"
 import { MCManifest, MCManifestUUIDs } from "../bedrock/manifest/MCManifest"
 
-export function generateManifest(
-	uuids: MCManifestUUIDs = {
-		bpHeader: randomUUID(),
-		rpHeader: randomUUID(),
-		bpModule: randomUUID(),
-		rpModule: randomUUID(),
+export function generateManifest(uuids?: MCManifestUUIDs) {
+	if (!uuids) {
+		uuids = {
+			bpHeader: randomUUID(),
+			rpHeader: randomUUID(),
+			bpModule: randomUUID(),
+			rpModule: randomUUID(),
+		}
+		console.log("Paste this in your MCAddon to save UUID")
+		console.log("uuids: " + JSON.stringify(uuids, null, 2))
 	}
-) {
 	const bpManifest: MCManifest = {
 		format_version: 2,
 		header: {
