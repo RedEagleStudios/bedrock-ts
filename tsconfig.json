@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		"incremental": true,
+		"tsBuildInfoFile": "build/.tsbuildinfo",
 		"target": "ES2019",
 		"outDir": "build",
 		"rootDir": "src",
