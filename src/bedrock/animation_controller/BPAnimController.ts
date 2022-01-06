@@ -1,4 +1,5 @@
 import { AnimControllerKey } from "../keys/AnimControllerKey"
+import { Animate } from "../shared/Animate"
 
 type FormatVersion = "1.10.0"
 
@@ -21,7 +22,7 @@ export interface BPAnimControllerStateRecord {
 }
 
 export interface BPAnimControllerState {
-	animations?: (string | Record<string, string>)[]
+	animations?: Animate[]
 	on_entry?: string[]
 	on_exit?: string[]
 	transitions?: Record<string, string>[]
