@@ -32,6 +32,7 @@ export class AddonGenerator {
 		this.writeAnimations()
 		this.writeAnimControllers()
 		this.writeEntities()
+		this.writeItems()
 	}
 
 	private writeManifests() {
@@ -71,10 +72,22 @@ export class AddonGenerator {
 		const rpEntityPath = mkdirSync(`${this.pathRP}/entity`, recursive)
 
 		this.addon.entities.forEach((entity) => {
-			const identifier = entity.identifier.removeNamespace()
+			const fileName = entity.identifier.removeNamespace()
 
-			writeJson(`${bpEntityPath}/${identifier}.json`, entity.createBP())
-			writeJson(`${rpEntityPath}/${identifier}.json`, entity.createRP())
+			writeJson(`${bpEntityPath}/${fileName}.json`, entity.createBP())
+			writeJson(`${rpEntityPath}/${fileName}.json`, entity.createRP())
+		})
+	}
+
+	private writeItems() {
+		const bpItemPath = mkdirSync(`${this.pathBP}/item`, recursive)
+		const rpItemPath = mkdirSync(`${this.pathRP}/item`, recursive)
+
+		this.addon.items.forEach((item) => {
+			const fileName = item.identifier.removeNamespace()
+
+			writeJson(`${bpItemPath}/${fileName}.json`, item.createBP())
+			writeJson(`${rpItemPath}/${fileName}.json`, item.createRP())
 		})
 	}
 }
