@@ -17,7 +17,7 @@ export interface MCItemRP {
 	components?: RPItemComponents
 }
 
-export interface BPItem {
+export interface RPItem {
 	format_version: FormatVersion
 	MCItem: MCItemRP
 }
