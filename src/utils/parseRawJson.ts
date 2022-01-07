@@ -1,7 +1,7 @@
 import _ from "lodash"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function parseJson(object: any) {
+export function parseRawJson(object: any) {
 	object = _.transform(object, function iteratee(result, value, objKey) {
 		if (typeof objKey === "string") objKey = formatKey(objKey)
 		if (typeof value === "object") value = _.transform(value, iteratee)
