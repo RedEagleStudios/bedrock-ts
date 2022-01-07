@@ -1,20 +1,26 @@
 import { PathOrFileDescriptor, writeFileSync } from "fs"
+import _ from "lodash"
 
-export function writeJson<T>(file: PathOrFileDescriptor, data: T): void {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function writeJson(file: PathOrFileDescriptor, data: any): void {
 	if (!data) return
-	const json = JSON.stringify(data, null, 2)
-	writeFileSync(file, formatJsonKey(json))
+	data = _.transform(data, function iteratee(result, value, objKey) {
+		if (typeof objKey === "string") objKey = formatKey(objKey)
+		if (typeof value === "object") value = _.transform(value, iteratee)
+		result[objKey] = value
+		return result
+	})
+	writeFileSync(file, JSON.stringify(data, null, 2))
 }
 
-function formatJsonKey(str: string): string {
-	return str.replace(/"([^"]+)":/g, (key) => {
-		if (!key.match(/MC/)) {
-			return key
-		}
-		return key
-			.replace(/MC/, "minecraft:")
-			.replace(/_/g, ".")
+function formatKey(key: string): string {
+	if (key.indexOf("MC") === -1) return key
+	key = key.substring(2)
+	return (
+		"minecraft:" +
+		key
+			.replace("_", ".")
 			.replace(/([a-z])([A-Z])/g, "$1_$2")
 			.toLowerCase()
-	})
+	)
 }

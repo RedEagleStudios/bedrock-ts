@@ -1,27 +1,24 @@
-export function parseJson<T>(data: T): unknown {
-	if (!data) return undefined
-	const json = JSON.stringify(data, null, 2)
-	const res = JSON.parse(formatJsonKey(json))
-	return res
+import _ from "lodash"
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function parseJson(object: any) {
+	object = _.transform(object, function iteratee(result, value, objKey) {
+		if (typeof objKey === "string") objKey = formatKey(objKey)
+		if (typeof value === "object") value = _.transform(value, iteratee)
+		result[objKey] = value
+		return result
+	})
+	return object
 }
 
-function formatJsonKey(str: string): string {
-	return str.replace(/"([^"]+)":/g, (key) => {
-		if (!key.match("minecraft:")) {
-			return key
-		}
-		return key.replace(/(minecraft\:)(.[^"]*)/, (match) => {
-			match = match.split(":")[1]
-			const name = match[0].toUpperCase() + match.slice(1)
-			return (
-				"MC" +
-				name
-					.replace(/\./g, "#")
-					.replace(/([a-z])_([a-z])/g, (str) => {
-						return str[0] + str[2].toUpperCase()
-					})
-					.replace(/\#/g, "_")
-			)
-		})
-	})
+function formatKey(key: string): string {
+	if (key.indexOf("minecraft:") === -1) return key
+	key = key.split(":")[1]
+	const name = _.upperFirst(key)
+	return (
+		"MC" +
+		name
+			.replace(/([a-z])_([a-z])/g, (str) => str[0] + str[2].toUpperCase())
+			.replace(/\.([a-z])/, (str) => "_" + str[1].toUpperCase())
+	)
 }
