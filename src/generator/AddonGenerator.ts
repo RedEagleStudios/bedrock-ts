@@ -33,6 +33,7 @@ export class AddonGenerator {
 		this.writeAnimControllers()
 		this.writeEntities()
 		this.writeItems()
+		this.writeRecipes()
 	}
 
 	private writeManifests() {
@@ -88,6 +89,16 @@ export class AddonGenerator {
 
 			writeJson(`${bpItemPath}/${fileName}.json`, item.createBP())
 			writeJson(`${rpItemPath}/${fileName}.json`, item.createRP())
+		})
+	}
+
+	private writeRecipes() {
+		const recipePath = mkdirSync(`${this.pathBP}/recipes`, recursive)
+
+		this.addon.recipes.forEach((recipe) => {
+			const fileName = recipe.identifier.removeNamespace()
+
+			writeJson(`${recipePath}/${fileName}.json`, recipe.createRecipe())
 		})
 	}
 }
