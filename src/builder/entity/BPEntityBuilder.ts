@@ -3,18 +3,23 @@ import { Components } from "../../bedrock/entity/components"
 import { Identifier } from "../../bedrock/keys/Identifier"
 
 export class BPEntityBuilder {
-	constructor(
-		public identifier: Identifier,
-		private behavior: BPEntity = {
-			format_version: "1.16.0",
-			MCEntity: {
-				description: {
-					identifier: identifier,
+	private behavior: BPEntity
+
+	constructor(arg: Identifier | BPEntity) {
+		if (typeof arg === "string") {
+			this.behavior = {
+				format_version: "1.16.0",
+				MCEntity: {
+					description: {
+						identifier: arg,
+					},
+					components: {},
 				},
-				components: {},
-			},
+			}
+		} else {
+			this.behavior = arg
 		}
-	) {}
+	}
 
 	public build(): BPEntity {
 		return this.behavior
