@@ -1,9 +1,8 @@
-import { Identifier } from "../keys/Identifier"
 import { BPEntity } from "./BPEntity"
 import { RPEntity } from "./RPEntity"
 
 export interface CoreEntity {
-	identifier: Identifier
+	fileName: string
 	createBP(): BPEntity | void
 	createRP(): RPEntity | void
 }

@@ -73,10 +73,8 @@ export class AddonGenerator {
 		const rpEntityPath = mkdirSync(`${this.pathRP}/entity`, recursive)
 
 		this.addon.entities.forEach((entity) => {
-			const fileName = entity.identifier.removeNamespace()
-
-			writeJson(`${bpEntityPath}/${fileName}.json`, entity.createBP())
-			writeJson(`${rpEntityPath}/${fileName}.json`, entity.createRP())
+			writeJson(`${bpEntityPath}/${entity.fileName}.json`, entity.createBP())
+			writeJson(`${rpEntityPath}/${entity.fileName}.json`, entity.createRP())
 		})
 	}
 

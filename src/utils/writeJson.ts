@@ -1,8 +1,9 @@
-import { PathOrFileDescriptor, writeFileSync } from "fs"
+import { mkdirSync, writeFileSync } from "fs"
 import _ from "lodash"
+import { recursive } from "../constants/fsOptions"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function writeJson(file: PathOrFileDescriptor, data: any): void {
+export function writeJson(filePath: string, data: any): void {
 	if (!data) return
 	data = _.transform(data, function iteratee(result, value, objKey) {
 		if (typeof objKey === "string") objKey = formatKey(objKey)
@@ -10,7 +11,12 @@ export function writeJson(file: PathOrFileDescriptor, data: any): void {
 		result[objKey] = value
 		return result
 	})
-	writeFileSync(file, JSON.stringify(data, null, 2))
+	const slashIndex = filePath.lastIndexOf("/")
+	if (slashIndex !== -1) {
+		const dirPath = filePath.substring(0, slashIndex)
+		mkdirSync(dirPath, recursive)
+	}
+	writeFileSync(filePath, JSON.stringify(data, null, 2))
 }
 
 function formatKey(key: string): string {
