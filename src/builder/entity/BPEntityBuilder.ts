@@ -29,7 +29,7 @@ export class BPEntityBuilder {
 	}
 
 	public setComponentGroups(component_groups: ComponentGroups) {
-		if (!this.behavior.MCEntity.component_groups) this.behavior.MCEntity.component_groups = {}
+		this.behavior.MCEntity.component_groups ??= {}
 		this.behavior.MCEntity.component_groups = {
 			...this.behavior.MCEntity.component_groups,
 			...component_groups,
@@ -44,7 +44,7 @@ export class BPEntityBuilder {
 	}
 
 	public setEvents(events: EventRecord) {
-		if (!this.behavior.MCEntity.events) this.behavior.MCEntity.events = {}
+		this.behavior.MCEntity.events ??= {}
 		this.behavior.MCEntity.events = {
 			...this.behavior.MCEntity.events,
 			...events,
@@ -56,14 +56,14 @@ export class BPEntityBuilder {
 	}
 
 	public getComponentInGroup(group: string, component: keyof Components): unknown {
-		if (!this.behavior.MCEntity.component_groups) this.behavior.MCEntity.component_groups = {}
-		if (!this.behavior.MCEntity.component_groups[group]) this.behavior.MCEntity.component_groups[group] = {}
+		this.behavior.MCEntity.component_groups ??= {}
+		this.behavior.MCEntity.component_groups[group] ??= {}
 		return this.behavior.MCEntity.component_groups[group][component]
 	}
 
 	public getEvent(event: string): Event {
-		if (!this.behavior.MCEntity.events) this.behavior.MCEntity.events = {}
-		if (!this.behavior.MCEntity.events[event]) this.behavior.MCEntity.events[event] = {}
+		this.behavior.MCEntity.events ??= {}
+		this.behavior.MCEntity.events[event] ??= {}
 		return this.behavior.MCEntity.events[event]
 	}
 }
