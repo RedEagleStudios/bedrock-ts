@@ -1,4 +1,4 @@
-import { BPEntity, ComponentGroups, EventRecord } from "../../bedrock/entity/BPEntity"
+import { BPEntity, ComponentGroups, Event, EventRecord } from "../../bedrock/entity/BPEntity"
 import { Components } from "../../bedrock/entity/components"
 import { Identifier } from "../../bedrock/keys/Identifier"
 
@@ -12,6 +12,9 @@ export class BPEntityBuilder {
 				MCEntity: {
 					description: {
 						identifier: arg,
+						is_spawnable: true,
+						is_summonable: true,
+						is_experimental: false,
 					},
 					components: {},
 				},
@@ -50,5 +53,17 @@ export class BPEntityBuilder {
 
 	public getComponent(component: keyof Components): unknown {
 		return this.behavior.MCEntity.components[component]
+	}
+
+	public getComponentInGroup(group: string, component: keyof Components): unknown {
+		if (!this.behavior.MCEntity.component_groups) this.behavior.MCEntity.component_groups = {}
+		if (!this.behavior.MCEntity.component_groups[group]) this.behavior.MCEntity.component_groups[group] = {}
+		return this.behavior.MCEntity.component_groups[group][component]
+	}
+
+	public getEvent(event: string): Event {
+		if (!this.behavior.MCEntity.events) this.behavior.MCEntity.events = {}
+		if (!this.behavior.MCEntity.events[event]) this.behavior.MCEntity.events[event] = {}
+		return this.behavior.MCEntity.events[event]
 	}
 }
