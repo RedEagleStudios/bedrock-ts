@@ -1,7 +1,7 @@
 export type Query =
 	| "is_variant"
 	| "is_mark_variant"
-	| "is_skin_id"
+	| "skin_id"
 	| "is_baby"
 	| "is_sheared"
 	| "is_saddled"
