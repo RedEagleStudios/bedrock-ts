@@ -16,7 +16,7 @@ export function writeJson(filePath: string, data: any): void {
 		const dirPath = filePath.substring(0, slashIndex)
 		mkdirSync(dirPath, recursive)
 	}
-	writeFileSync(filePath, JSON.stringify(data, null, 2))
+	writeFileSync(filePath, JSON.stringify(data, null, 2) + "\n")
 }
 
 function formatKey(key: string): string {
