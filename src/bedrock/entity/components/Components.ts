@@ -2,6 +2,7 @@ import {
 	MCAdmireItem,
 	MCAttack,
 	MCBalloonable,
+	MCBehavior_AvoidMobType,
 	MCBehavior_Beg,
 	MCBehavior_Float,
 	MCBehavior_FollowOwner,
@@ -108,6 +109,7 @@ export interface Components {
 	MCAdmireItem?: MCAdmireItem
 	MCAttack?: MCAttack
 	MCBalloonable?: MCBalloonable
+	MCBehavior_AvoidMobType?: MCBehavior_AvoidMobType
 	MCBehavior_Beg?: MCBehavior_Beg
 	MCBehavior_Float?: MCBehavior_Float
 	MCBehavior_FollowOwner?: MCBehavior_FollowOwner
