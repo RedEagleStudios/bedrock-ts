@@ -1,4 +1,4 @@
-import { AnimationKey } from "../shared/AnimationKey"
+import { AnimationId } from "../shared/AnimationId"
 
 type FormatVersion = "1.10.0"
 
@@ -8,7 +8,7 @@ export interface BPAnimation {
 }
 
 export interface BPAnimationRecord {
-	[key: AnimationKey]: BPAnimationItem
+	[key: AnimationId]: BPAnimationItem
 }
 
 export interface BPAnimationItem {

@@ -1,8 +1,8 @@
 import { Animate } from "../shared/Animate"
 import { AnimationsRecord } from "../shared/AnimationsRecord"
-import { GeometryKey } from "../shared/GeometryKey"
+import { GeometryId } from "../shared/GeometryId"
 import { Identifier } from "../shared/Identifier"
-import { RenderControllerKey } from "../shared/RenderControllerKey"
+import { RenderControllerId } from "../shared/RenderControllerId"
 
 type FormatVersion = "1.10.0"
 
@@ -19,14 +19,14 @@ export interface RPDescription {
 	identifier: Identifier
 	materials?: Record<string, string>
 	textures?: Record<string, string>
-	geometry?: Record<GeometryKey, string>
+	geometry?: Record<GeometryId, string>
 	animations?: AnimationsRecord
 	scripts?: Scripts
-	render_controllers?: (RenderControllerKey | RenderControllerRecord)[]
+	render_controllers?: (RenderControllerId | RenderControllerRecord)[]
 }
 
 export interface RenderControllerRecord {
-	[key: RenderControllerKey]: string
+	[key: RenderControllerId]: string
 }
 
 export interface Scripts {

@@ -1,5 +1,5 @@
 import { BPAnimation, BPAnimationItem, BPAnimationRecord } from "../../bedrock/animation/BPAnimation"
-import { AnimationKey } from "../../bedrock/shared/AnimationKey"
+import { AnimationId } from "../../bedrock/shared/AnimationId"
 
 export class BPAnimationBuilder {
 	constructor(
@@ -20,7 +20,7 @@ export class BPAnimationBuilder {
 		}
 	}
 
-	public getItem(key: AnimationKey): BPAnimationItem {
+	public getItem(key: AnimationId): BPAnimationItem {
 		return this.animation.animations[key]
 	}
 }
