@@ -3,7 +3,7 @@ import {
 	BPAnimControllerItem,
 	BPAnimControllerRecord,
 } from "../../bedrock/animation_controller/BPAnimController"
-import { AnimControllerKey } from "../../bedrock/keys/AnimControllerKey"
+import { AnimControllerKey } from "../../bedrock/shared/AnimControllerKey"
 
 export class BPAnimControllerBuilder {
 	constructor(

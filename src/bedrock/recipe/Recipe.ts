@@ -1,4 +1,4 @@
-import { Identifier } from "../keys/Identifier"
+import { Identifier } from "../shared/Identifier"
 
 type FormatVersion = "1.12.0"
 

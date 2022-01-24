@@ -1,4 +1,4 @@
-import { Identifier } from "../../bedrock/keys/Identifier"
+import { Identifier } from "../../bedrock/shared/Identifier"
 
 type FormatVersion = "1.10.0"
 

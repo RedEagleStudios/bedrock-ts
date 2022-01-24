@@ -1,6 +1,6 @@
 import { BPEntity, ComponentGroups, Event, EventRecord } from "../../bedrock/entity/BPEntity"
 import { Components } from "../../bedrock/entity/components"
-import { Identifier } from "../../bedrock/keys/Identifier"
+import { Identifier } from "../../bedrock/shared/Identifier"
 
 /**
  * BPEntity wrapper to provide some utility functions

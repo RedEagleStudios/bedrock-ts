@@ -1,4 +1,4 @@
-import { Identifier } from "../../bedrock/keys/Identifier"
+import { Identifier } from "../../bedrock/shared/Identifier"
 import { BPItem } from "./BPItem"
 import { RPItem } from "./RPItem"
 

@@ -1,5 +1,5 @@
 import { BPAnimation, BPAnimationItem, BPAnimationRecord } from "../../bedrock/animation/BPAnimation"
-import { AnimationKey } from "../../bedrock/keys/AnimationKey"
+import { AnimationKey } from "../../bedrock/shared/AnimationKey"
 
 export class BPAnimationBuilder {
 	constructor(

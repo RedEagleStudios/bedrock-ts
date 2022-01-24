@@ -1,4 +1,4 @@
-import { AnimationKey } from "../keys/AnimationKey"
+import { AnimationKey } from "../shared/AnimationKey"
 
 type FormatVersion = "1.10.0"
 

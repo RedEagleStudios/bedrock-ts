@@ -1,8 +1,8 @@
-import { GeometryKey } from "../keys/GeometryKey"
-import { Identifier } from "../keys/Identifier"
-import { RenderControllerKey } from "../keys/RenderControllerKey"
 import { Animate } from "../shared/Animate"
 import { AnimationsRecord } from "../shared/AnimationsRecord"
+import { GeometryKey } from "../shared/GeometryKey"
+import { Identifier } from "../shared/Identifier"
+import { RenderControllerKey } from "../shared/RenderControllerKey"
 
 type FormatVersion = "1.10.0"
 

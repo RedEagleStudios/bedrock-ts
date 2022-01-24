@@ -101,7 +101,7 @@ import {
 	MCVariant,
 	MCWaterMovement,
 } from "."
-import { ComponentKey } from "../../keys/ComponentKey"
+import { ComponentKey } from "../../shared/ComponentKey"
 
 export interface Components {
 	[key: ComponentKey]: unknown

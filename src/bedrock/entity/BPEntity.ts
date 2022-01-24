@@ -1,6 +1,6 @@
-import { Identifier } from "../keys/Identifier"
 import { Animate } from "../shared/Animate"
 import { AnimationsRecord } from "../shared/AnimationsRecord"
+import { Identifier } from "../shared/Identifier"
 import { Components } from "./components"
 import { Filters } from "./filters/Filter"
 

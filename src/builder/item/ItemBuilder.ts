@@ -2,7 +2,7 @@ import { BPItem } from "../../bedrock/item/BPItem"
 import { MCFood } from "../../bedrock/item/components"
 import { CoreItem } from "../../bedrock/item/CoreItem"
 import { RPItem } from "../../bedrock/item/RPItem"
-import { Identifier } from "../../bedrock/keys/Identifier"
+import { Identifier } from "../../bedrock/shared/Identifier"
 
 export class ItemBuilder implements CoreItem {
 	constructor(public identifier: Identifier, private options: ItemBuilderOptions = {}) {}

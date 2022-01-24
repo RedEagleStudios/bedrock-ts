@@ -1,4 +1,4 @@
-import { Identifier } from "../keys/Identifier"
+import { Identifier } from "../shared/Identifier"
 import { Recipe } from "./Recipe"
 
 export interface CoreRecipe {

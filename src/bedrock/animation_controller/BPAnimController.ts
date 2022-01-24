@@ -1,5 +1,5 @@
-import { AnimControllerKey } from "../keys/AnimControllerKey"
 import { Animate } from "../shared/Animate"
+import { AnimControllerKey } from "../shared/AnimControllerKey"
 
 type FormatVersion = "1.10.0"
 

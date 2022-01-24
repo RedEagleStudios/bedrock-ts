@@ -1,4 +1,4 @@
-import { AnimationKey } from "../../bedrock/keys/AnimationKey"
-import { AnimControllerKey } from "../../bedrock/keys/AnimControllerKey"
+import { AnimControllerKey } from "../../bedrock/shared/AnimControllerKey"
+import { AnimationKey } from "./AnimationKey"
 
 export type AnimationsRecord = Record<string, AnimationKey | AnimControllerKey>
