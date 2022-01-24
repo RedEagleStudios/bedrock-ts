@@ -1,5 +1,10 @@
 import _ from "lodash"
 
+/**
+ * Converts raw Minecraft JSON keys into bedrock-ts format
+ * @param object Raw Minecraft JSON
+ * @returns Object with formatted keys
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function parseRawJson(object: any) {
 	object = _.transform(object, function iteratee(result, value, objKey) {
