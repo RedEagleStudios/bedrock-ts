@@ -1,5 +1,5 @@
 import { EventTriggerFiltered } from "../events/EventTriggerFiltered"
-import { Filter } from "../filters/Filter"
+import { Filters } from "../filters/Filter"
 
 export interface MCInteractInteractionAddItems {
 	table?: string
@@ -18,7 +18,7 @@ export interface MCInteractInteractionSpawnItems {
 export interface MCInteractInteraction {
 	add_items?: MCInteractInteractionAddItems
 	cooldown?: number
-	filters?: Filter[]
+	filters?: Filters
 	hurt_item?: number
 	interact_text?: string
 	on_interact?: EventTriggerFiltered

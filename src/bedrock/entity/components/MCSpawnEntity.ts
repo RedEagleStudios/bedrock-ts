@@ -1,7 +1,7 @@
-import { Filter } from "../filters/Filter"
+import { Filters } from "../filters/Filter"
 
 export interface MCSpawnEntityEntity {
-	filters?: Filter[]
+	filters?: Filters
 	max_wait_time?: number
 	min_wait_time?: number
 	num_to_spawn?: number

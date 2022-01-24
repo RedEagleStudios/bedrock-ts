@@ -1,7 +1,7 @@
-import { Filter } from "../filters/Filter"
+import { Filters } from "../filters/Filter"
 
 export interface MCBehavior_NearestAttackableTargetEntityType {
-	filters?: Filter[]
+	filters?: Filters
 	max_dist?: number
 	must_see?: boolean
 	must_see_forget_duration?: number

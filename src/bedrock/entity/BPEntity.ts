@@ -2,7 +2,7 @@ import { Identifier } from "../keys/Identifier"
 import { Animate } from "../shared/Animate"
 import { AnimationsRecord } from "../shared/AnimationsRecord"
 import { Components } from "./components"
-import { Filter } from "./filters/Filter"
+import { Filters } from "./filters/Filter"
 
 type FormatVersion = "1.16.0" | "1.17.0" | "1.17.10"
 
@@ -41,7 +41,7 @@ export interface EventRecord {
 
 export interface Event {
 	add?: EventAction
-	filters?: Filter[]
+	filters?: Filters
 	randomize?: EventRandomize[]
 	remove?: EventAction
 	sequence?: EventSequence[]
@@ -57,7 +57,7 @@ export interface EventRandomize {
 
 export interface EventSequence {
 	add?: EventAction
-	filters?: Filter[]
+	filters?: Filters
 	remove?: EventAction
 	trigger?: string
 }
