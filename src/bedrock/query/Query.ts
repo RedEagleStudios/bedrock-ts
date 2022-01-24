@@ -14,3 +14,5 @@ export type Query =
 	| "can_power_jump"
 	| "is_ignited"
 	| "out_of_control"
+
+export type RawQuery = `query.${string}` | `q.${string}`

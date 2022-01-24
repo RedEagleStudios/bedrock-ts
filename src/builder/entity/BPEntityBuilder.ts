@@ -1,6 +1,10 @@
 import { BPEntity, ComponentGroups, Event, EventRecord } from "../../bedrock/entity/BPEntity"
 import { Components } from "../../bedrock/entity/components"
+import { RawQuery } from "../../bedrock/query/Query"
+import { AnimationId } from "../../bedrock/shared/AnimationId"
+import { AnimControllerId } from "../../bedrock/shared/AnimControllerId"
 import { Identifier } from "../../bedrock/shared/Identifier"
+import { QueryBuilder } from "../query/QueryBuilder"
 
 /**
  * BPEntity wrapper to provide some utility functions
@@ -51,6 +55,35 @@ export class BPEntityBuilder {
 			}
 		} else {
 			this.behavior = arg
+		}
+	}
+
+	/**
+	 * Register animation or animation controller to BPEntity
+	 *
+	 * @param animationName Animation name
+	 * @param animationId Animation id
+	 * @param playCondition Molang query or "always"
+	 */
+	public addAnimation(
+		animationName: string,
+		animationId: AnimControllerId | AnimationId,
+		playCondition?: QueryBuilder | RawQuery | "always"
+	): void {
+		const description = this.behavior.MCEntity.description
+		description.scripts ??= {}
+		description.scripts.animate ??= []
+		description.animations ??= {}
+
+		description.animations = {
+			...description.animations,
+			[animationName]: animationId,
+		}
+		if (!playCondition) return
+		if (playCondition === "always") {
+			description.scripts.animate.indexOf(animationName) >= 0 || description.scripts.animate.push(animationName)
+		} else {
+			description.scripts.animate.push({ [animationName]: playCondition.toString() })
 		}
 	}
 
