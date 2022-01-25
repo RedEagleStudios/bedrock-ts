@@ -22,15 +22,26 @@ export interface RPDescription {
 	geometry?: Record<string, GeometryId>
 	animations?: AnimationsRecord
 	scripts?: Scripts
+	particle_effects?: Record<string, string>
+	particle_emitters?: Record<string, string>
+	sound_effects?: Record<string, string>
+	spawn_egg?: SpawnEgg
 	render_controllers?: (RenderControllerId | RenderControllerRecord)[]
-}
-
-export interface RenderControllerRecord {
-	[key: RenderControllerId]: string
 }
 
 export interface Scripts {
 	initialize?: string[]
 	pre_animation?: string[]
 	animate?: Animate[]
+}
+
+export interface SpawnEgg {
+	base_color?: string
+	overlay_color?: string
+	texture?: string
+	texture_index?: number
+}
+
+export interface RenderControllerRecord {
+	[key: RenderControllerId]: string
 }
