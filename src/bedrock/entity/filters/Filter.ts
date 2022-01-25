@@ -5,13 +5,13 @@ import { FilterTest } from "./FilterTest"
 
 export type Filters = Filter | Filter[]
 
-interface Filter {
+export interface Filter {
 	test?: FilterTest
 	operator?: FilterOperator
 	subject?: FilterSubject
 	domain?: FilterDomain
 	value?: number | string
-	all_of?: Filters
-	any_of?: Filters
-	none_of?: Filters
+	all_of?: Filter[]
+	any_of?: Filter[]
+	none_of?: Filter[]
 }
