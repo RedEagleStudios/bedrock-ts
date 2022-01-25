@@ -6,12 +6,12 @@ import { FilterTest } from "./FilterTest"
 export type Filters = Filter | Filter[]
 
 export interface Filter {
-	test?: FilterTest
-	operator?: FilterOperator
-	subject?: FilterSubject
-	domain?: FilterDomain
-	value?: number | string
 	all_of?: Filter[]
 	any_of?: Filter[]
+	domain?: FilterDomain
 	none_of?: Filter[]
+	operator?: FilterOperator
+	subject?: FilterSubject
+	test?: FilterTest
+	value?: number | string
 }

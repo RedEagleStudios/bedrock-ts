@@ -105,7 +105,6 @@ import {
 import { ComponentKey } from "../../shared/ComponentKey"
 
 export interface Components {
-	[key: ComponentKey]: unknown
 	MCAdmireItem?: MCAdmireItem
 	MCAttack?: MCAttack
 	MCBalloonable?: MCBalloonable
@@ -208,4 +207,5 @@ export interface Components {
 	MCTypeFamily?: MCTypeFamily
 	MCVariant?: MCVariant
 	MCWaterMovement?: MCWaterMovement
+	[key: ComponentKey]: unknown
 }

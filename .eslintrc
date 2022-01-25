@@ -19,5 +19,14 @@
 				"plugins": ["prettier-plugin-organize-imports"]
 			}
 		]
-	}
+	},
+	"overrides": [
+		{
+			"files": ["src/bedrock/entity/components/*.ts"],
+			"plugins": ["sort"],
+			"rules": {
+				"sort/type-properties": "warn"
+			}
+		}
+	]
 }

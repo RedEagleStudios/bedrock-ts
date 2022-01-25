@@ -12,8 +12,8 @@ export interface MCTimerTimeDownEvent {
 
 export interface MCTimer {
 	looping?: boolean
-	randomInterval?: boolean
 	random_time_choices?: MCTimerRandomTimeChoice[]
+	randomInterval?: boolean
 	time?: number | Range
 	time_down_event?: MCTimerTimeDownEvent
 }
