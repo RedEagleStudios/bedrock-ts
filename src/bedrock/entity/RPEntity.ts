@@ -19,7 +19,7 @@ export interface RPDescription {
 	identifier: Identifier
 	materials?: Record<string, string>
 	textures?: Record<string, string>
-	geometry?: Record<GeometryId, string>
+	geometry?: Record<string, GeometryId>
 	animations?: AnimationsRecord
 	scripts?: Scripts
 	render_controllers?: (RenderControllerId | RenderControllerRecord)[]
