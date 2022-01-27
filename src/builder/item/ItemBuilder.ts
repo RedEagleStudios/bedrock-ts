@@ -4,47 +4,52 @@ import { CoreItem } from "../../bedrock/item/CoreItem"
 import { RPItem } from "../../bedrock/item/RPItem"
 import { Identifier } from "../../bedrock/shared/Identifier"
 
-export class ItemBuilder implements CoreItem {
-	constructor(public identifier: Identifier, private options: ItemBuilderOptions = {}) {}
+export class ItemBuilder {
+	constructor(private options: ItemBuilderOptions) {}
 
-	createBP(): BPItem {
-		const options = this.options
+	public build(): CoreItem {
+		const opt = this.options
 		return {
-			format_version: "1.16.0",
-			MCItem: {
-				description: {
-					identifier: this.identifier,
-					category: options.category,
-				},
-				components: {
-					MCFoil: options.foil,
-					MCFood: options.food,
-					MCHandEquipped: options.handEquipped,
-					MCMaxStackSize: options.maxStack,
-					MCUseDuration: options.useDuration,
-				},
+			customFilePath: opt.customFolder ? `${opt.customFolder}/${opt.identifier.removeNamespace()}` : undefined,
+			createBP(): BPItem {
+				return {
+					format_version: "1.16.0",
+					MCItem: {
+						description: {
+							identifier: opt.identifier,
+							category: opt.category,
+						},
+						components: {
+							MCFoil: opt.foil,
+							MCFood: opt.food,
+							MCHandEquipped: opt.handEquipped,
+							MCMaxStackSize: opt.maxStack,
+							MCUseDuration: opt.useDuration,
+						},
+					},
+				}
 			},
-		}
-	}
-
-	createRP(): RPItem {
-		const options = this.options
-		return {
-			format_version: "1.10.0",
-			MCItem: {
-				description: {
-					identifier: this.identifier,
-					category: options.category,
-				},
-				components: {
-					MCIcon: options.icon ?? this.identifier.removeNamespace(),
-				},
+			createRP(): RPItem {
+				return {
+					format_version: "1.10.0",
+					MCItem: {
+						description: {
+							identifier: opt.identifier,
+							category: opt.category,
+						},
+						components: {
+							MCIcon: opt.icon ?? opt.identifier.removeNamespace(),
+						},
+					},
+				}
 			},
 		}
 	}
 }
 
 export interface ItemBuilderOptions {
+	identifier: Identifier
+	customFolder?: string
 	category?: string
 	foil?: boolean
 	food?: MCFood

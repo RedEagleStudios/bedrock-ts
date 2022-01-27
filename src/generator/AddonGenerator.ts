@@ -1,6 +1,7 @@
 import FastGlob from "fast-glob"
 import { copyFileSync, existsSync, mkdirSync, rmSync } from "fs"
 import { MCAddon } from "../bedrock/addon/MCAddon"
+import { ItemTexture, TextureData } from "../bedrock/texture/ItemTexture"
 import { recursive } from "../constants/fsOptions"
 import { generateManifest } from "../utils/generateManifest"
 import { writeJson } from "../utils/writeJson"
@@ -9,6 +10,7 @@ export class AddonGenerator {
 	private cache: string
 	private pathBP: string
 	private pathRP: string
+	private textureData: TextureData = {}
 
 	constructor(private addon: MCAddon) {
 		this.cache = `./out/.${addon.packName}`
@@ -34,6 +36,7 @@ export class AddonGenerator {
 		this.writeEntities()
 		this.writeItems()
 		this.writeRecipes()
+		this.writeItemTextures()
 	}
 
 	private writeManifests() {
@@ -73,8 +76,26 @@ export class AddonGenerator {
 		const rpEntityPath = mkdirSync(`${this.pathRP}/entity`, recursive)
 
 		this.addon.entities.forEach((entity) => {
-			writeJson(`${bpEntityPath}/${entity.fileName}.json`, entity.createBP())
-			writeJson(`${rpEntityPath}/${entity.fileName}.json`, entity.createRP())
+			if (entity.createBP) {
+				const entityBP = entity.createBP()
+				const filePath = entity.customFilePath ?? entityBP.MCEntity.description.identifier.toFilePath()
+				writeJson(`${bpEntityPath}/${filePath}.json`, entityBP)
+			}
+			if (entity.createRP) {
+				const entityRP = entity.createRP()
+				const filePath = entity.customFilePath ?? entityRP.MCClientEntity.description.identifier.toFilePath()
+				writeJson(`${rpEntityPath}/${filePath}.json`, entityRP)
+
+				const eggTexture = entityRP.MCClientEntity.description.spawn_egg?.texture
+				if (eggTexture) {
+					this.textureData = {
+						...this.textureData,
+						[eggTexture]: {
+							textures: "textures/items/" + filePath,
+						},
+					}
+				}
+			}
 		})
 	}
 
@@ -83,10 +104,24 @@ export class AddonGenerator {
 		const rpItemPath = mkdirSync(`${this.pathRP}/item`, recursive)
 
 		this.addon.items.forEach((item) => {
-			const fileName = item.identifier.removeNamespace()
+			if (item.createBP) {
+				const itemBP = item.createBP()
+				const filePath = item.customFilePath ?? itemBP.MCItem.description.identifier.toFilePath()
+				writeJson(`${bpItemPath}/${filePath}.json`, itemBP)
+			}
+			if (item.createRP) {
+				const itemRP = item.createRP()
+				const filePath = item.customFilePath ?? itemRP.MCItem.description.identifier.toFilePath()
+				writeJson(`${rpItemPath}/${filePath}.json`, itemRP)
 
-			writeJson(`${bpItemPath}/${fileName}.json`, item.createBP())
-			writeJson(`${rpItemPath}/${fileName}.json`, item.createRP())
+				const icon = itemRP.MCItem.components.MCIcon
+				this.textureData = {
+					...this.textureData,
+					[icon]: {
+						textures: "textures/items/" + filePath,
+					},
+				}
+			}
 		})
 	}
 
@@ -95,8 +130,16 @@ export class AddonGenerator {
 
 		this.addon.recipes.forEach((recipe) => {
 			const fileName = recipe.identifier.removeNamespace()
-
 			writeJson(`${recipePath}/${fileName}.json`, recipe.createRecipe())
 		})
+	}
+
+	private writeItemTextures() {
+		const itemTexture: ItemTexture = {
+			resource_pack_name: "vanilla",
+			texture_data: this.textureData,
+			texture_name: "atlas.items",
+		}
+		writeJson(`${this.pathRP}/textures/item_texture.json`, itemTexture)
 	}
 }

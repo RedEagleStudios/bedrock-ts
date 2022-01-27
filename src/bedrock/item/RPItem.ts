@@ -14,7 +14,7 @@ export interface RPItemComponents {
 
 export interface MCItemRP {
 	description: RPItemDescription
-	components?: RPItemComponents
+	components: RPItemComponents
 }
 
 export interface RPItem {
