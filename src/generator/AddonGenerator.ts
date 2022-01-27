@@ -1,7 +1,8 @@
 import FastGlob from "fast-glob"
-import { copyFileSync, existsSync, mkdirSync, rmSync } from "fs"
+import { copyFileSync, existsSync, mkdirSync, rmSync, writeFileSync } from "fs"
 import { MCAddon } from "../bedrock/addon/MCAddon"
 import { ItemTexture, TextureData } from "../bedrock/texture/ItemTexture"
+import { LangBuilder } from "../builder/lang/LangBuilder"
 import { recursive } from "../constants/fsOptions"
 import { generateManifest } from "../utils/generateManifest"
 import { writeJson } from "../utils/writeJson"
@@ -10,12 +11,19 @@ export class AddonGenerator {
 	private cache: string
 	private pathBP: string
 	private pathRP: string
+
+	private bpLang: LangBuilder
+	private rpLang: LangBuilder
+
 	private textureData: TextureData = {}
 
 	constructor(private addon: MCAddon) {
 		this.cache = `./out/.${addon.packName}`
 		this.pathBP = `./out/${addon.packName} BP`
 		this.pathRP = `./out/${addon.packName} RP`
+
+		this.bpLang = new LangBuilder(addon.packName, "Behavior")
+		this.rpLang = new LangBuilder(addon.packName, "Resource")
 	}
 
 	public generate() {
@@ -37,6 +45,7 @@ export class AddonGenerator {
 		this.writeItems()
 		this.writeRecipes()
 		this.writeItemTextures()
+		this.writeLangFile()
 	}
 
 	private writeManifests() {
@@ -95,6 +104,7 @@ export class AddonGenerator {
 						},
 					}
 				}
+				this.rpLang.addEntity(entityRP.MCClientEntity.description.identifier)
 			}
 		})
 	}
@@ -121,6 +131,7 @@ export class AddonGenerator {
 						textures: "textures/items/" + filePath,
 					},
 				}
+				this.rpLang.addItem(itemRP.MCItem.description.identifier)
 			}
 		})
 	}
@@ -141,5 +152,13 @@ export class AddonGenerator {
 			texture_name: "atlas.items",
 		}
 		writeJson(`${this.pathRP}/textures/item_texture.json`, itemTexture)
+	}
+
+	private writeLangFile() {
+		const bpLangPath = mkdirSync(`${this.pathBP}/texts`, recursive)
+		const rpLangPath = mkdirSync(`${this.pathRP}/texts`, recursive)
+
+		writeFileSync(`${bpLangPath}/en_US.lang`, this.bpLang.build())
+		writeFileSync(`${rpLangPath}/en_US.lang`, this.rpLang.build())
 	}
 }
