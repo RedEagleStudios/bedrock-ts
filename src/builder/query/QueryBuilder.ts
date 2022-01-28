@@ -1,25 +1,31 @@
 import { Query } from "../../bedrock/query/Query"
 
 export class QueryBuilder {
-	constructor(private query: string) {}
+	constructor(private query: string, param?: number | string) {
+		if (param !== undefined) this.query += `(${this.quote(param)})`
+	}
 
-	public eq(value: string | number | boolean) {
-		this.query += " == " + value
+	private quote(value: number | string) {
+		return typeof value === "string" ? `'${value}'` : value
+	}
+
+	public eq(value: number | string) {
+		this.query += " == " + this.quote(value)
 		return this
 	}
 
-	public neq(value: string | number | boolean) {
-		this.query += " != " + value
+	public neq(value: number | string) {
+		this.query += " != " + this.quote(value)
 		return this
 	}
 
-	public lessThan(value: string | number | boolean) {
-		this.query += " <= " + value
+	public lessThan(value: number | string) {
+		this.query += " <= " + this.quote(value)
 		return this
 	}
 
-	public greaterThan(value: string | number | boolean) {
-		this.query += " >= " + value
+	public greaterThan(value: number | string) {
+		this.query += " >= " + this.quote(value)
 		return this
 	}
 
@@ -33,6 +39,11 @@ export class QueryBuilder {
 		return this
 	}
 
+	public not() {
+		this.query = `!${this.query}`
+		return this
+	}
+
 	public group() {
 		this.query = `(${this.query})`
 		return this
@@ -43,6 +54,6 @@ export class QueryBuilder {
 	}
 }
 
-export function q(query: Query) {
-	return new QueryBuilder(`query.${query}`)
+export function q(query: Query, param?: number | string) {
+	return new QueryBuilder(`query.${query}`, param)
 }
