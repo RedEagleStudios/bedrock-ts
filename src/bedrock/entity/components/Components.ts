@@ -9,6 +9,7 @@ import {
 	MCBehavior_FollowParent,
 	MCBehavior_Hide,
 	MCBehavior_HurtByTarget,
+	MCBehavior_KnockbackRoar,
 	MCBehavior_LookAtPlayer,
 	MCBehavior_MeleeAttack,
 	MCBehavior_MoveToPoi,
@@ -115,6 +116,7 @@ export interface Components {
 	MCBehavior_FollowParent?: MCBehavior_FollowParent
 	MCBehavior_Hide?: MCBehavior_Hide
 	MCBehavior_HurtByTarget?: MCBehavior_HurtByTarget
+	MCBehavior_KnockbackRoar?: MCBehavior_KnockbackRoar
 	MCBehavior_LookAtPlayer?: MCBehavior_LookAtPlayer
 	MCBehavior_MeleeAttack?: MCBehavior_MeleeAttack
 	MCBehavior_MoveToPoi?: MCBehavior_MoveToPoi
