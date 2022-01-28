@@ -15,8 +15,8 @@ export type MCRecipeTag =
 	| "stonecutter"
 
 export interface MCRecipeItem {
-	count: number
-	data: number
+	count?: number
+	data?: number
 	item: Identifier
 }
 
@@ -27,8 +27,6 @@ export interface MCRecipeItemRecord {
 export interface MCRecipeDescription {
 	identifier: Identifier
 }
-
-export type MCRecipeShapedPattern = [string, string, string]
 
 export interface MCRecipeBrewing {
 	description: MCRecipeDescription
@@ -49,7 +47,7 @@ export interface MCRecipeShaped {
 	description: MCRecipeDescription
 	group?: string
 	key?: MCRecipeItemRecord
-	pattern?: MCRecipeShapedPattern
+	pattern?: string[]
 	result?: MCRecipeItem
 	tags?: MCRecipeTag[]
 }
