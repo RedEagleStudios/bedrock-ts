@@ -7,6 +7,11 @@ export class LangBuilder {
 		if (packName) this.lang.push(`pack.name=${packName}`)
 		if (type) this.lang.push(`pack.description=${type} Pack for ${packName}`)
 	}
+
+	public addBlock(id: Identifier) {
+		this.lang.push(`tile.${id}.name=${id.toName()}`)
+	}
+
 	public addEntity(id: Identifier) {
 		this.lang.push(`entity.${id}.name=${id.toName()}`)
 		this.lang.push(`item.spawn_egg.entity.${id}.name=Spawn ${id.toName()}`)

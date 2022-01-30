@@ -1,7 +1,10 @@
 import FastGlob from "fast-glob"
 import { copyFileSync, existsSync, mkdirSync, rmSync, writeFileSync } from "fs"
 import { MCAddon } from "../bedrock/addon/MCAddon"
-import { ItemTexture, TextureData } from "../bedrock/texture/ItemTexture"
+import { Blocks } from "../bedrock/block/Blocks"
+import { ItemTexture } from "../bedrock/texture/ItemTexture"
+import { TerrainTexture } from "../bedrock/texture/TerrainTexture"
+import { TextureData } from "../bedrock/texture/TextureData"
 import { LangBuilder } from "../builder/lang/LangBuilder"
 import { recursive } from "../constants/fsOptions"
 import { generateManifest } from "../utils/generateManifest"
@@ -15,7 +18,11 @@ export class AddonGenerator {
 	private bpLang: LangBuilder
 	private rpLang: LangBuilder
 
-	private textureData: TextureData = {}
+	private blocks: Blocks = {
+		format_version: [1, 1, 0],
+	}
+	private itemTextureData: TextureData = {}
+	private terrainTextureData: TextureData = {}
 
 	constructor(private addon: MCAddon) {
 		this.cache = `./out/.${addon.packName}`
@@ -41,10 +48,12 @@ export class AddonGenerator {
 		this.writeManifests()
 		this.writeAnimations()
 		this.writeAnimControllers()
+		this.writeBlocks()
 		this.writeEntities()
 		this.writeItems()
 		this.writeRecipes()
 		this.writeItemTextures()
+		this.writeTerrainTexture()
 		this.writeLangFile()
 	}
 
@@ -80,6 +89,43 @@ export class AddonGenerator {
 		})
 	}
 
+	private writeBlocks() {
+		const bpBlockPath = mkdirSync(`${this.pathBP}/blocks`, recursive) as string
+
+		this.addon.blocks.forEach((block) => {
+			const blockBP = block.createBP()
+			const identifier = blockBP.MCBlock.description.identifier
+
+			const filePath = block.customFilePath ?? identifier.toFilePath()
+			writeJson(`${bpBlockPath}/${filePath}.json`, blockBP)
+
+			const blockRP = block.createRP()
+			const blockTextures = blockRP.textures
+			if (typeof blockTextures === "string") {
+				this.terrainTextureData = {
+					...this.terrainTextureData,
+					[blockTextures]: {
+						textures: "textures/blocks/" + blockTextures,
+					},
+				}
+			} else {
+				Object.entries(blockTextures).forEach(([, texture]) => {
+					this.terrainTextureData = {
+						...this.terrainTextureData,
+						[texture]: {
+							textures: "textures/blocks/" + texture,
+						},
+					}
+				})
+			}
+			this.blocks = {
+				...this.blocks,
+				[identifier]: blockRP,
+			}
+			this.rpLang.addBlock(identifier)
+		})
+	}
+
 	private writeEntities() {
 		const bpEntityPath = mkdirSync(`${this.pathBP}/entities`, recursive)
 		const rpEntityPath = mkdirSync(`${this.pathRP}/entity`, recursive)
@@ -97,8 +143,8 @@ export class AddonGenerator {
 
 				const eggTexture = entityRP.MCClientEntity.description.spawn_egg?.texture
 				if (eggTexture) {
-					this.textureData = {
-						...this.textureData,
+					this.itemTextureData = {
+						...this.itemTextureData,
 						[eggTexture]: {
 							textures: "textures/items/" + filePath,
 						},
@@ -125,10 +171,10 @@ export class AddonGenerator {
 				writeJson(`${rpItemPath}/${filePath}.json`, itemRP)
 
 				const icon = itemRP.MCItem.components.MCIcon
-				this.textureData = {
-					...this.textureData,
+				this.itemTextureData = {
+					...this.itemTextureData,
 					[icon]: {
-						textures: "textures/items/" + filePath,
+						textures: "textures/items/" + icon,
 					},
 				}
 				this.rpLang.addItem(itemRP.MCItem.description.identifier)
@@ -148,10 +194,20 @@ export class AddonGenerator {
 	private writeItemTextures() {
 		const itemTexture: ItemTexture = {
 			resource_pack_name: "vanilla",
-			texture_data: this.textureData,
+			texture_data: this.itemTextureData,
 			texture_name: "atlas.items",
 		}
 		writeJson(`${this.pathRP}/textures/item_texture.json`, itemTexture)
+	}
+
+	private writeTerrainTexture() {
+		const terrainTexture: TerrainTexture = {
+			resource_pack_name: "vanilla",
+			texture_data: this.terrainTextureData,
+			texture_name: "atlas.terrain",
+		}
+		writeJson(`${this.pathRP}/textures/terrain_texture.json`, terrainTexture)
+		writeJson(`${this.pathRP}/blocks.json`, this.blocks)
 	}
 
 	private writeLangFile() {
@@ -159,6 +215,8 @@ export class AddonGenerator {
 		const rpLangPath = mkdirSync(`${this.pathRP}/texts`, recursive)
 
 		writeFileSync(`${bpLangPath}/en_US.lang`, this.bpLang.build())
+		writeFileSync(`${bpLangPath}/languages.json`, `["en_US"]`)
 		writeFileSync(`${rpLangPath}/en_US.lang`, this.rpLang.build())
+		writeFileSync(`${rpLangPath}/languages.json`, `["en_US"]`)
 	}
 }
