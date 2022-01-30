@@ -2,27 +2,19 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Build",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "yarn",
-			"runtimeArgs": ["run", "build"],
-			"console": "integratedTerminal"
-		},
-		{
-			"name": "Fix",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "yarn",
-			"runtimeArgs": ["run", "fix"],
-			"console": "integratedTerminal"
-		},
-		{
 			"name": "Watch",
 			"type": "node",
 			"request": "launch",
 			"runtimeExecutable": "yarn",
-			"runtimeArgs": ["run", "watch:build"],
+			"runtimeArgs": ["run", "watch"],
+			"console": "integratedTerminal"
+		},
+		{
+			"name": "Serve",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "yarn",
+			"runtimeArgs": ["run", "serve"],
 			"console": "integratedTerminal"
 		}
 	]

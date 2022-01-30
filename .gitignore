@@ -4,6 +4,7 @@ node_modules/
 out/
 
 src/**.js
+src/main.ts
 
 *.log
 *.tsbuildinfo

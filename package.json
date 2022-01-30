@@ -10,12 +10,11 @@
 		"build"
 	],
 	"scripts": {
-		"build": "tsc -p tsconfig.json",
+		"watch": "tsc -p tsconfig.json -w",
+		"serve": "ts-node-dev --respawn --transpile-only --watch src src/main.ts",
 		"fix": "run-s fix:*",
 		"fix:prettier": "prettier \"src/**/*.ts\" --write",
-		"fix:lint": "eslint src --ext .ts --fix",
-		"watch:build": "tsc -p tsconfig.json -w",
-		"reset-hard": "git clean -dfx && git reset --hard && yarn"
+		"fix:lint": "eslint src --ext .ts --fix"
 	},
 	"dependencies": {
 		"@types/lodash": "^4.14.178",
@@ -34,6 +33,7 @@
 		"prettier": "^2.5.1",
 		"prettier-plugin-organize-imports": "^2.3.4",
 		"ts-node": "^10.4.0",
+		"ts-node-dev": "^1.1.8",
 		"typedoc": "^0.22.11",
 		"typedoc-github-wiki-theme": "^1.0.0",
 		"typedoc-plugin-markdown": "^3.11.12",
