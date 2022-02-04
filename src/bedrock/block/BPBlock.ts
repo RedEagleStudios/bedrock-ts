@@ -9,9 +9,9 @@ export interface BPBlockComponents {
 		flame_odds?: number
 		burn_odds?: number
 	}
-	MCMapColor?: string
-	MCBlockLightAbsorption?: string
-	MCBlockLightEmission?: string
+	MCMapColor?: `#${string}`
+	MCBlockLightAbsorption?: number
+	MCBlockLightEmission?: number
 }
 
 export interface BPBlockDescription {
