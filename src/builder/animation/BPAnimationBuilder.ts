@@ -1,26 +1,36 @@
-import { BPAnimation, BPAnimationItem, BPAnimationRecord } from "../../bedrock/animation/BPAnimation"
+import { AnimationTimeline, BPAnimation, BPAnimationItem } from "../../bedrock/animation/BPAnimation"
 import { AnimationId } from "../../bedrock/shared/AnimationId"
 
 export class BPAnimationBuilder {
-	constructor(
-		private animation: BPAnimation = {
+	private id: AnimationId
+	private controller: BPAnimation
+
+	constructor(id: AnimationId, value?: BPAnimationItem) {
+		this.id = id
+		this.controller = {
 			format_version: "1.10.0",
-			animations: {},
+			animations: {
+				[id]: value ?? {
+					timeline: {},
+				},
+			},
 		}
-	) {}
+	}
 
 	public build(): BPAnimation {
-		return this.animation
+		return this.controller
 	}
 
-	public setItems(items: BPAnimationRecord) {
-		this.animation.animations = {
-			...this.animation.animations,
-			...items,
+	public setTimelines(timelines: AnimationTimeline) {
+		const item = this.controller.animations[this.id]
+		item.timeline = {
+			...item.timeline,
+			...timelines,
 		}
 	}
 
-	public getItem(key: AnimationId): BPAnimationItem {
-		return this.animation.animations[key]
+	public getTimeline(key: number): string[] {
+		const item = this.controller.animations[this.id]
+		return item.timeline[key]
 	}
 }
