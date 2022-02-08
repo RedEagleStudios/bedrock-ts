@@ -76,7 +76,7 @@ export class AddonGenerator {
 	private writeAnimations() {
 		const bpAnimationPath = mkdirSync(`${this.pathBP}/animations`, recursive)
 
-		this.addon.animations.forEach((animation) => {
+		this.addon.animations?.forEach((animation) => {
 			writeJson(`${bpAnimationPath}/${animation.fileName}.json`, animation.createAnimation())
 		})
 	}
@@ -84,7 +84,7 @@ export class AddonGenerator {
 	private writeAnimControllers() {
 		const bpControllerPath = mkdirSync(`${this.pathBP}/animation_controllers`, recursive)
 
-		this.addon.animControllers.forEach((controller) => {
+		this.addon.animControllers?.forEach((controller) => {
 			writeJson(`${bpControllerPath}/${controller.fileName}.json`, controller.createAnimController())
 		})
 	}
@@ -92,7 +92,7 @@ export class AddonGenerator {
 	private writeBlocks() {
 		const bpBlockPath = mkdirSync(`${this.pathBP}/blocks`, recursive) as string
 
-		this.addon.blocks.forEach((block) => {
+		this.addon.blocks?.forEach((block) => {
 			const blockBP = block.createBP()
 			const identifier = blockBP.MCBlock.description.identifier
 
@@ -130,7 +130,7 @@ export class AddonGenerator {
 		const bpEntityPath = mkdirSync(`${this.pathBP}/entities`, recursive)
 		const rpEntityPath = mkdirSync(`${this.pathRP}/entity`, recursive)
 
-		this.addon.entities.forEach((entity) => {
+		this.addon.entities?.forEach((entity) => {
 			if (entity.createBP) {
 				const entityBP = entity.createBP()
 				const filePath = entity.customFilePath ?? entityBP.MCEntity.description.identifier.toFilePath()
@@ -159,7 +159,7 @@ export class AddonGenerator {
 		const bpItemPath = mkdirSync(`${this.pathBP}/item`, recursive)
 		const rpItemPath = mkdirSync(`${this.pathRP}/item`, recursive)
 
-		this.addon.items.forEach((item) => {
+		this.addon.items?.forEach((item) => {
 			if (item.createBP) {
 				const itemBP = item.createBP()
 				const filePath = item.customFilePath ?? itemBP.MCItem.description.identifier.toFilePath()
@@ -185,7 +185,7 @@ export class AddonGenerator {
 	private writeRecipes() {
 		const recipePath = mkdirSync(`${this.pathBP}/recipes`, recursive)
 
-		this.addon.recipes.forEach((recipe) => {
+		this.addon.recipes?.forEach((recipe) => {
 			const fileName = recipe.identifier.removeNamespace()
 			writeJson(`${recipePath}/${fileName}.json`, recipe.createRecipe())
 		})
