@@ -50,6 +50,7 @@ export class AddonGenerator {
 		this.writeAnimControllers()
 		this.writeBlocks()
 		this.writeEntities()
+		this.writeLootTables()
 		this.writeItems()
 		this.writeRecipes()
 		this.writeItemTextures()
@@ -152,6 +153,14 @@ export class AddonGenerator {
 				}
 				this.rpLang.addEntity(entityRP.MCClientEntity.description.identifier)
 			}
+		})
+	}
+
+	private writeLootTables() {
+		const lootTablePath = mkdirSync(`${this.pathBP}/loot_tables`, recursive)
+
+		this.addon.loot_tables?.forEach((loot_table) => {
+			writeJson(`${lootTablePath}/${loot_table.fileName}.json`, loot_table.createLootTable())
 		})
 	}
 
