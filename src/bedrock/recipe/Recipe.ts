@@ -33,14 +33,14 @@ export interface MCRecipeBrewing {
 	input?: Identifier
 	output?: Identifier
 	reagent?: Identifier
-	tags?: MCRecipeTag
+	tags?: MCRecipeTag[]
 }
 
 export interface MCRecipeFurnace {
 	description: MCRecipeDescription
 	input?: Identifier
 	output?: Identifier
-	tags?: MCRecipeTag
+	tags?: MCRecipeTag[]
 }
 
 export interface MCRecipeShaped {
