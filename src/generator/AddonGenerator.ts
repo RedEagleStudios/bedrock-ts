@@ -165,8 +165,8 @@ export class AddonGenerator {
 	}
 
 	private writeItems() {
-		const bpItemPath = mkdirSync(`${this.pathBP}/item`, recursive)
-		const rpItemPath = mkdirSync(`${this.pathRP}/item`, recursive)
+		const bpItemPath = mkdirSync(`${this.pathBP}/items`, recursive)
+		const rpItemPath = mkdirSync(`${this.pathRP}/items`, recursive)
 
 		this.addon.items?.forEach((item) => {
 			if (item.createBP) {
