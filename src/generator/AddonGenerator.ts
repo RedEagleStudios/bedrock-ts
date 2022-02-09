@@ -91,7 +91,7 @@ export class AddonGenerator {
 	}
 
 	private writeBlocks() {
-		const bpBlockPath = mkdirSync(`${this.pathBP}/blocks`, recursive) as string
+		const bpBlockPath = mkdirSync(`${this.pathBP}/blocks`, recursive)
 
 		this.addon.blocks?.forEach((block) => {
 			const blockBP = block.createBP()
@@ -183,7 +183,7 @@ export class AddonGenerator {
 				this.itemTextureData = {
 					...this.itemTextureData,
 					[icon]: {
-						textures: "textures/items/" + icon,
+						textures: "textures/items/" + filePath,
 					},
 				}
 				this.rpLang.addItem(itemRP.MCItem.description.identifier)
