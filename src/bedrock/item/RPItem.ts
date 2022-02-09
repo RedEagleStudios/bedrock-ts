@@ -10,6 +10,7 @@ export interface RPItemDescription {
 export interface RPItemComponents {
 	MCIcon: string
 	MCRenderOffsets?: string
+	MCUseAnimation?: "eat"
 }
 
 export interface MCItemRP {

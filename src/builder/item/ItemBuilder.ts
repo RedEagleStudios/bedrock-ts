@@ -39,6 +39,7 @@ export class ItemBuilder {
 						},
 						components: {
 							MCIcon: opt.icon ?? opt.identifier.removeNamespace(),
+							MCUseAnimation: opt.food ? "eat" : undefined,
 						},
 					},
 				}
