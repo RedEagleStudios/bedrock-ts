@@ -18,7 +18,7 @@ export class AddonGenerator {
 	private bpLang: LangBuilder
 	private rpLang: LangBuilder
 
-	private blocks: Blocks = {
+	private blocksRP: Blocks = {
 		format_version: [1, 1, 0],
 	}
 	private itemTextureData: TextureData = {}
@@ -96,8 +96,7 @@ export class AddonGenerator {
 		this.addon.blocks?.forEach((block) => {
 			const blockBP = block.createBP()
 			const identifier = blockBP.MCBlock.description.identifier
-
-			const filePath = block.customFilePath ?? identifier.toFilePath()
+			const filePath = identifier.toFilePath(block.customFilePath)
 			writeJson(`${bpBlockPath}/${filePath}.json`, blockBP)
 
 			const blockRP = block.createRP()
@@ -119,8 +118,8 @@ export class AddonGenerator {
 					}
 				})
 			}
-			this.blocks = {
-				...this.blocks,
+			this.blocksRP = {
+				...this.blocksRP,
 				[identifier]: blockRP,
 			}
 			this.rpLang.addBlock(identifier)
@@ -134,12 +133,14 @@ export class AddonGenerator {
 		this.addon.entities?.forEach((entity) => {
 			if (entity.createBP) {
 				const entityBP = entity.createBP()
-				const filePath = entity.customFilePath ?? entityBP.MCEntity.description.identifier.toFilePath()
+				const identifier = entityBP.MCEntity.description.identifier
+				const filePath = identifier.toFilePath(entity.customFilePath)
 				writeJson(`${bpEntityPath}/${filePath}.json`, entityBP)
 			}
 			if (entity.createRP) {
 				const entityRP = entity.createRP()
-				const filePath = entity.customFilePath ?? entityRP.MCClientEntity.description.identifier.toFilePath()
+				const identifier = entityRP.MCClientEntity.description.identifier
+				const filePath = identifier.toFilePath(entity.customFilePath)
 				writeJson(`${rpEntityPath}/${filePath}.json`, entityRP)
 
 				const eggTexture = entityRP.MCClientEntity.description.spawn_egg?.texture
@@ -147,11 +148,11 @@ export class AddonGenerator {
 					this.itemTextureData = {
 						...this.itemTextureData,
 						[eggTexture]: {
-							textures: "textures/items/" + filePath,
+							textures: "textures/items/spawn_eggs/" + filePath,
 						},
 					}
 				}
-				this.rpLang.addEntity(entityRP.MCClientEntity.description.identifier)
+				this.rpLang.addEntity(identifier)
 			}
 		})
 	}
@@ -171,12 +172,14 @@ export class AddonGenerator {
 		this.addon.items?.forEach((item) => {
 			if (item.createBP) {
 				const itemBP = item.createBP()
-				const filePath = item.customFilePath ?? itemBP.MCItem.description.identifier.toFilePath()
+				const identifier = itemBP.MCItem.description.identifier
+				const filePath = identifier.toFilePath(item.customFilePath)
 				writeJson(`${bpItemPath}/${filePath}.json`, itemBP)
 			}
 			if (item.createRP) {
 				const itemRP = item.createRP()
-				const filePath = item.customFilePath ?? itemRP.MCItem.description.identifier.toFilePath()
+				const identifier = itemRP.MCItem.description.identifier
+				const filePath = identifier.toFilePath(item.customFilePath)
 				writeJson(`${rpItemPath}/${filePath}.json`, itemRP)
 
 				const icon = itemRP.MCItem.components.MCIcon
@@ -186,7 +189,7 @@ export class AddonGenerator {
 						textures: "textures/items/" + filePath,
 					},
 				}
-				this.rpLang.addItem(itemRP.MCItem.description.identifier)
+				this.rpLang.addItem(identifier)
 			}
 		})
 	}
@@ -216,7 +219,7 @@ export class AddonGenerator {
 			texture_name: "atlas.terrain",
 		}
 		writeJson(`${this.pathRP}/textures/terrain_texture.json`, terrainTexture)
-		writeJson(`${this.pathRP}/blocks.json`, this.blocks)
+		writeJson(`${this.pathRP}/blocks.json`, this.blocksRP)
 	}
 
 	private writeLangFile() {
