@@ -6,7 +6,7 @@ import _ from "lodash"
  * @returns Object with formatted keys
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function parseRawJson(object: any) {
+export function parseRawJson(object: any): unknown {
 	object = _.transform(object, function iteratee(result, value, objKey) {
 		if (typeof objKey === "string") objKey = formatKey(objKey)
 		if (typeof value === "object") value = _.transform(value, iteratee)
