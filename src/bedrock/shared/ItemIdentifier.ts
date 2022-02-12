@@ -1,11 +1,10 @@
-/**
- * Use this function to get auto-complete for item id
- */
-export function item(item: Items) {
-	return item
-}
+import { Identifier } from "./Identifier"
 
-export type Items =
+/**
+ * Gives auto-complete for vanilla item ids, but does not return error if you enter an invalid id
+ */
+export type ItemIdentifier =
+	| Identifier
 	| "minecraft:acacia_boat"
 	| "minecraft:acacia_button"
 	| "minecraft:acacia_door"
