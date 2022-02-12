@@ -18,4 +18,4 @@ interface SetData {
 	data: number | MinMaxValue
 }
 
-export type LootTableFunctions = (SetCount | SetDamage | SetData)[]
+export type LootTableFunction = SetCount | SetDamage | SetData
