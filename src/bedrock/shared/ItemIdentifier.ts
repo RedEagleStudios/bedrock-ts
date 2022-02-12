@@ -1,10 +1,17 @@
 import { Identifier } from "./Identifier"
 
 /**
+ * Prevents Identifier to be recognized as just a string
+ */
+type _Identifier = Identifier & {
+	readonly __Identifier?: never
+}
+
+/**
  * Gives auto-complete for vanilla item ids, but does not return error if you enter an invalid id
  */
 export type ItemIdentifier =
-	| Identifier
+	| _Identifier
 	| "minecraft:acacia_boat"
 	| "minecraft:acacia_button"
 	| "minecraft:acacia_door"
