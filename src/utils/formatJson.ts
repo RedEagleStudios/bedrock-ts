@@ -5,23 +5,27 @@ import _ from "lodash"
  * @param object Raw Minecraft JSON
  * @returns Object with formatted keys
  */
-export function parseRawJson(object: Record<string, object>): unknown {
-	object = _.transform(object, function iteratee(result, value, objKey) {
-		if (typeof objKey === "string") objKey = formatKey(objKey)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function formatJson(object: Record<string, any>): unknown {
+	object = _.transform(object, function iteratee(result, value, key) {
+		if (typeof key === "string") key = formatKey(key)
 		if (typeof value === "object") value = _.transform(value, iteratee)
-		result[objKey] = value
+		result[key] = value
 		return result
 	})
 	return object
 }
 
+/**
+ * Format key to bedrock-ts format
+ */
 function formatKey(key: string): string {
 	if (key.indexOf("minecraft:") === -1) return key
 	key = key.split(":")[1]
-	const name = _.upperFirst(key)
+	key = _.upperFirst(key)
 	return (
 		"MC" +
-		name
+		key
 			.replace(/([a-z])_([a-z])/g, (str) => str[0] + str[2].toUpperCase())
 			.replace(/\.([a-z])/, (str) => "_" + str[1].toUpperCase())
 	)

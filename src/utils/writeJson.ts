@@ -3,22 +3,24 @@ import _ from "lodash"
 import { recursive } from "../constants/fsOptions"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function writeJson(filePath: string, data: any): void {
-	if (!data) return
-	data = _.transform(data, function iteratee(result, value, objKey) {
-		if (typeof objKey === "string") objKey = formatKey(objKey)
+export function writeJson(path: string, object: Record<string, any>): void {
+	object = _.transform(object, function iteratee(result, value, key) {
+		if (typeof key === "string") key = formatKey(key)
 		if (typeof value === "object") value = _.transform(value, iteratee)
-		result[objKey] = value
+		result[key] = value
 		return result
 	})
-	const slashIndex = filePath.lastIndexOf("/")
-	if (slashIndex !== -1) {
-		const dirPath = filePath.substring(0, slashIndex)
+	const lastSlash = path.lastIndexOf("/")
+	if (lastSlash !== -1) {
+		const dirPath = path.substring(0, lastSlash)
 		mkdirSync(dirPath, recursive)
 	}
-	writeFileSync(filePath, JSON.stringify(data, null, 2) + "\n")
+	writeFileSync(path, JSON.stringify(object, null, 2) + "\n")
 }
 
+/**
+ * Format key to Minecraft format
+ */
 function formatKey(key: string): string {
 	if (key.indexOf("MC") === -1) return key
 	key = key.substring(2)

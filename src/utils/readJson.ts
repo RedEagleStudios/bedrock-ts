@@ -1,6 +1,6 @@
 import { readFileSync } from "fs"
 import { parse } from "jsonc-parser"
-import { parseRawJson } from ".."
+import { formatJson } from ".."
 
 /**
  * Reads json file from path and format it
@@ -8,5 +8,5 @@ import { parseRawJson } from ".."
  */
 export function readJson(path: string): unknown {
 	const json = readFileSync(path).toString()
-	return parseRawJson(parse(json))
+	return formatJson(parse(json))
 }
