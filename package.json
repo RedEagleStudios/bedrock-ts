@@ -20,6 +20,7 @@
 		"@types/lodash": "^4.14.178",
 		"@types/node": "^16.11.10",
 		"fast-glob": "^3.2.7",
+		"jsonc-parser": "^3.0.0",
 		"lodash": "^4.17.21"
 	},
 	"devDependencies": {

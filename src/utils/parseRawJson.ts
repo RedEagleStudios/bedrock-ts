@@ -5,8 +5,7 @@ import _ from "lodash"
  * @param object Raw Minecraft JSON
  * @returns Object with formatted keys
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function parseRawJson(object: any): unknown {
+export function parseRawJson(object: Record<string, object>): unknown {
 	object = _.transform(object, function iteratee(result, value, objKey) {
 		if (typeof objKey === "string") objKey = formatKey(objKey)
 		if (typeof value === "object") value = _.transform(value, iteratee)
