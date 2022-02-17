@@ -7,8 +7,8 @@ import { TerrainTexture } from "../bedrock/texture/TerrainTexture"
 import { TextureData } from "../bedrock/texture/TextureData"
 import { LangBuilder } from "../builder/lang/LangBuilder"
 import { recursive } from "../constants/fsOptions"
-import { generateManifest } from "../utils/generateManifest"
 import { writeJson } from "../utils/writeJson"
+import { generateManifest } from "./generateManifest"
 
 export class AddonGenerator {
 	private cache: string

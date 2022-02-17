@@ -1,7 +1,10 @@
 import FastGlob from "fast-glob"
 import { appendFileSync, writeFileSync } from "fs"
 
-// Do not run on watch mode
+/**
+ * Generate Components.ts and index.ts file
+ * @internal
+ */
 export function generateComponents(): void {
 	const dir = "./src/bedrock/entity/components"
 

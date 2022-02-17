@@ -1,6 +1,10 @@
 import { randomUUID } from "crypto"
 import { MCManifest, MCManifestUUIDs } from "../bedrock/manifest/MCManifest"
 
+/**
+ * Generate manifest files
+ * @internal
+ */
 export function generateManifest(uuids?: MCManifestUUIDs) {
 	if (!uuids) {
 		uuids = {
