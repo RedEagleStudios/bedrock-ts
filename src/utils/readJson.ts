@@ -1,6 +1,6 @@
 import { readFileSync } from "fs"
 import { parse } from "jsonc-parser"
-import { formatJson } from ".."
+import { formatJson } from "./formatJson"
 
 /**
  * Reads json file from path and format it
