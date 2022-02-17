@@ -1,25 +1,17 @@
 {
 	"compilerOptions": {
-		"incremental": true,
-		"tsBuildInfoFile": "build/.tsbuildinfo",
 		"target": "ES2019",
-		"outDir": "build",
-		"rootDir": "src",
-		"moduleResolution": "node",
 		"module": "commonjs",
-		"declaration": true,
-		"inlineSourceMap": true,
+		"lib": ["ES2019"],
 		"esModuleInterop": true,
-		"resolveJsonModule": true,
+
+		"rootDir": "src",
+		"outDir": "dist",
 
 		"strict": true,
-
-		"noFallthroughCasesInSwitch": true,
-
-		"lib": ["ES2019"],
-		"types": ["node"],
-		"typeRoots": ["node_modules/@types", "src/types"]
-	},
-	"include": ["src/**/*.ts"],
-	"exclude": ["node_modules/**"]
+		"declaration": true,
+		"forceConsistentCasingInFileNames": true,
+		"sourceMap": true,
+		"pretty": true
+	}
 }
