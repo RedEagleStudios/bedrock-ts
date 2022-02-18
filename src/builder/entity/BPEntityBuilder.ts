@@ -4,58 +4,24 @@ import { RawQuery } from "../../bedrock/query/Query"
 import { AnimationId } from "../../bedrock/shared/AnimationId"
 import { AnimControllerId } from "../../bedrock/shared/AnimControllerId"
 import { Identifier } from "../../bedrock/shared/Identifier"
+import { assign } from "../../utils/assign"
+import { Builder } from "../Builder"
 import { QueryBuilder } from "../query/QueryBuilder"
 
-/**
- * BPEntity wrapper to provide some utility functions
- */
-export class BPEntityBuilder {
-	private behavior: BPEntity
-
-	/**
-	 * Creates BPEntity builder
-	 *
-	 * @constructor
-	 * @param arg Identifier or BPEntity
-	 *
-	 * @example
-	 * ```typescript
-	 * new BPEntityBuilder("minecraft:player")
-	 * ```
-	 * or
-	 * @example
-	 * ```typescript
-	 * new BPEntityBuilder({
-	 * 	format_version: "1.16.0",
-	 * 	MCEntity: {
-	 * 		description: {
-	 * 			identifier: "minecraft:player",
-	 * 			is_spawnable: true,
-	 * 			is_summonable: true,
-	 * 			is_experimental: false,
-	 * 		},
-	 * 		components: {},
-	 * 	},
-	 * })
-	 * ```
-	 */
-	constructor(arg: Identifier | BPEntity) {
-		if (typeof arg === "string") {
-			this.behavior = {
-				format_version: "1.16.0",
-				MCEntity: {
-					description: {
-						identifier: arg,
-						is_spawnable: true,
-						is_summonable: true,
-						is_experimental: false,
-					},
-					components: {},
+export class BPEntityBuilder extends Builder<BPEntity> {
+	constructor(identifier: Identifier) {
+		super({
+			format_version: "1.16.0",
+			MCEntity: {
+				description: {
+					identifier: identifier,
+					is_spawnable: true,
+					is_summonable: true,
+					is_experimental: false,
 				},
-			}
-		} else {
-			this.behavior = arg
-		}
+				components: {},
+			},
+		})
 	}
 
 	/**
@@ -70,15 +36,14 @@ export class BPEntityBuilder {
 		animationId: AnimControllerId | AnimationId,
 		playCondition?: QueryBuilder | RawQuery | "always"
 	): void {
-		const description = this.behavior.MCEntity.description
+		const description = this.object.MCEntity.description
 		description.scripts ??= {}
 		description.scripts.animate ??= []
 		description.animations ??= {}
 
-		description.animations = {
-			...description.animations,
+		assign(description.animations, {
 			[animationName]: animationId,
-		}
+		})
 		if (!playCondition) return
 		if (playCondition === "always") {
 			description.scripts.animate.indexOf(animationName) >= 0 || description.scripts.animate.push(animationName)
@@ -93,11 +58,8 @@ export class BPEntityBuilder {
 	 * @param component_groups Component groups that will be added or removed
 	 */
 	public setComponentGroups(component_groups: ComponentGroups): void {
-		this.behavior.MCEntity.component_groups ??= {}
-		this.behavior.MCEntity.component_groups = {
-			...this.behavior.MCEntity.component_groups,
-			...component_groups,
-		}
+		this.object.MCEntity.component_groups ??= {}
+		assign(this.object.MCEntity.component_groups, component_groups)
 	}
 
 	/**
@@ -106,10 +68,7 @@ export class BPEntityBuilder {
 	 * @param components Components that will be added or removed
 	 */
 	public setComponents(components: Components): void {
-		this.behavior.MCEntity.components = {
-			...this.behavior.MCEntity.components,
-			...components,
-		}
+		assign(this.object.MCEntity.components, components)
 	}
 
 	/**
@@ -118,15 +77,13 @@ export class BPEntityBuilder {
 	 * @param events Events that will be added or removed
 	 */
 	public setEvents(events: EventRecord): void {
-		this.behavior.MCEntity.events ??= {}
-		this.behavior.MCEntity.events = {
-			...this.behavior.MCEntity.events,
-			...events,
-		}
+		this.object.MCEntity.events ??= {}
+		assign(this.object.MCEntity.events, events)
 	}
 
 	/**
 	 * Get component in BPEntity
+	 *
 	 * @param componentName Component name
 	 *
 	 * @returns Component in BPEntity
@@ -135,7 +92,7 @@ export class BPEntityBuilder {
 	 * const typeFamily = getComponent("MCTypeFamily") as MCTypeFamily
 	 */
 	public getComponent(componentName: keyof Components): unknown {
-		return this.behavior.MCEntity.components[componentName]
+		return this.object.MCEntity.components[componentName]
 	}
 
 	/**
@@ -147,9 +104,9 @@ export class BPEntityBuilder {
 	 * @returns Component in the component group
 	 */
 	public getComponentInGroup(groupName: string, componentName: keyof Components): unknown {
-		this.behavior.MCEntity.component_groups ??= {}
-		this.behavior.MCEntity.component_groups[groupName] ??= {}
-		return this.behavior.MCEntity.component_groups[groupName][componentName]
+		this.object.MCEntity.component_groups ??= {}
+		this.object.MCEntity.component_groups[groupName] ??= {}
+		return this.object.MCEntity.component_groups[groupName][componentName]
 	}
 
 	/**
@@ -160,15 +117,8 @@ export class BPEntityBuilder {
 	 * @returns Event in BPEntity
 	 */
 	public getEvent(event: string): Event {
-		this.behavior.MCEntity.events ??= {}
-		this.behavior.MCEntity.events[event] ??= {}
-		return this.behavior.MCEntity.events[event]
-	}
-
-	/**
-	 * Build BPEntity
-	 */
-	public build(): BPEntity {
-		return this.behavior
+		this.object.MCEntity.events ??= {}
+		this.object.MCEntity.events[event] ??= {}
+		return this.object.MCEntity.events[event]
 	}
 }

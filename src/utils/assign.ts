@@ -5,6 +5,6 @@
  * @param target The target object to copy to.
  * @param source The source object from which to copy properties.
  */
-export function assign<T extends object>(target: NonNullable<T>, source: NonNullable<T>): NonNullable<T> {
+export function assign<T extends object>(target: NonNullable<T>, source: Partial<NonNullable<T>>): NonNullable<T> {
 	return Object.assign(target, source)
 }

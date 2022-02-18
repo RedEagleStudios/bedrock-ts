@@ -1,8 +1,12 @@
+import { BPEntityBuilder } from "../../builder/entity/BPEntityBuilder"
+import { RPEntityBuilder } from "../../builder/entity/RPEntityBuilder"
+import { Identifier } from "../shared/Identifier"
 import { BPEntity } from "./BPEntity"
 import { RPEntity } from "./RPEntity"
 
 export interface CoreEntity {
-	customFilePath?: string
-	createBP?: () => BPEntity
-	createRP?: () => RPEntity
+	dir?: string
+	identifier: Identifier
+	createBP?: (builder: BPEntityBuilder) => BPEntity
+	createRP?: (builder: RPEntityBuilder) => RPEntity
 }

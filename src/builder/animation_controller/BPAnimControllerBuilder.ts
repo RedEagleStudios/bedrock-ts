@@ -5,37 +5,30 @@ import {
 	BPAnimControllerStateRecord,
 } from "../../bedrock/animation_controller/BPAnimController"
 import { AnimControllerId } from "../../bedrock/shared/AnimControllerId"
+import { assign } from "../../utils/assign"
+import { Builder } from "../Builder"
 
-export class BPAnimControllerBuilder {
-	private id: AnimControllerId
-	private controller: BPAnimController
+export class BPAnimControllerBuilder extends Builder<BPAnimController> {
+	private controller: BPAnimControllerItem
 
-	constructor(id: AnimControllerId, value?: BPAnimControllerItem) {
-		this.id = id
-		this.controller = {
+	constructor(name: string) {
+		const id: AnimControllerId = `controller.animation.${name}`
+		super({
 			format_version: "1.10.0",
 			animation_controllers: {
-				[id]: value ?? {
+				[id]: {
 					states: {},
 				},
 			},
-		}
-	}
-
-	public build(): BPAnimController {
-		return this.controller
+		})
+		this.controller = this.object.animation_controllers[id]
 	}
 
 	public setStates(states: BPAnimControllerStateRecord) {
-		const item = this.controller.animation_controllers[this.id]
-		item.states = {
-			...item.states,
-			...states,
-		}
+		assign(this.controller, states)
 	}
 
 	public getState(state: string): BPAnimControllerState {
-		const item = this.controller.animation_controllers[this.id]
-		return item.states[state]
+		return this.controller.states[state]
 	}
 }

@@ -1,12 +1,22 @@
 import FastGlob from "fast-glob"
 import { copyFileSync, existsSync, mkdirSync, rmSync, writeFileSync } from "fs"
+import { join } from "path/posix"
 import { MCAddon } from "../bedrock/addon/MCAddon"
 import { Blocks } from "../bedrock/block/Blocks"
 import { ItemTexture } from "../bedrock/texture/ItemTexture"
 import { TerrainTexture } from "../bedrock/texture/TerrainTexture"
 import { TextureData } from "../bedrock/texture/TextureData"
+import { BPAnimationBuilder } from "../builder/animation/BPAnimationBuilder"
+import { BPAnimControllerBuilder } from "../builder/animation_controller/BPAnimControllerBuilder"
+import { BPBlockBuilder } from "../builder/block/BPBlockBuilder"
+import { RPBlockBuilder } from "../builder/block/RPBlockBuilder"
+import { BPEntityBuilder } from "../builder/entity/BPEntityBuilder"
+import { RPEntityBuilder } from "../builder/entity/RPEntityBuilder"
+import { BPItemBuilder } from "../builder/item/BPItemBuilder"
+import { RPItemBuilder } from "../builder/item/RPItemBuilder"
 import { LangBuilder } from "../builder/lang/LangBuilder"
 import { recursive } from "../constants/fsOptions"
+import { assign } from "../utils/assign"
 import { writeJson } from "../utils/writeJson"
 import { generateManifest } from "./generateManifest"
 
@@ -78,7 +88,9 @@ export class AddonGenerator {
 		const bpAnimationPath = mkdirSync(`${this.pathBP}/animations`, recursive)
 
 		this.addon.animations?.forEach((animation) => {
-			writeJson(`${bpAnimationPath}/${animation.fileName}.json`, animation.createAnimation())
+			const name = animation.name
+			const bpAnim = animation.createBP(new BPAnimationBuilder(name))
+			writeJson(`${bpAnimationPath}/${name}.animation.json`, bpAnim)
 		})
 	}
 
@@ -86,7 +98,9 @@ export class AddonGenerator {
 		const bpControllerPath = mkdirSync(`${this.pathBP}/animation_controllers`, recursive)
 
 		this.addon.animControllers?.forEach((controller) => {
-			writeJson(`${bpControllerPath}/${controller.fileName}.json`, controller.createAnimController())
+			const name = controller.name
+			const bpController = controller.createBP(new BPAnimControllerBuilder(name))
+			writeJson(`${bpControllerPath}/${name}.controller.json`, bpController)
 		})
 	}
 
@@ -94,33 +108,32 @@ export class AddonGenerator {
 		const bpBlockPath = mkdirSync(`${this.pathBP}/blocks`, recursive)
 
 		this.addon.blocks?.forEach((block) => {
-			const blockBP = block.createBP()
-			const identifier = blockBP.MCBlock.description.identifier
-			const filePath = identifier.toFilePath(block.customFilePath)
+			const identifier = block.identifier
+			const filePath = identifier.toFilePath(block.dir)
+
+			const blockBP = block.createBP(new BPBlockBuilder(identifier, block.dir))
 			writeJson(`${bpBlockPath}/${filePath}.json`, blockBP)
 
-			const blockRP = block.createRP()
+			const blockRP = block.createRP(new RPBlockBuilder(identifier))
+			assign(this.blocksRP, {
+				[identifier]: blockRP,
+			})
+
 			const blockTextures = blockRP.textures
 			if (typeof blockTextures === "string") {
-				this.terrainTextureData = {
-					...this.terrainTextureData,
+				assign(this.terrainTextureData, {
 					[blockTextures]: {
-						textures: "textures/blocks/" + blockTextures,
+						textures: join("textures/blocks/", block.dir ?? "", blockTextures),
 					},
-				}
+				})
 			} else {
 				Object.entries(blockTextures).forEach(([, texture]) => {
-					this.terrainTextureData = {
-						...this.terrainTextureData,
+					assign(this.terrainTextureData, {
 						[texture]: {
-							textures: "textures/blocks/" + texture,
+							textures: join("textures/blocks/", block.dir ?? "", texture),
 						},
-					}
+					})
 				})
-			}
-			this.blocksRP = {
-				...this.blocksRP,
-				[identifier]: blockRP,
 			}
 			this.rpLang.addBlock(identifier)
 		})
@@ -131,29 +144,26 @@ export class AddonGenerator {
 		const rpEntityPath = mkdirSync(`${this.pathRP}/entity`, recursive)
 
 		this.addon.entities?.forEach((entity) => {
+			const identifier = entity.identifier
+			const filePath = identifier.toFilePath(entity.dir)
 			if (entity.createBP) {
-				const entityBP = entity.createBP()
-				const identifier = entityBP.MCEntity.description.identifier
-				const filePath = identifier.toFilePath(entity.customFilePath)
+				const entityBP = entity.createBP(new BPEntityBuilder(identifier))
 				writeJson(`${bpEntityPath}/${filePath}.json`, entityBP)
 			}
 			if (entity.createRP) {
-				const entityRP = entity.createRP()
-				const identifier = entityRP.MCClientEntity.description.identifier
-				const filePath = identifier.toFilePath(entity.customFilePath)
+				const entityRP = entity.createRP(new RPEntityBuilder(identifier, entity.dir))
 				writeJson(`${rpEntityPath}/${filePath}.json`, entityRP)
 
 				const eggTexture = entityRP.MCClientEntity.description.spawn_egg?.texture
 				if (eggTexture) {
-					this.itemTextureData = {
-						...this.itemTextureData,
+					assign(this.itemTextureData, {
 						[eggTexture]: {
-							textures: "textures/items/spawn_eggs/" + filePath,
+							textures: join("textures/items/spawn_eggs/", entity.dir ?? "", eggTexture),
 						},
-					}
+					})
 				}
-				this.rpLang.addEntity(identifier)
 			}
+			this.rpLang.addEntity(identifier)
 		})
 	}
 
@@ -170,27 +180,24 @@ export class AddonGenerator {
 		const rpItemPath = mkdirSync(`${this.pathRP}/items`, recursive)
 
 		this.addon.items?.forEach((item) => {
+			const identifier = item.identifier
+			const filePath = identifier.toFilePath(item.dir)
 			if (item.createBP) {
-				const itemBP = item.createBP()
-				const identifier = itemBP.MCItem.description.identifier
-				const filePath = identifier.toFilePath(item.customFilePath)
+				const itemBP = item.createBP(new BPItemBuilder(identifier))
 				writeJson(`${bpItemPath}/${filePath}.json`, itemBP)
 			}
 			if (item.createRP) {
-				const itemRP = item.createRP()
-				const identifier = itemRP.MCItem.description.identifier
-				const filePath = identifier.toFilePath(item.customFilePath)
+				const itemRP = item.createRP(new RPItemBuilder(identifier))
 				writeJson(`${rpItemPath}/${filePath}.json`, itemRP)
 
 				const icon = itemRP.MCItem.components.MCIcon
-				this.itemTextureData = {
-					...this.itemTextureData,
+				assign(this.itemTextureData, {
 					[icon]: {
-						textures: "textures/items/" + filePath,
+						textures: join("textures/items", item.dir ?? "", icon),
 					},
-				}
-				this.rpLang.addItem(identifier)
+				})
 			}
+			this.rpLang.addItem(identifier)
 		})
 	}
 

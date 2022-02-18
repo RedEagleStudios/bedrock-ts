@@ -10,7 +10,8 @@ export class ItemBuilder {
 	public build(): CoreItem {
 		const opt = this.options
 		return {
-			customFilePath: opt.customFolder ? `${opt.customFolder}/${opt.identifier.removeNamespace()}` : undefined,
+			dir: opt.dir,
+			identifier: opt.identifier,
 			createBP(): BPItem {
 				return {
 					format_version: "1.16.0",
@@ -49,6 +50,7 @@ export class ItemBuilder {
 }
 
 export interface ItemBuilderOptions {
+	dir?: string
 	identifier: Identifier
 	customFolder?: string
 	category?: string

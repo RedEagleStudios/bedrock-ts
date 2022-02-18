@@ -4,38 +4,33 @@ import { AnimationId } from "../../bedrock/shared/AnimationId"
 import { AnimControllerId } from "../../bedrock/shared/AnimControllerId"
 import { GeometryId } from "../../bedrock/shared/GeometryId"
 import { Identifier } from "../../bedrock/shared/Identifier"
+import { Builder } from "../Builder"
 import { QueryBuilder } from "../query/QueryBuilder"
 
-export class RPEntityBuilder {
-	private resource: RPEntity
-	constructor(arg: Identifier | RPEntity) {
-		if (typeof arg === "string") {
-			const name = arg.removeNamespace()
-			this.resource = {
-				format_version: "1.10.0",
-				MCClientEntity: {
-					description: {
-						identifier: arg,
-						materials: {
-							default: "entity_alphatest",
-						},
-						// TODO: Should get entity path as well
-						textures: {
-							default: `textures/entity/${name}`,
-						},
-						geometry: {
-							default: `geometry.${name}`,
-						},
-						spawn_egg: {
-							texture: name,
-						},
-						render_controllers: ["controller.render.default"],
+export class RPEntityBuilder extends Builder<RPEntity> {
+	constructor(identifier: Identifier, dir?: string) {
+		const name = identifier.removeNamespace()
+		super({
+			format_version: "1.10.0",
+			MCClientEntity: {
+				description: {
+					identifier: identifier,
+					materials: {
+						default: "entity_alphatest",
 					},
+					textures: {
+						default: `textures/entity/${identifier.toFilePath(dir)}`,
+					},
+					geometry: {
+						default: `geometry.${name}`,
+					},
+					spawn_egg: {
+						texture: name,
+					},
+					render_controllers: ["controller.render.default"],
 				},
-			}
-		} else {
-			this.resource = arg
-		}
+			},
+		})
 	}
 
 	/**
@@ -50,7 +45,7 @@ export class RPEntityBuilder {
 		animationId: AnimControllerId | AnimationId,
 		playCondition?: QueryBuilder | RawQuery | "always"
 	): void {
-		const description = this.resource.MCClientEntity.description
+		const description = this.object.MCClientEntity.description
 		description.scripts ??= {}
 		description.scripts.animate ??= []
 		description.animations ??= {}
@@ -68,7 +63,7 @@ export class RPEntityBuilder {
 	}
 
 	public setMaterials(materials: Record<string, string>) {
-		const description = this.resource.MCClientEntity.description
+		const description = this.object.MCClientEntity.description
 		description.materials = {
 			...description.materials,
 			...materials,
@@ -76,7 +71,7 @@ export class RPEntityBuilder {
 	}
 
 	public setGeometry(geometry: Record<string, GeometryId>) {
-		const description = this.resource.MCClientEntity.description
+		const description = this.object.MCClientEntity.description
 		description.geometry = {
 			...description.geometry,
 			...geometry,
@@ -84,7 +79,7 @@ export class RPEntityBuilder {
 	}
 
 	public setTextures(textures: Record<string, string>) {
-		const description = this.resource.MCClientEntity.description
+		const description = this.object.MCClientEntity.description
 		description.textures = {
 			...description.textures,
 			...textures,
@@ -92,8 +87,4 @@ export class RPEntityBuilder {
 	}
 
 	// TODO: Add missing methods
-
-	public build() {
-		return this.resource
-	}
 }
