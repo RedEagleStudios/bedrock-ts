@@ -25,7 +25,7 @@ export class BPAnimControllerBuilder extends Builder<BPAnimController> {
 	}
 
 	public setStates(states: BPAnimControllerStateRecord) {
-		assign(this.controller, states)
+		assign(this.controller.states, states)
 	}
 
 	public getState(state: string): BPAnimControllerState {
