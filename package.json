@@ -21,13 +21,17 @@
 		"fix:lint": "eslint src --ext .ts --fix"
 	},
 	"dependencies": {
-		"@types/lodash": "^4.14.178",
-		"@types/node": "^16.11.10",
 		"fast-glob": "^3.2.7",
 		"jsonc-parser": "^3.0.0",
-		"lodash": "^4.17.21"
+		"lodash.startcase": "^4.4.0",
+		"lodash.transform": "^4.6.0",
+		"lodash.upperfirst": "^4.3.1"
 	},
 	"devDependencies": {
+		"@types/lodash.startcase": "^4.4.6",
+		"@types/lodash.transform": "^4.6.6",
+		"@types/lodash.upperfirst": "^4.3.6",
+		"@types/node": "^17.0.18",
 		"@typescript-eslint/eslint-plugin": "^5.4.0",
 		"@typescript-eslint/parser": "^5.4.0",
 		"eslint": "^8.3.0",

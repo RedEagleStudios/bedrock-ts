@@ -1,4 +1,4 @@
-import _ from "lodash"
+import startCase from "lodash.startcase"
 import path from "path/posix"
 import { Identifier } from "../bedrock/shared/Identifier"
 
@@ -19,12 +19,12 @@ String.prototype.removeNamespace = function (this: Identifier): string {
 }
 
 String.prototype.toFilePath = function (this: Identifier, dir?: string): string {
-	return path.join(dir ?? "", this.removeNamespace().replace(/\./g, "/"))
+	return path.join(dir ?? "", this.removeNamespace())
 }
 
 String.prototype.toName = function (this: Identifier): string {
 	const s = this.removeNamespace()
-	return _.startCase(s.substring(s.lastIndexOf(".") + 1))
+	return startCase(s.substring(s.lastIndexOf(".") + 1))
 }
 
 export {}

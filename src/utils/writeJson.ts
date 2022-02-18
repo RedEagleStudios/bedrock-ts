@@ -1,12 +1,12 @@
 import { mkdirSync, writeFileSync } from "fs"
-import _ from "lodash"
+import transform from "lodash.transform"
 import { recursive } from "../constants/fsOptions"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function writeJson(path: string, object: Record<string, any>): void {
-	object = _.transform(object, function iteratee(result, value, key) {
+	object = transform(object, function iteratee(result, value, key) {
 		if (typeof key === "string") key = formatKey(key)
-		if (typeof value === "object") value = _.transform(value, iteratee)
+		if (typeof value === "object") value = transform(value, iteratee)
 		result[key] = value
 		return result
 	})
