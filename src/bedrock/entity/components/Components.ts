@@ -88,7 +88,7 @@ import {
 	MCScale,
 	MCScaleByAge,
 	MCShaking,
-	MCShareable,
+	MCShareables,
 	MCShooter,
 	MCSittable,
 	MCSkinId,
@@ -195,7 +195,7 @@ export interface Components {
 	MCScale?: MCScale
 	MCScaleByAge?: MCScaleByAge
 	MCShaking?: MCShaking
-	MCShareable?: MCShareable
+	MCShareables?: MCShareables
 	MCShooter?: MCShooter
 	MCSittable?: MCSittable
 	MCSkinId?: MCSkinId
