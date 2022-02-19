@@ -1,3 +1,4 @@
+import { ItemIdentifier } from "../../shared/ItemIdentifier"
 import { EventTriggerFiltered } from "../events/EventTriggerFiltered"
 import { Filters } from "../filters/Filter"
 
@@ -27,7 +28,7 @@ export interface MCInteractInteraction {
 	spawn_entities?: string
 	spawn_items?: MCInteractInteractionSpawnItems
 	swing?: boolean
-	transform_to_item?: string
+	transform_to_item?: ItemIdentifier
 	use_item?: boolean
 }
 

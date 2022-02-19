@@ -1,9 +1,11 @@
+import { ItemIdentifier } from "../../shared/ItemIdentifier"
+
 export interface MCShareablesItem {
 	admire?: boolean
 	barter?: boolean
 	consume_item?: boolean
-	craft_into?: string
-	item?: string
+	craft_into?: ItemIdentifier
+	item?: ItemIdentifier
 	item_aux?: number
 	max_amount?: number
 	pickup_limit?: number

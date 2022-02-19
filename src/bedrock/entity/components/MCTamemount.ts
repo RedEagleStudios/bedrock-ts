@@ -1,9 +1,11 @@
+import { ItemIdentifier } from "../../shared/ItemIdentifier"
+
 export interface MCTamemountAutoRejectItem {
-	item: string
+	item: ItemIdentifier
 }
 
 export interface MCTamemountFeedItem {
-	item: string
+	item: ItemIdentifier
 	temper_mod: number
 }
 

@@ -1,4 +1,5 @@
 import { Identifier } from "../shared/Identifier"
+import { ItemIdentifier } from "../shared/ItemIdentifier"
 
 type FormatVersion = "1.12.0"
 
@@ -17,7 +18,7 @@ export type MCRecipeTag =
 export interface MCRecipeItem {
 	count?: number
 	data?: number
-	item: Identifier
+	item: ItemIdentifier
 }
 
 export interface MCRecipeItemRecord {

@@ -1,9 +1,11 @@
+import { ItemIdentifier } from "../../shared/ItemIdentifier"
+
 export interface MCNavigation_Climb {
 	avoid_damage_blocks?: boolean
 	avoid_portals?: boolean
 	avoid_sun?: boolean
 	avoid_water?: boolean
-	blocks_to_avoid?: string[]
+	blocks_to_avoid?: ItemIdentifier[]
 	can_breach?: boolean
 	can_break_doors?: boolean
 	can_jump?: boolean

@@ -1,3 +1,4 @@
+import { Identifier } from "../../shared/Identifier"
 import { Filters } from "../filters/Filter"
 
 export interface MCSpawnEntityEntity {
@@ -7,7 +8,7 @@ export interface MCSpawnEntityEntity {
 	num_to_spawn?: number
 	should_leash?: boolean
 	single_use?: boolean
-	spawn_entity?: string
+	spawn_entity?: Identifier
 	spawn_event?: string
 	spawn_item?: string
 	spawn_method?: string
