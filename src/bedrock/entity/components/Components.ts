@@ -52,6 +52,7 @@ import {
 	MCIsIgnited,
 	MCIsIllagerCaptain,
 	MCIsSaddled,
+	MCIsShaking,
 	MCIsSheared,
 	MCIsStunned,
 	MCIsTamed,
@@ -87,7 +88,6 @@ import {
 	MCScaffoldingClimber,
 	MCScale,
 	MCScaleByAge,
-	MCShaking,
 	MCShareables,
 	MCShooter,
 	MCSittable,
@@ -159,6 +159,7 @@ export interface Components {
 	MCIsIgnited?: MCIsIgnited
 	MCIsIllagerCaptain?: MCIsIllagerCaptain
 	MCIsSaddled?: MCIsSaddled
+	MCIsShaking?: MCIsShaking
 	MCIsSheared?: MCIsSheared
 	MCIsStunned?: MCIsStunned
 	MCIsTamed?: MCIsTamed
@@ -194,7 +195,6 @@ export interface Components {
 	MCScaffoldingClimber?: MCScaffoldingClimber
 	MCScale?: MCScale
 	MCScaleByAge?: MCScaleByAge
-	MCShaking?: MCShaking
 	MCShareables?: MCShareables
 	MCShooter?: MCShooter
 	MCSittable?: MCSittable
