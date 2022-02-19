@@ -205,7 +205,7 @@ export class AddonGenerator {
 		const recipePath = mkdirSync(`${this.pathBP}/recipes`, recursive)
 
 		this.addon.recipes?.forEach((recipe) => {
-			const fileName = recipe.identifier.removeNamespace()
+			const fileName = recipe.identifier.toFilePath(recipe.dir)
 			writeJson(`${recipePath}/${fileName}.json`, recipe.createRecipe())
 		})
 	}
