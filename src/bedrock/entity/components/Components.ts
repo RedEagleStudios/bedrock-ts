@@ -45,6 +45,7 @@ import {
 	MCInputGroundControlled,
 	MCInstantDespawn,
 	MCInteract,
+	MCInventory,
 	MCIsBaby,
 	MCIsCharged,
 	MCIsChested,
@@ -152,6 +153,7 @@ export interface Components {
 	MCInputGroundControlled?: MCInputGroundControlled
 	MCInstantDespawn?: MCInstantDespawn
 	MCInteract?: MCInteract
+	MCInventory?: MCInventory
 	MCIsBaby?: MCIsBaby
 	MCIsCharged?: MCIsCharged
 	MCIsChested?: MCIsChested
