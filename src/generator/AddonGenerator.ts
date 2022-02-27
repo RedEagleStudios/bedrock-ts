@@ -1,5 +1,5 @@
-import FastGlob from "fast-glob"
-import { copyFileSync, existsSync, mkdirSync, rmSync, writeFileSync } from "fs"
+import { existsSync, mkdirSync, readdirSync, rmSync } from "fs"
+import { copySync } from "fs-extra"
 import { join } from "path/posix"
 import { MCAddon } from "../bedrock/addon/MCAddon"
 import { Blocks } from "../bedrock/block/Blocks"
@@ -17,6 +17,7 @@ import { RPItemBuilder } from "../builder/item/RPItemBuilder"
 import { LangBuilder } from "../builder/lang/LangBuilder"
 import { recursive } from "../constants/fsOptions"
 import { assign } from "../utils/assign"
+import { writeFile } from "../utils/writeFile"
 import { writeJson } from "../utils/writeJson"
 import { generateManifest } from "./generateManifest"
 
@@ -44,17 +45,7 @@ export class AddonGenerator {
 	}
 
 	public generate() {
-		;[this.pathBP, this.pathRP].map((e) => {
-			if (existsSync(e)) {
-				FastGlob.sync(`${e}/*`, {
-					deep: 1,
-					onlyDirectories: true,
-				}).forEach((path) => rmSync(path, recursive))
-			} else {
-				mkdirSync(e, recursive)
-			}
-		})
-
+		this.initialize()
 		this.writeManifests()
 		this.writeAnimations()
 		this.writeAnimControllers()
@@ -66,6 +57,18 @@ export class AddonGenerator {
 		this.writeItemTextures()
 		this.writeTerrainTexture()
 		this.writeLangFile()
+	}
+
+	private initialize() {
+		;[this.pathBP, this.pathRP].map((dir) => {
+			if (existsSync(dir)) {
+				readdirSync(dir).forEach((path) => rmSync(join(dir, path), recursive))
+			} else {
+				mkdirSync(dir, recursive)
+			}
+		})
+		if (existsSync(`./src/assets/bp`)) copySync(`./src/assets/bp`, this.pathBP)
+		if (existsSync(`./src/assets/rp`)) copySync(`./src/assets/rp`, this.pathRP)
 	}
 
 	private writeManifests() {
@@ -80,12 +83,12 @@ export class AddonGenerator {
 			writeJson(bpManifestCache, bpManifest)
 			writeJson(rpManifestCache, rpManifest)
 		}
-		copyFileSync(bpManifestCache, `${this.pathBP}/manifest.json`)
-		copyFileSync(rpManifestCache, `${this.pathRP}/manifest.json`)
+		copySync(bpManifestCache, `${this.pathBP}/manifest.json`)
+		copySync(rpManifestCache, `${this.pathRP}/manifest.json`)
 	}
 
 	private writeAnimations() {
-		const bpAnimationPath = mkdirSync(`${this.pathBP}/animations`, recursive)
+		const bpAnimationPath = `${this.pathBP}/animations`
 
 		this.addon.animations?.forEach((animation) => {
 			const name = animation.name
@@ -95,7 +98,7 @@ export class AddonGenerator {
 	}
 
 	private writeAnimControllers() {
-		const bpControllerPath = mkdirSync(`${this.pathBP}/animation_controllers`, recursive)
+		const bpControllerPath = `${this.pathBP}/animations`
 
 		this.addon.animControllers?.forEach((controller) => {
 			const name = controller.name
@@ -105,7 +108,7 @@ export class AddonGenerator {
 	}
 
 	private writeBlocks() {
-		const bpBlockPath = mkdirSync(`${this.pathBP}/blocks`, recursive)
+		const bpBlockPath = `${this.pathBP}/blocks`
 
 		this.addon.blocks?.forEach((block) => {
 			const identifier = block.identifier
@@ -140,8 +143,8 @@ export class AddonGenerator {
 	}
 
 	private writeEntities() {
-		const bpEntityPath = mkdirSync(`${this.pathBP}/entities`, recursive)
-		const rpEntityPath = mkdirSync(`${this.pathRP}/entity`, recursive)
+		const bpEntityPath = `${this.pathBP}/entities`
+		const rpEntityPath = `${this.pathRP}/entity`
 
 		this.addon.entities?.forEach((entity) => {
 			const identifier = entity.identifier
@@ -168,7 +171,7 @@ export class AddonGenerator {
 	}
 
 	private writeLootTables() {
-		const lootTablePath = mkdirSync(`${this.pathBP}/loot_tables`, recursive)
+		const lootTablePath = `${this.pathBP}/loot_tables`
 
 		this.addon.loot_tables?.forEach((loot_table) => {
 			writeJson(`${lootTablePath}/${loot_table.fileName}.json`, loot_table.createLootTable())
@@ -176,8 +179,8 @@ export class AddonGenerator {
 	}
 
 	private writeItems() {
-		const bpItemPath = mkdirSync(`${this.pathBP}/items`, recursive)
-		const rpItemPath = mkdirSync(`${this.pathRP}/items`, recursive)
+		const bpItemPath = `${this.pathBP}/items`
+		const rpItemPath = `${this.pathRP}/items`
 
 		this.addon.items?.forEach((item) => {
 			const identifier = item.identifier
@@ -202,7 +205,7 @@ export class AddonGenerator {
 	}
 
 	private writeRecipes() {
-		const recipePath = mkdirSync(`${this.pathBP}/recipes`, recursive)
+		const recipePath = `${this.pathBP}/recipes`
 
 		this.addon.recipes?.forEach((recipe) => {
 			const fileName = recipe.identifier.toFilePath(recipe.dir)
@@ -230,12 +233,12 @@ export class AddonGenerator {
 	}
 
 	private writeLangFile() {
-		const bpLangPath = mkdirSync(`${this.pathBP}/texts`, recursive)
-		const rpLangPath = mkdirSync(`${this.pathRP}/texts`, recursive)
+		const bpLangPath = `${this.pathBP}/texts`
+		const rpLangPath = `${this.pathRP}/texts`
 
-		writeFileSync(`${bpLangPath}/en_US.lang`, this.bpLang.build())
-		writeFileSync(`${bpLangPath}/languages.json`, `["en_US"]`)
-		writeFileSync(`${rpLangPath}/en_US.lang`, this.rpLang.build())
-		writeFileSync(`${rpLangPath}/languages.json`, `["en_US"]`)
+		writeFile(`${bpLangPath}/en_US.lang`, this.bpLang.build())
+		writeFile(`${bpLangPath}/languages.json`, `["en_US"]`)
+		writeFile(`${rpLangPath}/en_US.lang`, this.rpLang.build())
+		writeFile(`${rpLangPath}/languages.json`, `["en_US"]`)
 	}
 }

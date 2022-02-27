@@ -1,12 +1,11 @@
-import FastGlob from "fast-glob"
-import { appendFileSync, writeFileSync } from "fs"
+import { appendFileSync, readdirSync, writeFileSync } from "fs"
 
 /**
  * Generate Components.ts and index.ts file
  * @internal
  */
 export function generateComponents(): void {
-	const dir = "./src/bedrock/entity/components"
+	const dir = "./src/bedrock/entity/components/"
 
 	const index = `${dir}/index.ts`
 	const components = `${dir}/Components.ts`
@@ -14,10 +13,8 @@ export function generateComponents(): void {
 	writeFileSync(index, "")
 	writeFileSync(components, "export interface Components {\n [key: ComponentKey]: unknown\n")
 
-	FastGlob.sync(`${dir}/*.ts`, {
-		deep: 1,
-		onlyFiles: true,
-	}).forEach((path) => {
+	readdirSync(dir).forEach((v) => {
+		let path = `${dir}/${v}`
 		if (path.match("index")) return
 		path = path.split("/")[6].replace(".ts", "")
 		appendFileSync(index, `export * from "./${path}"\n`)
