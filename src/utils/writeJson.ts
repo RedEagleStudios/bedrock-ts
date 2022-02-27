@@ -1,6 +1,5 @@
-import { mkdirSync, writeFileSync } from "fs"
 import transform from "lodash.transform"
-import { recursive } from "../constants/fsOptions"
+import { writeFile } from "./writeFile"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function writeJson(path: string, object: Record<string, any>): void {
@@ -10,12 +9,7 @@ export function writeJson(path: string, object: Record<string, any>): void {
 		result[key] = value
 		return result
 	})
-	const lastSlash = path.lastIndexOf("/")
-	if (lastSlash !== -1) {
-		const dirPath = path.substring(0, lastSlash)
-		mkdirSync(dirPath, recursive)
-	}
-	writeFileSync(path, JSON.stringify(object, null, 2) + "\n")
+	writeFile(path, JSON.stringify(object, null, 2) + "\n")
 }
 
 /**

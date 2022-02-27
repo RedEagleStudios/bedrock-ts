@@ -1,12 +1,11 @@
+import transform from "lodash.transform"
+import upperFirst from "lodash.upperfirst"
+
 /**
  * Converts raw Minecraft JSON keys into bedrock-ts format
  * @param object Raw Minecraft JSON
  * @returns Object with formatted keys
  */
-
-import transform from "lodash.transform"
-import upperFirst from "lodash.upperfirst"
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function formatJson(object: Record<string, any>): unknown {
 	object = transform(object, function iteratee(result, value, key) {
