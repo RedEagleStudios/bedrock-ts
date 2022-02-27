@@ -52,7 +52,6 @@ export class ItemBuilder {
 export interface ItemBuilderOptions {
 	dir?: string
 	identifier: Identifier
-	customFolder?: string
 	category?: string
 	foil?: boolean
 	food?: MCFood
