@@ -3,6 +3,8 @@ dist/
 node_modules/
 out/
 
+src/assets/
+
 src/**.js
 src/main.ts
 
