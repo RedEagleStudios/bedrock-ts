@@ -67,8 +67,18 @@ export class AddonGenerator {
 				mkdirSync(dir, recursive)
 			}
 		})
-		if (existsSync(`./src/assets/bp`)) copySync(`./src/assets/bp`, this.pathBP)
-		if (existsSync(`./src/assets/rp`)) copySync(`./src/assets/rp`, this.pathRP)
+		const assetsBP = `./src/assets/bp`
+		const assetsRP = `./src/assets/rp`
+		if (existsSync(assetsBP)) {
+			readdirSync(assetsBP).forEach((d) => {
+				copySync(`${assetsBP}/${d}`, `${this.pathBP}/${d}`)
+			})
+		}
+		if (existsSync(assetsRP)) {
+			readdirSync(assetsRP).forEach((d) => {
+				copySync(`${assetsRP}/${d}`, `${this.pathRP}/${d}`)
+			})
+		}
 	}
 
 	private writeManifests() {
