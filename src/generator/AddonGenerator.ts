@@ -60,25 +60,21 @@ export class AddonGenerator {
 	}
 
 	private initialize() {
-		;[this.pathBP, this.pathRP].map((dir) => {
-			if (existsSync(dir)) {
-				readdirSync(dir).forEach((path) => rmSync(join(dir, path), recursive))
+		const paths = [
+			[this.pathBP, `./src/assets/bp`],
+			[this.pathRP, `./src/assets/rp`],
+		]
+		paths.map(([dest, assets]) => {
+			if (existsSync(dest)) {
+				readdirSync(dest).forEach((d) => rmSync(`${dest}/${d}`, recursive))
 			} else {
-				mkdirSync(dir, recursive)
+				mkdirSync(dest, recursive)
+			}
+
+			if (existsSync(assets)) {
+				readdirSync(assets).forEach((d) => copySync(`${assets}/${d}`, `${dest}/${d}`))
 			}
 		})
-		const assetsBP = `./src/assets/bp`
-		const assetsRP = `./src/assets/rp`
-		if (existsSync(assetsBP)) {
-			readdirSync(assetsBP).forEach((d) => {
-				copySync(`${assetsBP}/${d}`, `${this.pathBP}/${d}`)
-			})
-		}
-		if (existsSync(assetsRP)) {
-			readdirSync(assetsRP).forEach((d) => {
-				copySync(`${assetsRP}/${d}`, `${this.pathRP}/${d}`)
-			})
-		}
 	}
 
 	private writeManifests() {

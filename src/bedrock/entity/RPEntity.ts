@@ -15,20 +15,6 @@ export interface MCClientEntity {
 	description: RPDescription
 }
 
-export interface RPDescription {
-	identifier: Identifier
-	materials?: Record<string, string>
-	textures?: Record<string, string>
-	geometry?: Record<string, GeometryId>
-	animations?: AnimationsRecord
-	scripts?: Scripts
-	particle_effects?: Record<string, string>
-	particle_emitters?: Record<string, string>
-	sound_effects?: Record<string, string>
-	spawn_egg?: SpawnEgg
-	render_controllers?: (RenderControllerId | RenderControllerRecord)[]
-}
-
 export interface Scripts {
 	initialize?: string[]
 	pre_animation?: string[]
@@ -44,4 +30,20 @@ export interface SpawnEgg {
 
 export interface RenderControllerRecord {
 	[key: RenderControllerId]: string
+}
+
+export type RenderController = RenderControllerId | RenderControllerRecord
+
+export interface RPDescription {
+	identifier: Identifier
+	materials?: Record<string, string>
+	textures?: Record<string, string>
+	geometry?: Record<string, GeometryId>
+	animations?: AnimationsRecord
+	scripts?: Scripts
+	particle_effects?: Record<string, string>
+	particle_emitters?: Record<string, string>
+	sound_effects?: Record<string, string>
+	spawn_egg?: SpawnEgg
+	render_controllers?: RenderController[]
 }
