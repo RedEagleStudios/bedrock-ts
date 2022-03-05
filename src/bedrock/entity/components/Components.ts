@@ -18,6 +18,7 @@ import {
 	MCBehavior_RandomFly,
 	MCBehavior_RandomLookAround,
 	MCBehavior_RandomStroll,
+	MCBehavior_RiseToLiquidLevel,
 	MCBehavior_Scared,
 	MCBehavior_Sneeze,
 	MCBehavior_StayWhileSitting,
@@ -126,6 +127,7 @@ export interface Components {
 	MCBehavior_RandomFly?: MCBehavior_RandomFly
 	MCBehavior_RandomLookAround?: MCBehavior_RandomLookAround
 	MCBehavior_RandomStroll?: MCBehavior_RandomStroll
+	MCBehavior_RiseToLiquidLevel?: MCBehavior_RiseToLiquidLevel
 	MCBehavior_Scared?: MCBehavior_Scared
 	MCBehavior_Sneeze?: MCBehavior_Sneeze
 	MCBehavior_StayWhileSitting?: MCBehavior_StayWhileSitting
