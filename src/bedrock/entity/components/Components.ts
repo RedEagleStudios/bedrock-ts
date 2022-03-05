@@ -56,6 +56,7 @@ import {
 	MCIsSaddled,
 	MCIsShaking,
 	MCIsSheared,
+	MCIsStackable,
 	MCIsStunned,
 	MCIsTamed,
 	MCJump_Static,
@@ -165,6 +166,7 @@ export interface Components {
 	MCIsSaddled?: MCIsSaddled
 	MCIsShaking?: MCIsShaking
 	MCIsSheared?: MCIsSheared
+	MCIsStackable?: MCIsStackable
 	MCIsStunned?: MCIsStunned
 	MCIsTamed?: MCIsTamed
 	MCJump_Static?: MCJump_Static
