@@ -64,7 +64,6 @@ import {
 	MCLoot,
 	MCMarkVariant,
 	MCMovement,
-	MCMovement_,
 	MCMovement_Amphibious,
 	MCMovement_Basic,
 	MCMovement_Fly,
@@ -173,7 +172,6 @@ export interface Components {
 	MCLoot?: MCLoot
 	MCMarkVariant?: MCMarkVariant
 	MCMovement?: MCMovement
-	MCMovement_?: MCMovement_
 	MCMovement_Amphibious?: MCMovement_Amphibious
 	MCMovement_Basic?: MCMovement_Basic
 	MCMovement_Fly?: MCMovement_Fly
