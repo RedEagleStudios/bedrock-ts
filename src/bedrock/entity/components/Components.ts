@@ -101,6 +101,7 @@ import {
 	MCTimer,
 	MCTransformation,
 	MCTypeFamily,
+	MCUnderwaterMovement,
 	MCVariant,
 	MCWaterMovement,
 } from "."
@@ -209,6 +210,7 @@ export interface Components {
 	MCTimer?: MCTimer
 	MCTransformation?: MCTransformation
 	MCTypeFamily?: MCTypeFamily
+	MCUnderwaterMovement?: MCUnderwaterMovement
 	MCVariant?: MCVariant
 	MCWaterMovement?: MCWaterMovement
 	[key: ComponentKey]: unknown
