@@ -13,5 +13,5 @@ export interface Filter {
 	operator?: FilterOperator
 	subject?: FilterSubject
 	test?: FilterTest
-	value?: number | string
+	value?: boolean | number | string
 }
