@@ -200,11 +200,13 @@ export class AddonGenerator {
 				writeJson(`${rpItemPath}/${filePath}.json`, itemRP)
 
 				const icon = itemRP.MCItem.components.MCIcon
-				assign(this.itemTextureData, {
-					[icon]: {
-						textures: join("textures/items", item.dir ?? "", icon),
-					},
-				})
+				if (icon) {
+					assign(this.itemTextureData, {
+						[icon]: {
+							textures: join("textures/items", item.dir ?? "", icon),
+						},
+					})
+				}
 			}
 			this.rpLang.addItem(identifier)
 		})

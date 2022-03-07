@@ -8,9 +8,9 @@ export interface RPItemDescription {
 }
 
 export interface RPItemComponents {
-	MCIcon: string
+	MCIcon?: string
 	MCRenderOffsets?: string
-	MCUseAnimation?: "eat"
+	MCUseAnimation?: "eat" | "drink"
 }
 
 export interface MCItemRP {

@@ -14,6 +14,7 @@ export interface CreateItemOptions {
 	icon?: string
 	maxStack?: number
 	useDuration?: number
+	useAnimation?: "eat" | "drink"
 }
 
 export function createItem(opt: CreateItemOptions): CoreItem {
@@ -48,7 +49,7 @@ export function createItem(opt: CreateItemOptions): CoreItem {
 					},
 					components: {
 						MCIcon: opt.icon ?? opt.identifier.removeNamespace(),
-						MCUseAnimation: opt.food ? "eat" : undefined,
+						MCUseAnimation: opt.useAnimation,
 					},
 				},
 			}
