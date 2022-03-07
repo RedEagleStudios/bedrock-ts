@@ -24,8 +24,8 @@ You can use [this project template](https://github.com/RedEagleStudios/bedrock-t
 
 ```ts
 const example: CoreEntity = {
-  createBP() {
-    const bp = new BPEntityBuilder("re:example")
+  identifier: "re:example",
+  createBP(bp) {
     bp.setComponents({
       MCTypeFamily: {
         family: ["example"],
@@ -45,8 +45,7 @@ const example: CoreEntity = {
     })
     return bp.build()
   },
-  createRP() {
-    const rp = new RPEntityBuilder("re:example")
+  createRP(rp) {
     return rp.build()
   },
 }
