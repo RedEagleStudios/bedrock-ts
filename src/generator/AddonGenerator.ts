@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, readdirSync, rmSync } from "fs"
 import { copySync } from "fs-extra"
 import { join } from "path/posix"
+import { performance } from "perf_hooks"
 import { MCAddon } from "../bedrock/addon/MCAddon"
 import { Blocks } from "../bedrock/block/Blocks"
 import { ItemTexture } from "../bedrock/texture/ItemTexture"
@@ -45,6 +46,7 @@ export class AddonGenerator {
 	}
 
 	public generate() {
+		const startTime = performance.now()
 		this.initialize()
 		this.writeManifests()
 		this.writeAnimations()
@@ -57,12 +59,14 @@ export class AddonGenerator {
 		this.writeItemTextures()
 		this.writeTerrainTexture()
 		this.writeLangFile()
+		const endTime = performance.now()
+		console.log(`Build finished in ${(endTime - startTime).toPrecision(5)}ms`)
 	}
 
 	private initialize() {
 		const paths = [
-			[this.pathBP, `./src/assets/bp`],
-			[this.pathRP, `./src/assets/rp`],
+			[this.pathBP, `./src/assets/BP`],
+			[this.pathRP, `./src/assets/RP`],
 		]
 		paths.map(([dest, assets]) => {
 			if (existsSync(dest)) {

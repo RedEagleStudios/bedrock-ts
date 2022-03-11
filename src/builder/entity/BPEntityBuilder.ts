@@ -1,4 +1,4 @@
-import { BPEntity, ComponentGroups, Event, EventRecord } from "../../bedrock/entity/BPEntity"
+import { BPDescription, BPEntity, ComponentGroups, Event, EventRecord } from "../../bedrock/entity/BPEntity"
 import { Components } from "../../bedrock/entity/components"
 import { RawQuery } from "../../bedrock/query/Query"
 import { AnimationId } from "../../bedrock/shared/AnimationId"
@@ -120,5 +120,9 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 		this.object.MCEntity.events ??= {}
 		this.object.MCEntity.events[event] ??= {}
 		return this.object.MCEntity.events[event]
+	}
+
+	public setDescription(description: Omit<BPDescription, "identifier" | "animations" | "scripts">) {
+		assign(this.object.MCEntity.description, description)
 	}
 }
