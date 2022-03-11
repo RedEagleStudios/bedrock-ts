@@ -3,5 +3,14 @@
 	"printWidth": 120,
 	"semi": false,
 	"tabWidth": 4,
-	"useTabs": true
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": ["*.md"],
+			"options": {
+				"tabWidth": 2,
+				"useTabs": false
+			}
+		}
+	]
 }
