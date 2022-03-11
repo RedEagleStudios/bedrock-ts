@@ -12,10 +12,8 @@ Please note that this project is currently in the early stage of development
 
 ### Installation
 
-Clone this repository and do the following:
-
 ```sh
-yarn add path/to/bedrock-ts
+yarn add https://github.com/RedEagleStudios/bedrock-ts
 ```
 
 ### Usage Example
