@@ -13,7 +13,7 @@ Please note that this project is currently in the early stage of development
 ### Installation
 
 ```sh
-yarn add https://github.com/RedEagleStudios/bedrock-ts
+yarn add bedrock-ts
 ```
 
 ### Usage Example
