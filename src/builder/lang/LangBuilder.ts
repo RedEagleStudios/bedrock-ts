@@ -1,4 +1,6 @@
-import { Identifier } from "../../bedrock/shared/Identifier"
+import { CoreBlock } from "../../bedrock/block/CoreBlock"
+import { CoreEntity } from "../../bedrock/entity/CoreEntity"
+import { CoreItem } from "../../bedrock/item/CoreItem"
 
 export class LangBuilder {
 	private lang: string[] = []
@@ -8,17 +10,32 @@ export class LangBuilder {
 		if (type) this.lang.push(`pack.description=${type} Pack for ${packName}`)
 	}
 
-	public addBlock(id: Identifier) {
-		this.lang.push(`tile.${id}.name=${id.toName()}`)
+	public addBlock(block: CoreBlock) {
+		const identifier = block.identifier
+		const name = block.name ?? identifier.toName()
+
+		this.lang.push(`tile.${identifier}.name=${name}`)
 	}
 
-	public addEntity(id: Identifier) {
-		this.lang.push(`entity.${id}.name=${id.toName()}`)
-		this.lang.push(`item.spawn_egg.entity.${id}.name=Spawn ${id.toName()}`)
+	public addEntity(entity: CoreEntity) {
+		const identifier = entity.identifier
+		const name = entity.name ?? identifier.toName()
+		const spawn_egg = entity.spawn_egg ?? `${entity.spawn_egg_prefix ?? "Spawn"} ${name}`
+
+		this.lang.push(`entity.${entity.identifier}.name=${name}`)
+		this.lang.push(`item.spawn_egg.entity.${identifier}.name=${spawn_egg}`)
+
+		if (entity.rideable) {
+			if (typeof entity.rideable === "boolean") entity.rideable = "Tap jump to exit"
+			this.lang.push(`action.hint.exit.${identifier}=${entity.rideable}`)
+		}
 	}
 
-	public addItem(id: Identifier) {
-		this.lang.push(`item.${id}.name=${id.toName()}`)
+	public addItem(item: CoreItem) {
+		const identifier = item.identifier
+		const name = item.name ?? identifier.toName()
+
+		this.lang.push(`item.${identifier}.name=${name}`)
 	}
 
 	public build() {

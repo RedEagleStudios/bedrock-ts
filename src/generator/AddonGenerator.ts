@@ -148,7 +148,7 @@ export class AddonGenerator {
 					})
 				})
 			}
-			this.rpLang.addBlock(identifier)
+			this.rpLang.addBlock(block)
 		})
 	}
 
@@ -176,7 +176,7 @@ export class AddonGenerator {
 					})
 				}
 			}
-			this.rpLang.addEntity(identifier)
+			this.rpLang.addEntity(entity)
 		})
 	}
 
@@ -212,7 +212,7 @@ export class AddonGenerator {
 					})
 				}
 			}
-			this.rpLang.addItem(identifier)
+			this.rpLang.addItem(item)
 		})
 	}
 
