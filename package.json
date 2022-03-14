@@ -19,12 +19,13 @@
 	"scripts": {
 		"prepack": "tsc",
 		"watch": "tsc -p tsconfig.json -w",
-		"serve": "ts-node-dev --respawn --transpile-only --watch src src/main.ts",
+		"serve": "ts-node-dev --respawn --transpile-only --watch src/**/*.ts src/main.ts",
 		"fix": "run-s fix:*",
 		"fix:prettier": "prettier \"src/**/*.ts\" --write",
 		"fix:lint": "eslint src --ext .ts --fix"
 	},
 	"dependencies": {
+		"chokidar": "^3.5.3",
 		"fs-extra": "^10.0.1",
 		"jsonc-parser": "^3.0.0",
 		"lodash.startcase": "^4.4.0",

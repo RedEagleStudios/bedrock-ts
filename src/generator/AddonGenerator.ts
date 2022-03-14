@@ -1,6 +1,6 @@
-import { existsSync, mkdirSync, readdirSync, rmSync } from "fs"
+import { existsSync, mkdirSync, readFileSync, renameSync, rmdir, rmSync } from "fs"
 import { copySync } from "fs-extra"
-import { join } from "path/posix"
+import { dirname, join } from "path/posix"
 import { performance } from "perf_hooks"
 import { MCAddon } from "../bedrock/addon/MCAddon"
 import { Blocks } from "../bedrock/block/Blocks"
@@ -17,6 +17,7 @@ import { BPItemBuilder } from "../builder/item/BPItemBuilder"
 import { RPItemBuilder } from "../builder/item/RPItemBuilder"
 import { LangBuilder } from "../builder/lang/LangBuilder"
 import { recursive } from "../constants/fsOptions"
+import { PATH_TEMP, PATH_TEMP_OLD } from "../constants/paths"
 import { assign } from "../utils/assign"
 import { writeFile } from "../utils/writeFile"
 import { writeJson } from "../utils/writeJson"
@@ -59,26 +60,13 @@ export class AddonGenerator {
 		this.writeItemTextures()
 		this.writeTerrainTexture()
 		this.writeLangFile()
+		this.cleanup()
 		const endTime = performance.now()
 		console.log(`Build finished in ${(endTime - startTime).toPrecision(5)}ms`)
 	}
 
 	private initialize() {
-		const paths = [
-			[this.pathBP, `./src/assets/BP`],
-			[this.pathRP, `./src/assets/RP`],
-		]
-		paths.map(([dest, assets]) => {
-			if (existsSync(dest)) {
-				readdirSync(dest).forEach((d) => rmSync(`${dest}/${d}`, recursive))
-			} else {
-				mkdirSync(dest, recursive)
-			}
-
-			if (existsSync(assets)) {
-				readdirSync(assets).forEach((d) => copySync(`${assets}/${d}`, `${dest}/${d}`))
-			}
-		})
+		if (existsSync(PATH_TEMP)) renameSync(PATH_TEMP, PATH_TEMP_OLD)
 	}
 
 	private writeManifests() {
@@ -252,5 +240,18 @@ export class AddonGenerator {
 		writeFile(`${bpLangPath}/languages.json`, `["en_US"]`)
 		writeFile(`${rpLangPath}/en_US.lang`, this.rpLang.build())
 		writeFile(`${rpLangPath}/languages.json`, `["en_US"]`)
+	}
+
+	private cleanup() {
+		if (!existsSync(PATH_TEMP_OLD)) return
+
+		const temp = readFileSync(PATH_TEMP).toString().split("\n")
+		const old = readFileSync(PATH_TEMP_OLD).toString().split("\n")
+
+		old.filter((v) => !temp.includes(v)).forEach((v) => {
+			console.log(v)
+			rmSync(v)
+			rmdir(dirname(v), () => undefined)
+		})
 	}
 }
