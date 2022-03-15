@@ -6,9 +6,8 @@ import { MCAddon } from "../bedrock/addon/MCAddon"
 import { AddonGenerator } from "./AddonGenerator"
 
 export function makeAddon(addon: MCAddon) {
-	const name = addon.packName
 	const assets = `src/assets`
-	const outDir = `out/${name}`
+	const outDir = `out/${addon.packName}`
 	const ignoreInitial = existsSync("out")
 
 	const startTime = performance.now()
