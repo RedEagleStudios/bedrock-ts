@@ -53,7 +53,7 @@ const addon: MCAddon = {
   entities: [example],
 }
 
-new AddonGenerator(addon).generate()
+makeAddon(addon)
 ```
 
 Output will be generated at ./out
