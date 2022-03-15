@@ -15,6 +15,9 @@ export function makeAddon(addon: MCAddon, enableAutolink?: boolean) {
 	new AddonGenerator(addon).generate()
 	console.log(`Build finished in ${(performance.now() - startTime).toPrecision(5)}ms`)
 
+	// Prevent watching assets and autolink in github actions
+	if (process.platform !== "win32") return
+
 	if (enableAutolink && !ignoreInitial) {
 		autolink(addon.packName)
 	}
