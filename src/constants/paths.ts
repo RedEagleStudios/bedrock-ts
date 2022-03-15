@@ -1,3 +1,1 @@
-export const PATH_TEMP = `out/tmp.txt`
-
-export const PATH_TEMP_OLD = `out/tmp-old.txt`
+export const CACHE_PATH = `out/cache.tmp`
