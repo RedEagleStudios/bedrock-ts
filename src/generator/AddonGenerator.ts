@@ -1,7 +1,7 @@
-import { existsSync, mkdirSync, readdirSync, rmSync } from "fs"
-import { copySync } from "fs-extra"
-import { join } from "path/posix"
-import { performance } from "perf_hooks"
+import { existsSync, readFileSync, rmdir, rmSync } from "fs"
+import { outputFileSync } from "fs-extra"
+import transform from "lodash.transform"
+import { dirname, join } from "path/posix"
 import { MCAddon } from "../bedrock/addon/MCAddon"
 import { Blocks } from "../bedrock/block/Blocks"
 import { ItemTexture } from "../bedrock/texture/ItemTexture"
@@ -16,14 +16,11 @@ import { RPEntityBuilder } from "../builder/entity/RPEntityBuilder"
 import { BPItemBuilder } from "../builder/item/BPItemBuilder"
 import { RPItemBuilder } from "../builder/item/RPItemBuilder"
 import { LangBuilder } from "../builder/lang/LangBuilder"
-import { recursive } from "../constants/fsOptions"
+import { CACHE_PATH } from "../constants/paths"
 import { assign } from "../utils/assign"
-import { writeFile } from "../utils/writeFile"
-import { writeJson } from "../utils/writeJson"
 import { generateManifest } from "./generateManifest"
 
 export class AddonGenerator {
-	private cache: string
 	private pathBP: string
 	private pathRP: string
 
@@ -37,7 +34,6 @@ export class AddonGenerator {
 	private terrainTextureData: TextureData = {}
 
 	constructor(private addon: MCAddon) {
-		this.cache = `./out/.${addon.packName}`
 		this.pathBP = `./out/${addon.packName} BP`
 		this.pathRP = `./out/${addon.packName} RP`
 
@@ -46,8 +42,6 @@ export class AddonGenerator {
 	}
 
 	public generate() {
-		const startTime = performance.now()
-		this.initialize()
 		this.writeManifests()
 		this.writeAnimations()
 		this.writeAnimControllers()
@@ -59,42 +53,13 @@ export class AddonGenerator {
 		this.writeItemTextures()
 		this.writeTerrainTexture()
 		this.writeLangFile()
-		const endTime = performance.now()
-		console.log(`Build finished in ${(endTime - startTime).toPrecision(5)}ms`)
-	}
-
-	private initialize() {
-		const paths = [
-			[this.pathBP, `./src/assets/BP`],
-			[this.pathRP, `./src/assets/RP`],
-		]
-		paths.map(([dest, assets]) => {
-			if (existsSync(dest)) {
-				readdirSync(dest).forEach((d) => rmSync(`${dest}/${d}`, recursive))
-			} else {
-				mkdirSync(dest, recursive)
-			}
-
-			if (existsSync(assets)) {
-				readdirSync(assets).forEach((d) => copySync(`${assets}/${d}`, `${dest}/${d}`))
-			}
-		})
+		this.cleanup()
 	}
 
 	private writeManifests() {
-		const bpManifestCache = `${this.cache}/manifest-bp.json`
-		const rpManifestCache = `${this.cache}/manifest-rp.json`
-		if (!existsSync(bpManifestCache) || !existsSync(rpManifestCache)) {
-			console.log("Manifest cache not found, generating a new manifest")
-
-			const { bpManifest, rpManifest } = generateManifest(this.addon.uuids)
-			mkdirSync(this.cache, recursive)
-
-			writeJson(bpManifestCache, bpManifest)
-			writeJson(rpManifestCache, rpManifest)
-		}
-		copySync(bpManifestCache, `${this.pathBP}/manifest.json`)
-		copySync(rpManifestCache, `${this.pathRP}/manifest.json`)
+		const { bpManifest, rpManifest } = generateManifest(this.addon.uuids)
+		writeJson(`${this.pathBP}/manifest.json`, bpManifest)
+		writeJson(`${this.pathRP}/manifest.json`, rpManifest)
 	}
 
 	private writeAnimations() {
@@ -248,9 +213,48 @@ export class AddonGenerator {
 		const bpLangPath = `${this.pathBP}/texts`
 		const rpLangPath = `${this.pathRP}/texts`
 
-		writeFile(`${bpLangPath}/en_US.lang`, this.bpLang.build())
-		writeFile(`${bpLangPath}/languages.json`, `["en_US"]`)
-		writeFile(`${rpLangPath}/en_US.lang`, this.rpLang.build())
-		writeFile(`${rpLangPath}/languages.json`, `["en_US"]`)
+		outputFileSync(`${bpLangPath}/en_US.lang`, this.bpLang.build())
+		outputFileSync(`${bpLangPath}/languages.json`, `["en_US"]`)
+		outputFileSync(`${rpLangPath}/en_US.lang`, this.rpLang.build())
+		outputFileSync(`${rpLangPath}/languages.json`, `["en_US"]`)
+	}
+
+	private cleanup() {
+		if (!existsSync(CACHE_PATH)) {
+			outputFileSync(CACHE_PATH, cache.join("\n"))
+			return
+		}
+		const old = readFileSync(CACHE_PATH).toString().split("\n")
+		old.filter((v) => !cache.includes(v)).forEach((v) => {
+			rmSync(v)
+			rmdir(dirname(v), () => undefined)
+		})
+		outputFileSync(CACHE_PATH, cache.join("\n"))
 	}
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function writeJson(path: string, object: Record<string, any>): void {
+	object = transform(object, function iteratee(result, value, key) {
+		if (typeof key === "string") key = formatKey(key)
+		if (typeof value === "object") value = transform(value, iteratee)
+		result[key] = value
+		return result
+	})
+	outputFileSync(path, JSON.stringify(object, null, 2) + "\n")
+	cache.push(path)
+}
+
+function formatKey(key: string): string {
+	if (key.indexOf("MC") === -1) return key
+	key = key.substring(2)
+	return (
+		"minecraft:" +
+		key
+			.replace("_", ".")
+			.replace(/([a-z])([A-Z])/g, "$1_$2")
+			.toLowerCase()
+	)
+}
+
+const cache: string[] = []

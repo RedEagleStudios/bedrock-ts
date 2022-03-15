@@ -19,7 +19,7 @@
   "scripts": {
     "prepack": "tsc",
     "watch": "tsc -p tsconfig.json -w",
-    "serve": "ts-node-dev --respawn --transpile-only --watch src src/main.ts",
+    "serve": "ts-node-dev --respawn --transpile-only --watch src/**/*.ts src/main.ts",
     "fix": "eslint src --ext .ts --fix"
   },
   "dependencies": {
