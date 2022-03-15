@@ -1,7 +1,8 @@
 import { watch } from "chokidar"
 import { existsSync, rmSync } from "fs"
 import { copySync } from "fs-extra"
-import { AddonGenerator, MCAddon } from ".."
+import { MCAddon } from "../bedrock/addon/MCAddon"
+import { AddonGenerator } from "./AddonGenerator"
 
 export function makeAddon(addon: MCAddon) {
 	const name = addon.packName
