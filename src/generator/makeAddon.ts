@@ -4,8 +4,9 @@ import { copySync } from "fs-extra"
 import { performance } from "perf_hooks"
 import { MCAddon } from "../bedrock/addon/MCAddon"
 import { AddonGenerator } from "./AddonGenerator"
+import { autolink } from "./autolink"
 
-export function makeAddon(addon: MCAddon) {
+export function makeAddon(addon: MCAddon, enableAutolink?: boolean) {
 	const assets = `src/assets`
 	const outDir = `out/${addon.packName}`
 	const ignoreInitial = existsSync("out")
@@ -13,6 +14,10 @@ export function makeAddon(addon: MCAddon) {
 	const startTime = performance.now()
 	new AddonGenerator(addon).generate()
 	console.log(`Build finished in ${(performance.now() - startTime).toPrecision(5)}ms`)
+
+	if (enableAutolink && !ignoreInitial) {
+		autolink(addon.packName)
+	}
 
 	watch(assets, {
 		ignoreInitial,
