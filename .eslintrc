@@ -1,32 +1,32 @@
 {
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaVersion": 2019,
-		"sourceType": "module",
-		"project": "./tsconfig.json"
-	},
-	"plugins": ["@typescript-eslint", "@typescript-eslint/eslint-plugin", "prettier"],
-	"extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
-	"rules": {
-		"prettier/prettier": [
-			"warn",
-			{
-				"endOfLine": "lf",
-				"printWidth": 120,
-				"semi": false,
-				"tabWidth": 4,
-				"useTabs": true,
-				"plugins": ["prettier-plugin-organize-imports"]
-			}
-		]
-	},
-	"overrides": [
-		{
-			"files": ["src/bedrock/entity/components/*.ts"],
-			"plugins": ["sort"],
-			"rules": {
-				"sort/type-properties": "warn"
-			}
-		}
-	]
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "@typescript-eslint/eslint-plugin", "prettier"],
+  "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "lf",
+        "printWidth": 120,
+        "semi": false,
+        "tabWidth": 4,
+        "useTabs": true,
+        "plugins": ["prettier-plugin-organize-imports"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/bedrock/entity/components/*.ts"],
+      "plugins": ["sort"],
+      "rules": {
+        "sort/type-properties": "warn"
+      }
+    }
+  ]
 }
