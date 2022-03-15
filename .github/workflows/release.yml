@@ -1,0 +1,32 @@
+name: Publish Package
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: release
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache-dependency-path: yarn.lock
+      - name: "Build project"
+        run: |
+          cd release
+          yarn
+          yarn pack
+          mv *.tgz ../
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            *.tgz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

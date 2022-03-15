@@ -1,18 +1,18 @@
 {
-	"[typescript]": {
-		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
-	},
-	"editor.formatOnSave": true,
-	"editor.insertSpaces": false,
-	"editor.selectionHighlight": false,
-	"editor.suggest.showSnippets": false,
-	"editor.suggestSelection": "first",
-	"editor.tabSize": 4,
-	"editor.tabCompletion": "onlySnippets",
-	"editor.wordBasedSuggestions": false,
-	"files.eol": "\n",
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": false,
+  "editor.selectionHighlight": false,
+  "editor.suggest.showSnippets": false,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 4,
+  "editor.tabCompletion": "onlySnippets",
+  "editor.wordBasedSuggestions": false,
+  "files.eol": "\n",
 
-	"editor.rulers": [120],
-	"eslint.run": "onType",
-	"eslint.format.enable": true
+  "editor.rulers": [120],
+  "eslint.run": "onType",
+  "eslint.format.enable": true
 }

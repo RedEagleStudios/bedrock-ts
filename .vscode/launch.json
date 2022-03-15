@@ -1,21 +1,21 @@
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Watch",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "yarn",
-			"runtimeArgs": ["run", "watch"],
-			"console": "integratedTerminal"
-		},
-		{
-			"name": "Serve",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "yarn",
-			"runtimeArgs": ["run", "serve"],
-			"console": "integratedTerminal"
-		}
-	]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Watch",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["run", "watch"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Serve",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["run", "serve"],
+      "console": "integratedTerminal"
+    }
+  ]
 }
