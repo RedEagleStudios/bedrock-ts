@@ -24,6 +24,7 @@ export function makeAddon(addon: MCAddon, enableAutolink?: boolean) {
 
 	watch(assets, {
 		ignoreInitial,
+		ignored: ["**/*.mcworld"],
 	}).on("all", (event, path) => {
 		const outPath = `${outDir} ${path.substring(assets.length + 1)}`
 
