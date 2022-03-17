@@ -23,7 +23,7 @@ export function generateManifest(uuids?: MCManifestUUIDs) {
 			description: "pack.description",
 			uuid: uuids.bpHeader,
 			version: [1, 0, 0],
-			min_engine_version: [1, 16, 0],
+			min_engine_version: [1, 18, 0],
 		},
 		modules: [
 			{
@@ -46,7 +46,7 @@ export function generateManifest(uuids?: MCManifestUUIDs) {
 			description: "pack.description",
 			uuid: uuids.rpHeader,
 			version: [1, 0, 0],
-			min_engine_version: [1, 16, 0],
+			min_engine_version: [1, 18, 0],
 		},
 		modules: [
 			{
