@@ -26,16 +26,17 @@ export function makeAddon(addon: MCAddon, enableAutolink?: boolean) {
 		ignoreInitial,
 		ignored: ["**/*.mcworld"],
 	}).on("all", (event, path) => {
+		if (path.indexOf("BP") === -1 && path.indexOf("RP") === -1) return
 		const outPath = `${outDir} ${path.substring(assets.length + 1)}`
 
-		if (event === "add" || event === "change") {
-			copySync(path, outPath)
-		}
-
-		if (event === "unlink") {
-			if (existsSync(outPath)) {
-				rmSync(outPath)
-			}
+		switch (event) {
+			case "add":
+			case "change":
+				copySync(path, outPath)
+				break
+			case "unlink":
+				if (existsSync(outPath)) rmSync(outPath)
+				break
 		}
 	})
 }
