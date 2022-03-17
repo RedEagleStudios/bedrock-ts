@@ -1,5 +1,5 @@
 import { watch } from "chokidar"
-import { existsSync, rmSync } from "fs"
+import { existsSync, readdirSync, rmSync } from "fs"
 import { copySync } from "fs-extra"
 import { performance } from "perf_hooks"
 import { MCAddon } from "../bedrock/addon/MCAddon"
@@ -15,8 +15,14 @@ export function makeAddon(addon: MCAddon, enableAutolink?: boolean) {
 	new AddonGenerator(addon).generate()
 	console.log(`Build finished in ${(performance.now() - startTime).toPrecision(5)}ms`)
 
-	// Prevent watching assets and autolink in github actions
-	if (process.platform !== "win32") return
+	// If running on github actions
+	if (process.platform !== "win32") {
+		const world = readdirSync(assets).find((v) => v.indexOf(".mcworld") !== -1)
+		if (world) {
+			copySync(`${assets}/${world}`, `out/${world}`)
+		}
+		return
+	}
 
 	if (enableAutolink && !ignoreInitial) {
 		autolink(addon.packName)
