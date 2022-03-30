@@ -50,6 +50,7 @@ export class AddonGenerator {
 		this.writeLootTables()
 		this.writeItems()
 		this.writeRecipes()
+		this.writeTrading()
 		this.writeItemTextures()
 		this.writeTerrainTexture()
 		this.writeLangFile()
@@ -187,6 +188,14 @@ export class AddonGenerator {
 		this.addon.recipes?.forEach((recipe) => {
 			const fileName = recipe.identifier.toFilePath(recipe.dir)
 			writeJson(`${recipePath}/${fileName}.json`, recipe.create())
+		})
+	}
+
+	private writeTrading() {
+		const tradingPath = `${this.pathBP}/trading`
+
+		this.addon.tradings?.forEach((trading) => {
+			writeJson(`${tradingPath}/${trading.fileName}.json`, trading.create())
 		})
 	}
 

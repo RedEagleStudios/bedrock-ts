@@ -1,21 +1,18 @@
-interface MinMaxValue {
-	min: number
-	max: number
-}
+import { CountRange } from "../../types/CountRange"
 
 interface SetCount {
 	function: "set_count"
-	count: number | MinMaxValue
+	count: number | CountRange
 }
 
 interface SetDamage {
 	function: "set_damage"
-	damage: number | MinMaxValue
+	damage: number | CountRange
 }
 
 interface SetData {
 	function: "set_data"
-	data: number | MinMaxValue
+	data: number | CountRange
 }
 
 export type LootTableFunction = SetCount | SetDamage | SetData

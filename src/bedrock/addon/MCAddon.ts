@@ -6,6 +6,7 @@ import { CoreItem } from "../item/CoreItem"
 import { CoreLootTable } from "../loot_table/CoreLootTable"
 import { MCManifestUUIDs } from "../manifest/MCManifest"
 import { CoreRecipe } from "../recipe/CoreRecipe"
+import { CoreTrading } from "../trading/CoreTrading"
 
 export interface MCAddon {
 	packName: string
@@ -16,5 +17,6 @@ export interface MCAddon {
 	loot_tables?: CoreLootTable[]
 	items?: CoreItem[]
 	recipes?: CoreRecipe[]
+	tradings?: CoreTrading[]
 	uuids?: MCManifestUUIDs
 }
