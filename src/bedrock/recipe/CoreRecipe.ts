@@ -4,5 +4,5 @@ import { Recipe } from "./Recipe"
 export interface CoreRecipe {
 	dir?: string
 	identifier: Identifier
-	createRecipe(): Recipe
+	create(): Recipe
 }

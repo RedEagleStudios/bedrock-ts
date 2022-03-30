@@ -149,7 +149,7 @@ export class AddonGenerator {
 		const lootTablePath = `${this.pathBP}/loot_tables`
 
 		this.addon.loot_tables?.forEach((loot_table) => {
-			writeJson(`${lootTablePath}/${loot_table.fileName}.json`, loot_table.createLootTable())
+			writeJson(`${lootTablePath}/${loot_table.fileName}.json`, loot_table.create())
 		})
 	}
 
@@ -186,7 +186,7 @@ export class AddonGenerator {
 
 		this.addon.recipes?.forEach((recipe) => {
 			const fileName = recipe.identifier.toFilePath(recipe.dir)
-			writeJson(`${recipePath}/${fileName}.json`, recipe.createRecipe())
+			writeJson(`${recipePath}/${fileName}.json`, recipe.create())
 		})
 	}
 
