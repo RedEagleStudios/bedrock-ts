@@ -2,6 +2,6 @@ import { BPAnimationBuilder } from "../../builder/animation/BPAnimationBuilder"
 import { BPAnimation } from "./BPAnimation"
 
 export interface CoreAnimation {
-	name: string
+	fileName: string
 	createBP(builder: BPAnimationBuilder): BPAnimation
 }

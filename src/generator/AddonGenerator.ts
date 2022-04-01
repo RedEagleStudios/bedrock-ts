@@ -67,7 +67,7 @@ export class AddonGenerator {
 		const bpAnimationPath = `${this.pathBP}/animations`
 
 		this.addon.animations?.forEach((animation) => {
-			const name = animation.name
+			const name = animation.fileName
 			const bpAnim = animation.createBP(new BPAnimationBuilder(name))
 			writeJson(`${bpAnimationPath}/${name}.animation.json`, bpAnim)
 		})
@@ -77,7 +77,7 @@ export class AddonGenerator {
 		const bpControllerPath = `${this.pathBP}/animations`
 
 		this.addon.animControllers?.forEach((controller) => {
-			const name = controller.name
+			const name = controller.fileName
 			const bpController = controller.createBP(new BPAnimControllerBuilder(name))
 			writeJson(`${bpControllerPath}/${name}.controller.json`, bpController)
 		})
