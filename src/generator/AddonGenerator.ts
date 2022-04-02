@@ -68,9 +68,9 @@ export class AddonGenerator {
 		const bpAnimationPath = `${this.pathBP}/animations`
 
 		this.addon.animations?.forEach((animation) => {
-			const name = animation.fileName
-			const bpAnim = animation.createBP(new BPAnimationBuilder(name))
-			writeJson(`${bpAnimationPath}/${name}.animation.json`, bpAnim)
+			const fileName = join(animation.dir ?? "", animation.fileName)
+			const bpAnim = animation.createBP(new BPAnimationBuilder(animation.fileName))
+			writeJson(`${bpAnimationPath}/${fileName}.animation.json`, bpAnim)
 		})
 	}
 
@@ -78,9 +78,9 @@ export class AddonGenerator {
 		const bpControllerPath = `${this.pathBP}/animations`
 
 		this.addon.animControllers?.forEach((controller) => {
-			const name = controller.fileName
-			const bpController = controller.createBP(new BPAnimControllerBuilder(name))
-			writeJson(`${bpControllerPath}/${name}.controller.json`, bpController)
+			const fileName = join(controller.dir ?? "", controller.fileName)
+			const bpController = controller.createBP(new BPAnimControllerBuilder(controller.fileName))
+			writeJson(`${bpControllerPath}/${fileName}.controller.json`, bpController)
 		})
 	}
 
@@ -160,7 +160,8 @@ export class AddonGenerator {
 		const lootTablePath = `${this.pathBP}/loot_tables`
 
 		this.addon.loot_tables?.forEach((loot_table) => {
-			writeJson(`${lootTablePath}/${loot_table.fileName}.json`, loot_table.create())
+			const fileName = join(loot_table.dir ?? "", loot_table.fileName)
+			writeJson(`${lootTablePath}/${fileName}.json`, loot_table.create())
 		})
 	}
 
@@ -205,7 +206,8 @@ export class AddonGenerator {
 		const tradingPath = `${this.pathBP}/trading`
 
 		this.addon.tradings?.forEach((trading) => {
-			writeJson(`${tradingPath}/${trading.fileName}.json`, trading.create())
+			const fileName = join(trading.dir ?? "", trading.fileName)
+			writeJson(`${tradingPath}/${fileName}.json`, trading.create())
 		})
 	}
 
