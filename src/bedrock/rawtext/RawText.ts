@@ -1,4 +1,3 @@
-// https://wiki.bedrock.dev/commands/tellraw.html
 export interface RawText {
 	rawtext: {
 		score?: {
