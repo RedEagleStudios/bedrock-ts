@@ -1,6 +1,7 @@
 import { CoreAnimation } from "../animation/CoreAnimation"
 import { CoreAnimController } from "../animation_controller/CoreAnimController"
 import { CoreBlock } from "../block/CoreBlock"
+import { CoreDialogue } from "../dialogue/CoreDialogue"
 import { CoreEntity } from "../entity/CoreEntity"
 import { CoreItem } from "../item/CoreItem"
 import { CoreLootTable } from "../loot_table/CoreLootTable"
@@ -13,6 +14,7 @@ export interface MCAddon {
 	animations?: CoreAnimation[]
 	animControllers?: CoreAnimController[]
 	blocks?: CoreBlock[]
+	dialogues?: CoreDialogue[]
 	entities?: CoreEntity[]
 	loot_tables?: CoreLootTable[]
 	items?: CoreItem[]

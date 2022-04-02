@@ -46,6 +46,7 @@ export class AddonGenerator {
 		this.writeAnimations()
 		this.writeAnimControllers()
 		this.writeBlocks()
+		this.writeDialogues()
 		this.writeEntities()
 		this.writeLootTables()
 		this.writeItems()
@@ -115,6 +116,15 @@ export class AddonGenerator {
 				})
 			}
 			this.rpLang.addBlock(block)
+		})
+	}
+
+	private writeDialogues() {
+		const dialoguePath = `${this.pathBP}/dialogue`
+
+		this.addon.dialogues?.forEach((dialogue) => {
+			const fileName = join(dialogue.dir ?? "", dialogue.fileName)
+			writeJson(`${dialoguePath}/${fileName}.dialogue.json`, dialogue.create())
 		})
 	}
 
