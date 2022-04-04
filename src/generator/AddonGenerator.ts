@@ -75,7 +75,7 @@ export class AddonGenerator {
 	}
 
 	private writeAnimControllers() {
-		const bpControllerPath = `${this.pathBP}/animations`
+		const bpControllerPath = `${this.pathBP}/animation_controllers`
 
 		this.addon.animControllers?.forEach((controller) => {
 			const fileName = join(controller.dir ?? "", controller.fileName)
