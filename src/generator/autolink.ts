@@ -13,7 +13,7 @@ export function autolink(packName: string) {
 	)
 
 	const destBP = join(minecraft, `development_behavior_packs/${nameBP}`)
-	const destRP = join(minecraft, `development_resource_packs/${nameBP}`)
+	const destRP = join(minecraft, `development_resource_packs/${nameRP}`)
 
 	const sourceBP = `out/${nameBP}`
 	const sourceRP = `out/${nameRP}`
