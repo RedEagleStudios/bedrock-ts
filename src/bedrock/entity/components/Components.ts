@@ -14,7 +14,7 @@ import {
 	MCBehavior_MeleeAttack,
 	MCBehavior_MoveToPoi,
 	MCBehavior_NearestAttackableTarget,
-	MCBehavior_PickUpItems,
+	MCBehavior_PickupItems,
 	MCBehavior_RandomFly,
 	MCBehavior_RandomLookAround,
 	MCBehavior_RandomStroll,
@@ -124,7 +124,7 @@ export interface Components {
 	MCBehavior_MeleeAttack?: MCBehavior_MeleeAttack
 	MCBehavior_MoveToPoi?: MCBehavior_MoveToPoi
 	MCBehavior_NearestAttackableTarget?: MCBehavior_NearestAttackableTarget
-	MCBehavior_PickUpItems?: MCBehavior_PickUpItems
+	MCBehavior_PickupItems?: MCBehavior_PickupItems
 	MCBehavior_RandomFly?: MCBehavior_RandomFly
 	MCBehavior_RandomLookAround?: MCBehavior_RandomLookAround
 	MCBehavior_RandomStroll?: MCBehavior_RandomStroll

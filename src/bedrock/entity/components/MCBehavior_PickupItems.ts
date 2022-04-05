@@ -1,4 +1,4 @@
-export interface MCBehavior_PickUpItems {
+export interface MCBehavior_PickupItems {
 	can_pickup_any_item?: boolean
 	can_pickup_to_hand_or_equipment?: boolean
 	cooldown_after_being_attacked?: number
