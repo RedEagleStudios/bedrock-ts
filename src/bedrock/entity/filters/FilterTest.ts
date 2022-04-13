@@ -48,7 +48,7 @@ export type FilterTest =
 	| "is_target"
 	| "is_temperature_type"
 	| "is_temperature_value"
-	| "is_undergorund"
+	| "is_underground"
 	| "is_underwater"
 	| "is_variant"
 	| "is_visible"
