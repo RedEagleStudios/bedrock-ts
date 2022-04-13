@@ -46,4 +46,6 @@ export interface RPDescription {
 	sound_effects?: Record<string, string>
 	spawn_egg?: SpawnEgg
 	render_controllers?: RenderController[]
+	enable_attachables?: boolean
+	hide_armor?: boolean
 }
