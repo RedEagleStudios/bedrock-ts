@@ -39,9 +39,11 @@ export function makeAddon(addon: MCAddon, enableAutolink?: boolean) {
 			case "add":
 			case "change":
 				copySync(path, outPath)
+				console.log(`Modified: ${path}`)
 				break
 			case "unlink":
 				if (existsSync(outPath)) rmSync(outPath)
+				console.log(`Deleted: ${path}`)
 				break
 		}
 	})
