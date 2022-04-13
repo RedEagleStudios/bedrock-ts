@@ -1,5 +1,4 @@
 import { Animate } from "../shared/Animate"
-import { AnimControllerId } from "../shared/AnimControllerId"
 
 type FormatVersion = "1.10.0"
 
@@ -9,7 +8,7 @@ export interface BPAnimController {
 }
 
 export interface BPAnimControllerRecord {
-	[key: AnimControllerId]: BPAnimControllerItem
+	[key: string]: BPAnimControllerItem
 }
 
 export interface BPAnimControllerItem {

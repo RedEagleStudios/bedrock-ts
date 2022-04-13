@@ -1,5 +1,3 @@
-import { AnimationId } from "../shared/AnimationId"
-
 type FormatVersion = "1.10.0"
 
 export interface BPAnimation {
@@ -8,7 +6,7 @@ export interface BPAnimation {
 }
 
 export interface BPAnimationRecord {
-	[key: AnimationId]: BPAnimationItem
+	[key: string]: BPAnimationItem
 }
 
 export interface BPAnimationItem {
