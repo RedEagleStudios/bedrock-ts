@@ -255,7 +255,7 @@ export class AddonGenerator {
 }
 
 function writeJson(path: string, object: object): void {
-	deepTransform(object, (key) => {
+	object = deepTransform(object, (key) => {
 		if (key.indexOf("MC") === -1) return key
 		key = key.substring(2)
 		return (
