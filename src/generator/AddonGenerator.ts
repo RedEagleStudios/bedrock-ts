@@ -1,6 +1,5 @@
 import { existsSync, readFileSync, rmdir, rmSync } from "fs"
 import { outputFileSync } from "fs-extra"
-import transform from "lodash.transform"
 import { dirname, join } from "path/posix"
 import { MCAddon } from "../bedrock/addon/MCAddon"
 import { Blocks } from "../bedrock/block/Blocks"
@@ -18,6 +17,7 @@ import { RPItemBuilder } from "../builder/item/RPItemBuilder"
 import { LangBuilder } from "../builder/lang/LangBuilder"
 import { CACHE_PATH } from "../constants/paths"
 import { assign } from "../utils/assign"
+import { deepTransform } from "../utils/deepTransform"
 import { generateManifest } from "./generateManifest"
 
 export class AddonGenerator {
@@ -254,28 +254,20 @@ export class AddonGenerator {
 	}
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function writeJson(path: string, object: Record<string, any>): void {
-	object = transform(object, function iteratee(result, value, key) {
-		if (typeof key === "string") key = formatKey(key)
-		if (typeof value === "object") value = transform(value, iteratee)
-		result[key] = value
-		return result
+function writeJson(path: string, object: object): void {
+	deepTransform(object, (key) => {
+		if (key.indexOf("MC") === -1) return key
+		key = key.substring(2)
+		return (
+			"minecraft:" +
+			key
+				.replace("_", ".")
+				.replace(/([a-z])([A-Z])/g, "$1_$2")
+				.toLowerCase()
+		)
 	})
-	outputFileSync(path, JSON.stringify(object, null, 2) + "\n")
+	outputFileSync(path, JSON.stringify(object, null, 2) + `\n`)
 	cache.push(path)
-}
-
-function formatKey(key: string): string {
-	if (key.indexOf("MC") === -1) return key
-	key = key.substring(2)
-	return (
-		"minecraft:" +
-		key
-			.replace("_", ".")
-			.replace(/([a-z])([A-Z])/g, "$1_$2")
-			.toLowerCase()
-	)
 }
 
 const cache: string[] = []
