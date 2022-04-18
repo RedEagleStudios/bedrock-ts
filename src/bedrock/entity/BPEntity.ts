@@ -1,6 +1,7 @@
 import { Animate } from "../shared/Animate"
 import { AnimationsRecord } from "../shared/AnimationsRecord"
 import { Identifier } from "../shared/Identifier"
+import { RuntimeIdentifier } from "../shared/RuntimeIdentifier"
 import { Components } from "./components"
 import { Filters } from "./filters/Filter"
 
@@ -25,6 +26,7 @@ export interface BPDescription {
 	is_experimental?: boolean
 	scripts?: BPScripts
 	animations?: AnimationsRecord
+	runtime_identifier?: RuntimeIdentifier
 }
 
 export interface BPScripts {
