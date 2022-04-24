@@ -16,6 +16,7 @@ export interface MCClientEntity {
 }
 
 export interface Scripts {
+	scale?: `${number}`
 	initialize?: string[]
 	pre_animation?: string[]
 	animate?: Animate[]

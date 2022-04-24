@@ -62,6 +62,38 @@ export class RPEntityBuilder extends Builder<RPEntity> {
 		}
 	}
 
+	public setScale(scale: number) {
+		const description = this.object.MCClientEntity.description
+		description.scripts ??= {}
+		description.scripts.scale = `${scale}`
+	}
+
+	public setPreAnimation(pre_animation: string[]) {
+		const description = this.object.MCClientEntity.description
+		description.scripts ??= {}
+		description.scripts.pre_animation = pre_animation
+	}
+
+	public addPreAnimation(pre_animation: string) {
+		const description = this.object.MCClientEntity.description
+		description.scripts ??= {}
+		description.scripts.pre_animation ??= []
+		description.scripts.pre_animation.push(pre_animation)
+	}
+
+	public setInitialize(initialize: string[]) {
+		const description = this.object.MCClientEntity.description
+		description.scripts ??= {}
+		description.scripts.initialize = initialize
+	}
+
+	public addInitialize(initialize: string) {
+		const description = this.object.MCClientEntity.description
+		description.scripts ??= {}
+		description.scripts.initialize ??= []
+		description.scripts.initialize.push(initialize)
+	}
+
 	public setMaterials(materials: Record<string, string>) {
 		this.object.MCClientEntity.description.materials ??= {}
 		assign(this.object.MCClientEntity.description.materials, materials)
