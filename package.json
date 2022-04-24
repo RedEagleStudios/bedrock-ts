@@ -1,6 +1,6 @@
 {
   "name": "bedrock-ts",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Create bedrock addons using TypeScript",
   "author": "ink0rr",
   "repository": {
