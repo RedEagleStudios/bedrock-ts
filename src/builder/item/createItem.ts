@@ -12,29 +12,31 @@ export interface CreateItemOptions {
 	food?: MCFood
 	handEquipped?: boolean
 	icon?: string
+	maxDamage?: number
 	maxStack?: number
 	useDuration?: number
 	useAnimation?: "eat" | "drink"
 }
 
-export function createItem(opt: CreateItemOptions): CoreItem {
+export function createItem(item: CreateItemOptions): CoreItem {
 	return {
-		dir: opt.dir,
-		identifier: opt.identifier,
+		dir: item.dir,
+		identifier: item.identifier,
 		createBP(): BPItem {
 			return {
 				format_version: "1.16.0",
 				MCItem: {
 					description: {
-						identifier: opt.identifier,
-						category: opt.category,
+						identifier: item.identifier,
+						category: item.category,
 					},
 					components: {
-						MCFoil: opt.foil,
-						MCFood: opt.food,
-						MCHandEquipped: opt.handEquipped,
-						MCMaxStackSize: opt.maxStack,
-						MCUseDuration: opt.useDuration,
+						MCFoil: item.foil,
+						MCFood: item.food,
+						MCHandEquipped: item.handEquipped,
+						MCMaxDamage: item.maxDamage,
+						MCMaxStackSize: item.maxStack,
+						MCUseDuration: item.useDuration,
 					},
 				},
 			}
@@ -44,12 +46,12 @@ export function createItem(opt: CreateItemOptions): CoreItem {
 				format_version: "1.10.0",
 				MCItem: {
 					description: {
-						identifier: opt.identifier,
-						category: opt.category,
+						identifier: item.identifier,
+						category: item.category,
 					},
 					components: {
-						MCIcon: opt.icon ?? opt.identifier.removeNamespace(),
-						MCUseAnimation: opt.useAnimation,
+						MCIcon: item.icon ?? item.identifier.removeNamespace(),
+						MCUseAnimation: item.useAnimation,
 					},
 				},
 			}
