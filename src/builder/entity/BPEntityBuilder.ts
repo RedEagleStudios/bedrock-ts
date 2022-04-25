@@ -89,9 +89,9 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 	 * @returns Component in BPEntity
 	 *
 	 * @example
-	 * const typeFamily = getComponent("MCTypeFamily") as MCTypeFamily
+	 * const typeFamily = getComponent("MCTypeFamily")
 	 */
-	public getComponent(componentName: keyof Components): unknown {
+	public getComponent<T extends keyof Components>(componentName: T): Components[T] {
 		return this.object.MCEntity.components[componentName]
 	}
 
@@ -103,7 +103,7 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 	 *
 	 * @returns Component in the component group
 	 */
-	public getComponentInGroup(groupName: string, componentName: keyof Components): unknown {
+	public getComponentInGroup<T extends keyof Components>(groupName: string, componentName: T): Components[T] {
 		this.object.MCEntity.component_groups ??= {}
 		this.object.MCEntity.component_groups[groupName] ??= {}
 		return this.object.MCEntity.component_groups[groupName][componentName]
