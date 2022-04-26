@@ -3,6 +3,7 @@ import { AnimationsRecord } from "../shared/AnimationsRecord"
 import { Identifier } from "../shared/Identifier"
 import { RuntimeIdentifier } from "../shared/RuntimeIdentifier"
 import { Components } from "./components"
+import { EventTriggerFiltered } from "./events/EventTriggerFiltered"
 import { Filters } from "./filters/Filter"
 
 type FormatVersion = "1.16.0" | "1.17.0" | "1.17.10"
@@ -47,13 +48,13 @@ export interface Event {
 	randomize?: EventRandomize[]
 	remove?: EventAction
 	sequence?: EventSequence[]
-	trigger?: string
+	trigger?: string | EventTriggerFiltered
 }
 
 export interface EventRandomize {
 	add?: EventAction
 	remove?: EventAction
-	trigger?: string
+	trigger?: string | EventTriggerFiltered
 	weight?: number
 }
 
@@ -61,7 +62,7 @@ export interface EventSequence {
 	add?: EventAction
 	filters?: Filters
 	remove?: EventAction
-	trigger?: string
+	trigger?: string | EventTriggerFiltered
 }
 
 export interface EventAction {
