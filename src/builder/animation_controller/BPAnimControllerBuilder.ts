@@ -24,6 +24,10 @@ export class BPAnimControllerBuilder extends Builder<BPAnimController> {
 		this.controller = this.object.animation_controllers[id]
 	}
 
+	public setInitialState(state: string) {
+		this.controller.initial_state = state
+	}
+
 	public setStates(states: BPAnimControllerStateRecord) {
 		assign(this.controller.states, states)
 	}
