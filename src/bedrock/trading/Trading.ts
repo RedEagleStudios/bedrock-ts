@@ -1,9 +1,9 @@
-import { CountRange } from "../../types/CountRange"
+import { RangeObject } from "../../types/RangeObject"
 import { ItemIdentifier } from "../shared/ItemIdentifier"
 
 export interface TradeTableItemInfo {
 	item: ItemIdentifier
-	quantity?: number | CountRange
+	quantity?: number | RangeObject
 	functions?: object[] // TODO: Add functions interface
 }
 

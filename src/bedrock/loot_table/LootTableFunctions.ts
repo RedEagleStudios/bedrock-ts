@@ -1,18 +1,18 @@
-import { CountRange } from "../../types/CountRange"
+import { RangeObject } from "../../types/RangeObject"
 
 interface SetCount {
 	function: "set_count"
-	count: number | CountRange
+	count: number | RangeObject
 }
 
 interface SetDamage {
 	function: "set_damage"
-	damage: number | CountRange
+	damage: number | RangeObject
 }
 
 interface SetData {
 	function: "set_data"
-	data: number | CountRange
+	data: number | RangeObject
 }
 
 export type LootTableFunction = SetCount | SetDamage | SetData
