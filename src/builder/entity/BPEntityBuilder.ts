@@ -25,6 +25,21 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 	}
 
 	/**
+	 * @returns BPEntity Identifier
+	 */
+	public getIdentifier(): Identifier {
+		return this.object.MCEntity.description.identifier
+	}
+
+	/**
+	 * Set BPEntity description
+	 * @param description
+	 */
+	public setDescription(description: Omit<BPDescription, "identifier" | "animations" | "scripts">) {
+		assign(this.object.MCEntity.description, description)
+	}
+
+	/**
 	 * Register animation or animation controller to BPEntity
 	 *
 	 * @param animationName Animation name
@@ -131,9 +146,5 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 		this.object.MCEntity.events ??= {}
 		this.object.MCEntity.events[event] ??= {}
 		return this.object.MCEntity.events[event]
-	}
-
-	public setDescription(description: Omit<BPDescription, "identifier" | "animations" | "scripts">) {
-		assign(this.object.MCEntity.description, description)
 	}
 }

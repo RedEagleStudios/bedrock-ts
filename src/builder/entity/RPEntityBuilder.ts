@@ -35,6 +35,13 @@ export class RPEntityBuilder extends Builder<RPEntity> {
 	}
 
 	/**
+	 * @returns RPEntity Identifier
+	 */
+	public getIdentifier(): Identifier {
+		return this.object.MCClientEntity.description.identifier
+	}
+
+	/**
 	 * Register animation or animation controller to BPEntity
 	 *
 	 * @param animationName Animation name
