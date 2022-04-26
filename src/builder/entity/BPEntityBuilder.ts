@@ -84,29 +84,40 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 	/**
 	 * Get component in BPEntity
 	 *
-	 * @param componentName Component name
+	 * @param component Component name
 	 *
 	 * @returns Component in BPEntity
 	 *
 	 * @example
 	 * const typeFamily = getComponent("MCTypeFamily")
 	 */
-	public getComponent<T extends keyof Components>(componentName: T): Components[T] {
-		return this.object.MCEntity.components[componentName]
+	public getComponent<T extends keyof Components>(component: T): Components[T] {
+		return this.object.MCEntity.components[component]
+	}
+
+	/**
+	 * Get component group in BPEntity
+	 *
+	 * @param group Component group name
+	 *
+	 * @returns Component in the component group
+	 */
+	public getGroup(group: string): Components {
+		this.object.MCEntity.component_groups ??= {}
+		this.object.MCEntity.component_groups[group] ??= {}
+		return this.object.MCEntity.component_groups[group]
 	}
 
 	/**
 	 * Get component inside a component group
 	 *
-	 * @param groupName Component group name
-	 * @param componentName Component name
+	 * @param group Component group name
+	 * @param component Component name
 	 *
 	 * @returns Component in the component group
 	 */
-	public getComponentInGroup<T extends keyof Components>(groupName: string, componentName: T): Components[T] {
-		this.object.MCEntity.component_groups ??= {}
-		this.object.MCEntity.component_groups[groupName] ??= {}
-		return this.object.MCEntity.component_groups[groupName][componentName]
+	public getComponentInGroup<T extends keyof Components>(group: string, component: T): Components[T] {
+		return this.getGroup(group)[component]
 	}
 
 	/**
