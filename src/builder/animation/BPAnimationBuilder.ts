@@ -1,5 +1,4 @@
-import { AnimationTimeline, BPAnimation, BPAnimationItem } from "../../bedrock/animation/BPAnimation"
-import { AnimationId } from "../../bedrock/shared/AnimationId"
+import { BPAnimation, BPAnimationItem } from "../../bedrock/animation/BPAnimation"
 import { assign } from "../../utils/assign"
 import { Builder } from "../Builder"
 
@@ -7,7 +6,7 @@ export class BPAnimationBuilder extends Builder<BPAnimation> {
 	private animation: BPAnimationItem
 
 	constructor(name: string) {
-		const id: AnimationId = `animation.${name}`
+		const id = `animation.${name}`
 		super({
 			format_version: "1.10.0",
 			animations: {
@@ -28,7 +27,7 @@ export class BPAnimationBuilder extends Builder<BPAnimation> {
 		this.animation.animation_length = length
 	}
 
-	public setTimeline(timeline: AnimationTimeline) {
+	public setTimeline(timeline: Record<number, string[]>) {
 		assign(this.animation.timeline, timeline)
 	}
 

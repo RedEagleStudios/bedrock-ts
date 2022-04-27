@@ -2,9 +2,7 @@ import {
 	BPAnimController,
 	BPAnimControllerItem,
 	BPAnimControllerState,
-	BPAnimControllerStateRecord,
 } from "../../bedrock/animation_controller/BPAnimController"
-import { AnimControllerId } from "../../bedrock/shared/AnimControllerId"
 import { assign } from "../../utils/assign"
 import { Builder } from "../Builder"
 
@@ -12,7 +10,7 @@ export class BPAnimControllerBuilder extends Builder<BPAnimController> {
 	private controller: BPAnimControllerItem
 
 	constructor(name: string) {
-		const id: AnimControllerId = `controller.animation.${name}`
+		const id = `controller.animation.${name}`
 		super({
 			format_version: "1.10.0",
 			animation_controllers: {
@@ -28,7 +26,7 @@ export class BPAnimControllerBuilder extends Builder<BPAnimController> {
 		this.controller.initial_state = state
 	}
 
-	public setStates(states: BPAnimControllerStateRecord) {
+	public setStates(states: Record<string, BPAnimControllerState>) {
 		assign(this.controller.states, states)
 	}
 

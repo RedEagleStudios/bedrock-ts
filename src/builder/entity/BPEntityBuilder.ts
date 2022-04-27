@@ -1,8 +1,6 @@
-import { BPDescription, BPEntity, ComponentGroups, Event, EventRecord } from "../../bedrock/entity/BPEntity"
+import { BPDescription, BPEntity, Event } from "../../bedrock/entity/BPEntity"
 import { Components } from "../../bedrock/entity/components"
 import { RawQuery } from "../../bedrock/query/Query"
-import { AnimationId } from "../../bedrock/shared/AnimationId"
-import { AnimControllerId } from "../../bedrock/shared/AnimControllerId"
 import { Identifier } from "../../bedrock/shared/Identifier"
 import { assign } from "../../utils/assign"
 import { Builder } from "../Builder"
@@ -45,10 +43,13 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 	 * @param animationName Animation name
 	 * @param animationId Animation id
 	 * @param playCondition Molang query or "always"
+	 *
+	 * @example
+	 * addAnimation("example", "animation.example", "always")
 	 */
 	public addAnimation(
 		animationName: string,
-		animationId: AnimControllerId | AnimationId,
+		animationId: string,
 		playCondition?: QueryBuilder | RawQuery | "always"
 	): void {
 		const description = this.object.MCEntity.description
@@ -72,7 +73,7 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 	 *
 	 * @param component_groups Component groups that will be added or removed
 	 */
-	public setComponentGroups(component_groups: ComponentGroups): void {
+	public setComponentGroups(component_groups: Record<string, Components>): void {
 		this.object.MCEntity.component_groups ??= {}
 		assign(this.object.MCEntity.component_groups, component_groups)
 	}
@@ -91,7 +92,7 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 	 *
 	 * @param events Events that will be added or removed
 	 */
-	public setEvents(events: EventRecord): void {
+	public setEvents(events: Record<string, Event>): void {
 		this.object.MCEntity.events ??= {}
 		assign(this.object.MCEntity.events, events)
 	}

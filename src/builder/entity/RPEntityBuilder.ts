@@ -1,9 +1,7 @@
-import { RenderController, RPEntity, SpawnEgg } from "../../bedrock/entity/RPEntity"
+import { RPEntity, SpawnEgg } from "../../bedrock/entity/RPEntity"
 import { RawQuery } from "../../bedrock/query/Query"
-import { AnimationId } from "../../bedrock/shared/AnimationId"
-import { AnimControllerId } from "../../bedrock/shared/AnimControllerId"
-import { GeometryId } from "../../bedrock/shared/GeometryId"
 import { Identifier } from "../../bedrock/shared/Identifier"
+import { StringOrRecord } from "../../types/StringOrRecord"
 import { assign } from "../../utils/assign"
 import { Builder } from "../Builder"
 import { QueryBuilder } from "../query/QueryBuilder"
@@ -47,10 +45,13 @@ export class RPEntityBuilder extends Builder<RPEntity> {
 	 * @param animationName Animation name
 	 * @param animationId Animation id
 	 * @param playCondition Molang query or "always"
+	 *
+	 * @example
+	 * addAnimation("example", "animation.example", "always")
 	 */
 	public addAnimation(
 		animationName: string,
-		animationId: AnimControllerId | AnimationId,
+		animationId: string,
 		playCondition?: QueryBuilder | RawQuery | "always"
 	): void {
 		const description = this.object.MCClientEntity.description
@@ -106,7 +107,7 @@ export class RPEntityBuilder extends Builder<RPEntity> {
 		assign(this.object.MCClientEntity.description.materials, materials)
 	}
 
-	public setGeometry(geometry: Record<string, GeometryId>) {
+	public setGeometry(geometry: Record<string, string>) {
 		this.object.MCClientEntity.description.geometry ??= {}
 		assign(this.object.MCClientEntity.description.geometry, geometry)
 	}
@@ -116,11 +117,11 @@ export class RPEntityBuilder extends Builder<RPEntity> {
 		assign(this.object.MCClientEntity.description.textures, textures)
 	}
 
-	public setRenderControllers(render_controllers: RenderController[]) {
+	public setRenderControllers(render_controllers: StringOrRecord[]) {
 		this.object.MCClientEntity.description.render_controllers = render_controllers
 	}
 
-	public addRenderController(render_controller: RenderController) {
+	public addRenderController(render_controller: StringOrRecord) {
 		this.object.MCClientEntity.description.render_controllers ??= []
 		this.object.MCClientEntity.description.render_controllers.push(render_controller)
 	}

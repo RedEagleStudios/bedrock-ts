@@ -21,10 +21,6 @@ export interface MCRecipeItem {
 	item: ItemIdentifier
 }
 
-export interface MCRecipeItemRecord {
-	[key: string]: MCRecipeItem
-}
-
 export interface MCRecipeDescription {
 	identifier: Identifier
 }
@@ -47,7 +43,7 @@ export interface MCRecipeFurnace {
 export interface MCRecipeShaped {
 	description: MCRecipeDescription
 	group?: string
-	key?: MCRecipeItemRecord
+	key?: Record<string, MCRecipeItem>
 	pattern?: string[]
 	result?: MCRecipeItem
 	tags?: MCRecipeTag[]

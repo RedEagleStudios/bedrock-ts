@@ -1,5 +1,4 @@
-import { Animate } from "../shared/Animate"
-import { AnimationsRecord } from "../shared/AnimationsRecord"
+import { StringOrRecord } from "../../types/StringOrRecord"
 import { Identifier } from "../shared/Identifier"
 import { RuntimeIdentifier } from "../shared/RuntimeIdentifier"
 import { Components } from "./components"
@@ -15,9 +14,9 @@ export interface BPEntity {
 
 export interface MCEntity {
 	description: BPDescription
-	component_groups?: ComponentGroups
+	component_groups?: Record<string, Components>
 	components: Components
-	events?: EventRecord
+	events?: Record<string, Event>
 }
 
 export interface BPDescription {
@@ -26,20 +25,12 @@ export interface BPDescription {
 	is_summonable?: boolean
 	is_experimental?: boolean
 	scripts?: BPScripts
-	animations?: AnimationsRecord
+	animations?: Record<string, string>
 	runtime_identifier?: RuntimeIdentifier
 }
 
 export interface BPScripts {
-	animate?: Animate[]
-}
-
-export interface ComponentGroups {
-	[key: string]: Components
-}
-
-export interface EventRecord {
-	[key: string]: Event
+	animate?: StringOrRecord[]
 }
 
 export interface Event {

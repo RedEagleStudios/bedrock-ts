@@ -106,7 +106,6 @@ import {
 	MCVariant,
 	MCWaterMovement,
 } from "."
-import { ComponentKey } from "../../shared/ComponentKey"
 
 export interface Components {
 	MCAdmireItem?: MCAdmireItem
@@ -215,5 +214,5 @@ export interface Components {
 	MCUnderwaterMovement?: MCUnderwaterMovement
 	MCVariant?: MCVariant
 	MCWaterMovement?: MCWaterMovement
-	[key: ComponentKey]: unknown
+	[key: `minecraft:${string}`]: unknown
 }
