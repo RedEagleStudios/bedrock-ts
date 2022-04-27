@@ -2,8 +2,7 @@
 dist/
 node_modules/
 out/
-
-src/assets/
+res/
 
 src/**.js
 src/main.ts

@@ -7,7 +7,7 @@ import { AddonGenerator } from "./AddonGenerator"
 import { autolink } from "./autolink"
 
 export function makeAddon(addon: MCAddon, enableAutolink?: boolean) {
-	const assets = `src/assets`
+	const assets = `res`
 	const outDir = `out/${addon.packName}`
 	const ignoreInitial = existsSync("out")
 
