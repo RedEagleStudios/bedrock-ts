@@ -1,6 +1,6 @@
 import { existsSync, readFileSync, rmdir, rmSync } from "fs"
 import { outputFileSync } from "fs-extra"
-import { dirname, join } from "path/posix"
+import { dirname } from "path/posix"
 import { MCAddon } from "../bedrock/addon/MCAddon"
 import { Blocks } from "../bedrock/block/Blocks"
 import { ItemTexture } from "../bedrock/texture/ItemTexture"
@@ -18,6 +18,7 @@ import { LangBuilder } from "../builder/lang/LangBuilder"
 import { CACHE_PATH } from "../constants/paths"
 import { assign } from "../utils/assign"
 import { deepTransform } from "../utils/deepTransform"
+import { join } from "../utils/join"
 import { generateManifest } from "./generateManifest"
 
 export class AddonGenerator {
@@ -68,7 +69,7 @@ export class AddonGenerator {
 		const bpAnimationPath = `${this.pathBP}/animations`
 
 		this.addon.animations?.forEach((animation) => {
-			const fileName = join(animation.dir ?? "", animation.fileName)
+			const fileName = join(animation.dir, animation.fileName)
 			const bpAnim = animation.createBP(new BPAnimationBuilder(animation.fileName))
 			writeJson(`${bpAnimationPath}/${fileName}.animation.json`, bpAnim)
 		})
@@ -78,7 +79,7 @@ export class AddonGenerator {
 		const bpControllerPath = `${this.pathBP}/animation_controllers`
 
 		this.addon.animControllers?.forEach((controller) => {
-			const fileName = join(controller.dir ?? "", controller.fileName)
+			const fileName = join(controller.dir, controller.fileName)
 			const bpController = controller.createBP(new BPAnimControllerBuilder(controller.fileName))
 			writeJson(`${bpControllerPath}/${fileName}.controller.json`, bpController)
 		})
@@ -103,14 +104,14 @@ export class AddonGenerator {
 			if (typeof blockTextures === "string") {
 				assign(this.terrainTextureData, {
 					[blockTextures]: {
-						textures: join("textures/blocks/", block.dir ?? "", blockTextures),
+						textures: join("textures/blocks/", block.dir, blockTextures),
 					},
 				})
 			} else {
 				Object.entries(blockTextures).forEach(([, texture]) => {
 					assign(this.terrainTextureData, {
 						[texture]: {
-							textures: join("textures/blocks/", block.dir ?? "", texture),
+							textures: join("textures/blocks/", block.dir, texture),
 						},
 					})
 				})
@@ -123,7 +124,7 @@ export class AddonGenerator {
 		const dialoguePath = `${this.pathBP}/dialogue`
 
 		this.addon.dialogues?.forEach((dialogue) => {
-			const fileName = join(dialogue.dir ?? "", dialogue.fileName)
+			const fileName = join(dialogue.dir, dialogue.fileName)
 			writeJson(`${dialoguePath}/${fileName}.dialogue.json`, dialogue.create())
 		})
 	}
@@ -147,7 +148,7 @@ export class AddonGenerator {
 				if (eggTexture) {
 					assign(this.itemTextureData, {
 						[eggTexture]: {
-							textures: join("textures/items/spawn_eggs/", entity.dir ?? "", eggTexture),
+							textures: join("textures/items/spawn_eggs/", entity.dir, eggTexture),
 						},
 					})
 				}
@@ -160,7 +161,7 @@ export class AddonGenerator {
 		const lootTablePath = `${this.pathBP}/loot_tables`
 
 		this.addon.loot_tables?.forEach((loot_table) => {
-			const fileName = join(loot_table.dir ?? "", loot_table.fileName)
+			const fileName = join(loot_table.dir, loot_table.fileName)
 			writeJson(`${lootTablePath}/${fileName}.json`, loot_table.create())
 		})
 	}
@@ -184,7 +185,7 @@ export class AddonGenerator {
 				if (icon) {
 					assign(this.itemTextureData, {
 						[icon]: {
-							textures: join("textures/items", item.dir ?? "", icon),
+							textures: join("textures/items", item.dir, icon),
 						},
 					})
 				}
@@ -206,7 +207,7 @@ export class AddonGenerator {
 		const tradingPath = `${this.pathBP}/trading`
 
 		this.addon.tradings?.forEach((trading) => {
-			const fileName = join(trading.dir ?? "", trading.fileName)
+			const fileName = join(trading.dir, trading.fileName)
 			writeJson(`${tradingPath}/${fileName}.json`, trading.create())
 		})
 	}

@@ -1,6 +1,6 @@
 import startCase from "lodash.startcase"
-import path from "path/posix"
 import { Identifier } from "../bedrock/shared/Identifier"
+import { join } from "../utils/join"
 
 declare global {
 	interface String {
@@ -19,7 +19,7 @@ String.prototype.removeNamespace = function (this: Identifier): string {
 }
 
 String.prototype.toFilePath = function (this: Identifier, dir?: string): string {
-	return path.join(dir ?? "", this.removeNamespace())
+	return join(dir, this.removeNamespace())
 }
 
 String.prototype.toName = function (this: Identifier): string {
