@@ -25,6 +25,10 @@ export interface CoreEntity {
 	 * Marks the entity as rideable to generate action.hint.exit text
 	 */
 	rideable?: boolean | string
+	/**
+	 * Marks the entity as vanilla to disable en_US.lang generation
+	 */
+	vanilla?: boolean
 	identifier: Identifier
 	createBP?: (builder: BPEntityBuilder) => BPEntity
 	createRP?: (builder: RPEntityBuilder) => RPEntity

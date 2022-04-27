@@ -146,7 +146,7 @@ export class AddonGenerator {
 				writeJson(`${rpEntityPath}/${filePath}.json`, entityRP)
 
 				const eggTexture = entityRP.MCClientEntity.description.spawn_egg?.texture
-				if (eggTexture) {
+				if (eggTexture && !entity.vanilla) {
 					assign(this.itemTextureData, {
 						[eggTexture]: {
 							textures: join("textures/items/spawn_eggs/", entity.dir, eggTexture),
@@ -154,7 +154,7 @@ export class AddonGenerator {
 					})
 				}
 			}
-			this.rpLang.addEntity(entity)
+			if (!entity.vanilla) this.rpLang.addEntity(entity)
 		})
 	}
 
