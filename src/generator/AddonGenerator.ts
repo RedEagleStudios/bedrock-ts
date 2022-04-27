@@ -52,6 +52,7 @@ export class AddonGenerator {
 		this.writeLootTables()
 		this.writeItems()
 		this.writeRecipes()
+		this.writeRenderControllers()
 		this.writeTrading()
 		this.writeItemTextures()
 		this.writeTerrainTexture()
@@ -200,6 +201,15 @@ export class AddonGenerator {
 		this.addon.recipes?.forEach((recipe) => {
 			const fileName = recipe.identifier.toFilePath(recipe.dir)
 			writeJson(`${recipePath}/${fileName}.json`, recipe.create())
+		})
+	}
+
+	private writeRenderControllers() {
+		const recipePath = `${this.pathRP}/render_controllers`
+
+		this.addon.render_controllers?.forEach((render_controller) => {
+			const fileName = join(render_controller.dir, render_controller.fileName)
+			writeJson(`${recipePath}/${fileName}.render_controllers.json`, render_controller.create())
 		})
 	}
 
