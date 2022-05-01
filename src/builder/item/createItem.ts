@@ -7,7 +7,7 @@ import { Identifier } from "../../bedrock/shared/Identifier"
 export interface CreateItemOptions {
 	dir?: string
 	identifier: Identifier
-	category?: string
+	category?: "Equipment" | "Items" | "Nature"
 	foil?: boolean
 	food?: MCFood
 	handEquipped?: boolean
@@ -15,7 +15,7 @@ export interface CreateItemOptions {
 	maxDamage?: number
 	maxStack?: number
 	useDuration?: number
-	useAnimation?: "eat" | "drink"
+	useAnimation?: "drink" | "eat" | "none"
 }
 
 export function createItem(item: CreateItemOptions): CoreItem {
@@ -28,7 +28,6 @@ export function createItem(item: CreateItemOptions): CoreItem {
 				MCItem: {
 					description: {
 						identifier: item.identifier,
-						category: item.category,
 					},
 					components: {
 						MCFoil: item.foil,

@@ -5,7 +5,6 @@ type FormatVersion = "1.16.0"
 
 export interface BPItemDescription {
 	identifier: Identifier
-	category?: string
 	is_experimental?: boolean
 }
 

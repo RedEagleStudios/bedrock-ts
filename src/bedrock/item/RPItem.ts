@@ -4,13 +4,13 @@ type FormatVersion = "1.10.0"
 
 export interface RPItemDescription {
 	identifier: Identifier
-	category?: string
+	category?: "Equipment" | "Items" | "Nature"
 }
 
 export interface RPItemComponents {
 	MCIcon?: string
 	MCRenderOffsets?: string
-	MCUseAnimation?: "eat" | "drink"
+	MCUseAnimation?: "drink" | "eat" | "none"
 }
 
 export interface MCItemRP {
