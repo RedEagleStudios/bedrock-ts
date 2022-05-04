@@ -1,10 +1,9 @@
 import { BPDescription, BPEntity, Event } from "../../bedrock/entity/BPEntity"
 import { Components } from "../../bedrock/entity/components"
-import { RawQuery } from "../../bedrock/query/Query"
 import { Identifier } from "../../bedrock/shared/Identifier"
+import { LiteralUnion } from "../../types/LiteralUnion"
 import { assign } from "../../utils/assign"
 import { Builder } from "../Builder"
-import { QueryBuilder } from "../query/QueryBuilder"
 
 export class BPEntityBuilder extends Builder<BPEntity> {
 	constructor(identifier: Identifier) {
@@ -47,11 +46,7 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 	 * @example
 	 * addAnimation("example", "animation.example", "always")
 	 */
-	public addAnimation(
-		animationName: string,
-		animationId: string,
-		playCondition?: QueryBuilder | RawQuery | "always"
-	): void {
+	public addAnimation(animationName: string, animationId: string, playCondition?: LiteralUnion<"always">): void {
 		const description = this.object.MCEntity.description
 		description.scripts ??= {}
 		description.scripts.animate ??= []

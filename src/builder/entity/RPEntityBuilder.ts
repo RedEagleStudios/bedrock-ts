@@ -1,10 +1,9 @@
 import { RPEntity, SpawnEgg } from "../../bedrock/entity/RPEntity"
-import { RawQuery } from "../../bedrock/query/Query"
 import { Identifier } from "../../bedrock/shared/Identifier"
+import { LiteralUnion } from "../../types/LiteralUnion"
 import { StringOrRecord } from "../../types/StringOrRecord"
 import { assign } from "../../utils/assign"
 import { Builder } from "../Builder"
-import { QueryBuilder } from "../query/QueryBuilder"
 
 export class RPEntityBuilder extends Builder<RPEntity> {
 	constructor(identifier: Identifier, dir?: string) {
@@ -49,11 +48,7 @@ export class RPEntityBuilder extends Builder<RPEntity> {
 	 * @example
 	 * addAnimation("example", "animation.example", "always")
 	 */
-	public addAnimation(
-		animationName: string,
-		animationId: string,
-		playCondition?: QueryBuilder | RawQuery | "always"
-	): void {
+	public addAnimation(animationName: string, animationId: string, playCondition?: LiteralUnion<"always">): void {
 		const description = this.object.MCClientEntity.description
 		description.scripts ??= {}
 		description.scripts.animate ??= []

@@ -1,17 +1,7 @@
+import { LiteralUnion } from "../../types/LiteralUnion"
 import { Identifier } from "./Identifier"
 
-/**
- * Prevents Identifier to be recognized as just a string
- */
-type _Identifier = Identifier & {
-	readonly __Identifier?: never
-}
-
-/**
- * Gives auto-complete for vanilla item ids, but does not return error if you enter an invalid id
- */
-export type ItemIdentifier =
-	| _Identifier
+export type ItemIdentifier = LiteralUnion<
 	| "minecraft:acacia_boat"
 	| "minecraft:acacia_button"
 	| "minecraft:acacia_door"
@@ -980,4 +970,6 @@ export type ItemIdentifier =
 	| "minecraft:zombie_horse_spawn_egg"
 	| "minecraft:zombie_pigman_spawn_egg"
 	| "minecraft:zombie_spawn_egg"
-	| "minecraft:zombie_villager_spawn_egg"
+	| "minecraft:zombie_villager_spawn_egg",
+	Identifier
+>
