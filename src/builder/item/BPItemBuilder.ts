@@ -17,10 +17,6 @@ export class BPItemBuilder extends Builder<BPItem> {
 		})
 	}
 
-	public setCategory(category: string) {
-		this.object.MCItem.description.category = category
-	}
-
 	public setComponents(components: BPItemComponents) {
 		assign(this.object.MCItem.components, components)
 	}

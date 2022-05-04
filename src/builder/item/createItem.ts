@@ -1,13 +1,13 @@
 import { BPItem } from "../../bedrock/item/BPItem"
 import { MCFood } from "../../bedrock/item/components"
 import { CoreItem } from "../../bedrock/item/CoreItem"
-import { RPItem } from "../../bedrock/item/RPItem"
+import { RPItem, RPItemCategory } from "../../bedrock/item/RPItem"
 import { Identifier } from "../../bedrock/shared/Identifier"
 
 export interface CreateItemOptions {
 	dir?: string
 	identifier: Identifier
-	category?: "Equipment" | "Items" | "Nature"
+	category?: RPItemCategory
 	foil?: boolean
 	food?: MCFood
 	handEquipped?: boolean

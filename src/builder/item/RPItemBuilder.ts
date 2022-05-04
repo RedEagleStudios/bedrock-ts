@@ -1,4 +1,4 @@
-import { RPItem, RPItemComponents } from "../../bedrock/item/RPItem"
+import { RPItem, RPItemCategory, RPItemComponents } from "../../bedrock/item/RPItem"
 import { Identifier } from "../../bedrock/shared/Identifier"
 import { assign } from "../../utils/assign"
 import { Builder } from "../Builder"
@@ -18,7 +18,7 @@ export class RPItemBuilder extends Builder<RPItem> {
 		})
 	}
 
-	public setCategory(category: string) {
+	public setCategory(category: RPItemCategory) {
 		this.object.MCItem.description.category = category
 	}
 

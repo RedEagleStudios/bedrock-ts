@@ -2,9 +2,11 @@ import { Identifier } from "../../bedrock/shared/Identifier"
 
 type FormatVersion = "1.10.0"
 
+export type RPItemCategory = "Equipment" | "Items" | "Nature"
+
 export interface RPItemDescription {
 	identifier: Identifier
-	category?: "Equipment" | "Items" | "Nature"
+	category?: RPItemCategory
 }
 
 export interface RPItemComponents {
