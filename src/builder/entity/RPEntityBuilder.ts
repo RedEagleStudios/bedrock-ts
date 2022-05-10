@@ -112,6 +112,21 @@ export class RPEntityBuilder extends Builder<RPEntity> {
 		assign(this.object.MCClientEntity.description.textures, textures)
 	}
 
+	public setParticleEffects(particle_effects: Record<string, string>) {
+		this.object.MCClientEntity.description.particle_effects ??= {}
+		assign(this.object.MCClientEntity.description.particle_effects, particle_effects)
+	}
+
+	public setParticleEmitters(particle_emitters: Record<string, string>) {
+		this.object.MCClientEntity.description.particle_emitters ??= {}
+		assign(this.object.MCClientEntity.description.particle_emitters, particle_emitters)
+	}
+
+	public setSoundEffects(sound_effects: Record<string, string>) {
+		this.object.MCClientEntity.description.sound_effects ??= {}
+		assign(this.object.MCClientEntity.description.sound_effects, sound_effects)
+	}
+
 	public setRenderControllers(render_controllers: StringOrRecord[]) {
 		this.object.MCClientEntity.description.render_controllers = render_controllers
 	}
@@ -123,5 +138,13 @@ export class RPEntityBuilder extends Builder<RPEntity> {
 
 	public setSpawnEgg(spawn_egg: SpawnEgg) {
 		this.object.MCClientEntity.description.spawn_egg = spawn_egg
+	}
+
+	public enableAttachables(value: boolean) {
+		this.object.MCClientEntity.description.enable_attachables = value
+	}
+
+	public hideArmor(value: boolean) {
+		this.object.MCClientEntity.description.hide_armor = value
 	}
 }
