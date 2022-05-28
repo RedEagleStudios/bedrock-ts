@@ -1,3 +1,1 @@
-export interface MCScaffoldingClimber {
-	[key: symbol]: never
-}
+export type MCScaffoldingClimber = Record<never, never>

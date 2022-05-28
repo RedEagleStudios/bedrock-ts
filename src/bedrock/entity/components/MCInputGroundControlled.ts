@@ -1,3 +1,1 @@
-export interface MCInputGroundControlled {
-	[key: symbol]: never
-}
+export type MCInputGroundControlled = Record<never, never>

@@ -1,3 +1,1 @@
-export interface MCFireImmune {
-	[key: symbol]: never
-}
+export type MCFireImmune = Record<never, never>

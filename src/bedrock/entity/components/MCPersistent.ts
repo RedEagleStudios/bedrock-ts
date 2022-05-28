@@ -1,3 +1,1 @@
-export interface MCPersistent {
-	[key: symbol]: never
-}
+export type MCPersistent = Record<never, never>

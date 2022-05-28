@@ -1,3 +1,1 @@
-export interface MCInstantDespawn {
-	[key: symbol]: never
-}
+export type MCInstantDespawn = Record<never, never>

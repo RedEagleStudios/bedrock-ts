@@ -1,3 +1,1 @@
-export interface MCCanPowerJump {
-	[key: symbol]: never
-}
+export type MCCanPowerJump = Record<never, never>

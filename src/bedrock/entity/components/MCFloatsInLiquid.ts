@@ -1,3 +1,1 @@
-export interface MCFloatsInLiquid {
-	[key: symbol]: never
-}
+export type MCFloatsInLiquid = Record<never, never>

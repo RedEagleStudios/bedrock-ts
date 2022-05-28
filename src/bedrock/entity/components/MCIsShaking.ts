@@ -1,3 +1,1 @@
-export interface MCIsShaking {
-	[key: symbol]: never
-}
+export type MCIsShaking = Record<never, never>

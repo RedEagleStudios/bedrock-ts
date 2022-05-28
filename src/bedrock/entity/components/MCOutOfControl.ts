@@ -1,3 +1,1 @@
-export interface MCOutOfControl {
-	[key: symbol]: never
-}
+export type MCOutOfControl = Record<never, never>

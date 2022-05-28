@@ -1,3 +1,1 @@
-export interface MCIsCharged {
-	[key: symbol]: never
-}
+export type MCIsCharged = Record<never, never>

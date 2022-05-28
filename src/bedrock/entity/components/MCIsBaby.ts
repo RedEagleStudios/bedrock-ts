@@ -1,3 +1,1 @@
-export interface MCIsBaby {
-	[key: symbol]: never
-}
+export type MCIsBaby = Record<never, never>

@@ -1,3 +1,1 @@
-export interface MCCanFly {
-	[key: symbol]: never
-}
+export type MCCanFly = Record<never, never>

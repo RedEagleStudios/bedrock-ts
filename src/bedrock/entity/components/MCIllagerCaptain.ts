@@ -1,3 +1,1 @@
-export interface MCIllagerCaptain {
-	[key: symbol]: never
-}
+export type MCIllagerCaptain = Record<never, never>

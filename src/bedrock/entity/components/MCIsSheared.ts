@@ -1,3 +1,1 @@
-export interface MCIsSheared {
-	[key: symbol]: never
-}
+export type MCIsSheared = Record<never, never>

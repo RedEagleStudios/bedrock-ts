@@ -1,3 +1,1 @@
-export interface MCStackable {
-	[key: symbol]: never
-}
+export type MCStackable = Record<never, never>

@@ -1,3 +1,1 @@
-export interface MCTickWorld {
-	[key: symbol]: never
-}
+export type MCTickWorld = Record<never, never>

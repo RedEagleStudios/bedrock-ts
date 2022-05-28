@@ -1,3 +1,1 @@
-export interface MCHiddenWhenInvisible {
-	[key: symbol]: never
-}
+export type MCHiddenWhenInvisible = Record<never, never>

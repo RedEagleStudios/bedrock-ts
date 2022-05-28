@@ -1,3 +1,1 @@
-export interface MCCanClimb {
-	[key: symbol]: never
-}
+export type MCCanClimb = Record<never, never>
