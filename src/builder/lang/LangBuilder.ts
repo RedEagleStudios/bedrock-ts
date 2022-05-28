@@ -20,7 +20,9 @@ export class LangBuilder {
 	public addEntity(entity: CoreEntity) {
 		const identifier = entity.identifier
 		const name = entity.name ?? identifier.toName()
-		const spawn_egg = entity.spawn_egg ?? `${entity.spawn_egg_prefix ?? "Spawn"} ${name}`
+		const spawn_egg =
+			entity.spawn_egg ??
+			(entity.spawn_egg_prefix === false ? name : `${entity.spawn_egg_prefix ?? "Spawn"} ${name}`)
 
 		this.lang.push(`entity.${entity.identifier}.name=${name}`)
 		this.lang.push(`item.spawn_egg.entity.${identifier}.name=${spawn_egg}`)

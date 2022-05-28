@@ -18,9 +18,9 @@ export interface CoreEntity {
 	 */
 	spawn_egg?: string
 	/**
-	 * Override spawn egg prefix, incompatible with spawn_egg
+	 * Override spawn egg prefix, set false to disable prefix. Incompatible with spawn_egg
 	 */
-	spawn_egg_prefix?: string
+	spawn_egg_prefix?: string | false
 	/**
 	 * Marks the entity as rideable to generate action.hint.exit text
 	 */
