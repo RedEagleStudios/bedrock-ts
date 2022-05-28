@@ -1,10 +1,13 @@
 import {
 	MCAdmireItem,
+	MCAnnotation_BreakDoor,
 	MCAttack,
 	MCBalloonable,
 	MCBehavior_AvoidMobType,
 	MCBehavior_Beg,
+	MCBehavior_DelayedAttack,
 	MCBehavior_Float,
+	MCBehavior_FloatWander,
 	MCBehavior_FollowOwner,
 	MCBehavior_FollowParent,
 	MCBehavior_Hide,
@@ -33,6 +36,7 @@ import {
 	MCEconomyTradeTable,
 	MCEnvironmentSensor,
 	MCEquipment,
+	MCExperienceReward,
 	MCExplode,
 	MCFireImmune,
 	MCFloatsInLiquid,
@@ -109,11 +113,14 @@ import {
 
 export interface Components {
 	MCAdmireItem?: MCAdmireItem
+	MCAnnotation_BreakDoor?: MCAnnotation_BreakDoor
 	MCAttack?: MCAttack
 	MCBalloonable?: MCBalloonable
 	MCBehavior_AvoidMobType?: MCBehavior_AvoidMobType
 	MCBehavior_Beg?: MCBehavior_Beg
+	MCBehavior_DelayedAttack?: MCBehavior_DelayedAttack
 	MCBehavior_Float?: MCBehavior_Float
+	MCBehavior_FloatWander?: MCBehavior_FloatWander
 	MCBehavior_FollowOwner?: MCBehavior_FollowOwner
 	MCBehavior_FollowParent?: MCBehavior_FollowParent
 	MCBehavior_Hide?: MCBehavior_Hide
@@ -142,6 +149,7 @@ export interface Components {
 	MCEconomyTradeTable?: MCEconomyTradeTable
 	MCEnvironmentSensor?: MCEnvironmentSensor
 	MCEquipment?: MCEquipment
+	MCExperienceReward?: MCExperienceReward
 	MCExplode?: MCExplode
 	MCFireImmune?: MCFireImmune
 	MCFloatsInLiquid?: MCFloatsInLiquid
