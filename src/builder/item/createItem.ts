@@ -6,6 +6,7 @@ import { Identifier } from "../../bedrock/shared/Identifier"
 
 export interface CreateItemOptions {
 	dir?: string
+	name?: string
 	identifier: Identifier
 	category?: RPItemCategory
 	foil?: boolean
@@ -21,6 +22,7 @@ export interface CreateItemOptions {
 export function createItem(item: CreateItemOptions): CoreItem {
 	return {
 		dir: item.dir,
+		name: item.name,
 		identifier: item.identifier,
 		createBP(): BPItem {
 			return {
