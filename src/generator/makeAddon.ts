@@ -15,8 +15,7 @@ export function makeAddon(addon: MCAddon, enableAutolink?: boolean) {
 	new AddonGenerator(addon).generate()
 	console.log(`Build finished in ${(performance.now() - startTime).toPrecision(5)}ms`)
 
-	// If running on github actions
-	if (process.platform !== "win32") {
+	if (process.argv[2] === "build") {
 		const world = readdirSync(assets).find((v) => v.indexOf(".mcworld") !== -1)
 		if (world) {
 			copySync(`${assets}/${world}`, `out/${world}`)
