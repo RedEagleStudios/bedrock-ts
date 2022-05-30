@@ -16,6 +16,7 @@ export interface MCBehavior_DelayedAttack {
 	path_fail_time_increase?: number
 	path_inner_boundary?: number
 	path_outer_boundary?: number
+	priority?: number
 	random_stop_interval?: number
 	reach_multiplier?: number
 	require_complete_path?: boolean

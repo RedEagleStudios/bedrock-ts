@@ -46,6 +46,7 @@ import {
 	MCHealable,
 	MCHealth,
 	MCHiddenWhenInvisible,
+	MCHurtOnCondition,
 	MCIllagerCaptain,
 	MCInputGroundControlled,
 	MCInstantDespawn,
@@ -159,6 +160,7 @@ export interface Components {
 	MCHealable?: MCHealable
 	MCHealth?: MCHealth
 	MCHiddenWhenInvisible?: MCHiddenWhenInvisible
+	MCHurtOnCondition?: MCHurtOnCondition
 	MCIllagerCaptain?: MCIllagerCaptain
 	MCInputGroundControlled?: MCInputGroundControlled
 	MCInstantDespawn?: MCInstantDespawn

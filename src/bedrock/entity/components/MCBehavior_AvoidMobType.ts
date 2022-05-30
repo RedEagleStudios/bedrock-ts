@@ -11,16 +11,16 @@ export interface MCBehavior_AvoidMobTypeEntityType {
 }
 
 export interface MCBehavior_AvoidMobType {
-	avoid_mob_sound: string
-	entity_types: MCBehavior_AvoidMobTypeEntityType[]
-	ignore_visibility: boolean
-	max_dist: number
-	max_flee: number
-	on_escape_event: EventTrigger
-	priority: number
-	probability_per_strength: number
-	remove_target: boolean
-	sound_interval: number
-	sprint_speed_multiplier: number
-	walk_speed_multiplier: number
+	avoid_mob_sound?: string
+	entity_types?: MCBehavior_AvoidMobTypeEntityType[]
+	ignore_visibility?: boolean
+	max_dist?: number
+	max_flee?: number
+	on_escape_event?: EventTrigger
+	priority?: number
+	probability_per_strength?: number
+	remove_target?: boolean
+	sound_interval?: number
+	sprint_speed_multiplier?: number
+	walk_speed_multiplier?: number
 }
