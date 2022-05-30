@@ -1,5 +1,0 @@
-{
-  "entryPoints": ["src"],
-  "out": "../bedrock-ts.wiki/docs",
-  "theme": "github-wiki"
-}
