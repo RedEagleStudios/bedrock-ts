@@ -1,4 +1,4 @@
-import { BPDescription, BPEntity, Event } from "../../bedrock/entity/BPEntity"
+import { BPDescription, BPEntity, Event, Events } from "../../bedrock/entity/BPEntity"
 import { Components } from "../../bedrock/entity/components"
 import { Identifier } from "../../bedrock/shared/Identifier"
 import { LiteralUnion } from "../../types/LiteralUnion"
@@ -87,7 +87,7 @@ export class BPEntityBuilder extends Builder<BPEntity> {
 	 *
 	 * @param events Events that will be added or removed
 	 */
-	public setEvents(events: Record<string, Event>): void {
+	public setEvents(events: Events): void {
 		this.object.MCEntity.events ??= {}
 		assign(this.object.MCEntity.events, events)
 	}
