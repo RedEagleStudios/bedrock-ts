@@ -1,6 +1,8 @@
 import {
 	MCAdmireItem,
+	MCAngry,
 	MCAnnotation_BreakDoor,
+	MCAreaAttack,
 	MCAttack,
 	MCBalloonable,
 	MCBehavior_AvoidMobType,
@@ -15,14 +17,24 @@ import {
 	MCBehavior_KnockbackRoar,
 	MCBehavior_LookAtPlayer,
 	MCBehavior_MeleeAttack,
+	MCBehavior_MoveToLand,
+	MCBehavior_MoveToLava,
 	MCBehavior_MoveToPoi,
 	MCBehavior_NearestAttackableTarget,
+	MCBehavior_Panic,
 	MCBehavior_PickupItems,
+	MCBehavior_RandomBreach,
 	MCBehavior_RandomFly,
 	MCBehavior_RandomLookAround,
 	MCBehavior_RandomStroll,
+	MCBehavior_RandomSwim,
+	MCBehavior_RangedAttack,
 	MCBehavior_RiseToLiquidLevel,
 	MCBehavior_Scared,
+	MCBehavior_SlimeAttack,
+	MCBehavior_SlimeFloat,
+	MCBehavior_SlimeKeepOnJumping,
+	MCBehavior_SlimeRandomDirection,
 	MCBehavior_Sneeze,
 	MCBehavior_StayWhileSitting,
 	MCBreathable,
@@ -30,6 +42,7 @@ import {
 	MCCanFly,
 	MCCanPowerJump,
 	MCCollisionBox,
+	MCConditionalBandwidthOptimization,
 	MCCustomHitTest,
 	MCDamageSensor,
 	MCDespawn,
@@ -86,6 +99,8 @@ import {
 	MCNavigation_Hover,
 	MCNavigation_Swim,
 	MCNavigation_Walk,
+	MCOnTargetAcquired,
+	MCOnTargetEscape,
 	MCOutOfControl,
 	MCPersistent,
 	MCPhysics,
@@ -114,7 +129,9 @@ import {
 
 export interface Components {
 	MCAdmireItem?: MCAdmireItem
+	MCAngry?: MCAngry
 	MCAnnotation_BreakDoor?: MCAnnotation_BreakDoor
+	MCAreaAttack?: MCAreaAttack
 	MCAttack?: MCAttack
 	MCBalloonable?: MCBalloonable
 	MCBehavior_AvoidMobType?: MCBehavior_AvoidMobType
@@ -129,14 +146,24 @@ export interface Components {
 	MCBehavior_KnockbackRoar?: MCBehavior_KnockbackRoar
 	MCBehavior_LookAtPlayer?: MCBehavior_LookAtPlayer
 	MCBehavior_MeleeAttack?: MCBehavior_MeleeAttack
+	MCBehavior_MoveToLand?: MCBehavior_MoveToLand
+	MCBehavior_MoveToLava?: MCBehavior_MoveToLava
 	MCBehavior_MoveToPoi?: MCBehavior_MoveToPoi
 	MCBehavior_NearestAttackableTarget?: MCBehavior_NearestAttackableTarget
+	MCBehavior_Panic?: MCBehavior_Panic
 	MCBehavior_PickupItems?: MCBehavior_PickupItems
+	MCBehavior_RandomBreach?: MCBehavior_RandomBreach
 	MCBehavior_RandomFly?: MCBehavior_RandomFly
 	MCBehavior_RandomLookAround?: MCBehavior_RandomLookAround
 	MCBehavior_RandomStroll?: MCBehavior_RandomStroll
+	MCBehavior_RandomSwim?: MCBehavior_RandomSwim
+	MCBehavior_RangedAttack?: MCBehavior_RangedAttack
 	MCBehavior_RiseToLiquidLevel?: MCBehavior_RiseToLiquidLevel
 	MCBehavior_Scared?: MCBehavior_Scared
+	MCBehavior_SlimeAttack?: MCBehavior_SlimeAttack
+	MCBehavior_SlimeFloat?: MCBehavior_SlimeFloat
+	MCBehavior_SlimeKeepOnJumping?: MCBehavior_SlimeKeepOnJumping
+	MCBehavior_SlimeRandomDirection?: MCBehavior_SlimeRandomDirection
 	MCBehavior_Sneeze?: MCBehavior_Sneeze
 	MCBehavior_StayWhileSitting?: MCBehavior_StayWhileSitting
 	MCBreathable?: MCBreathable
@@ -144,6 +171,7 @@ export interface Components {
 	MCCanFly?: MCCanFly
 	MCCanPowerJump?: MCCanPowerJump
 	MCCollisionBox?: MCCollisionBox
+	MCConditionalBandwidthOptimization?: MCConditionalBandwidthOptimization
 	MCCustomHitTest?: MCCustomHitTest
 	MCDamageSensor?: MCDamageSensor
 	MCDespawn?: MCDespawn
@@ -200,6 +228,8 @@ export interface Components {
 	MCNavigation_Hover?: MCNavigation_Hover
 	MCNavigation_Swim?: MCNavigation_Swim
 	MCNavigation_Walk?: MCNavigation_Walk
+	MCOnTargetAcquired?: MCOnTargetAcquired
+	MCOnTargetEscape?: MCOnTargetEscape
 	MCOutOfControl?: MCOutOfControl
 	MCPersistent?: MCPersistent
 	MCPhysics?: MCPhysics
