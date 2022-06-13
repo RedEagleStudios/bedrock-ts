@@ -69,7 +69,7 @@ export class AddonGenerator {
 	private writeAnimations() {
 		const bpAnimationPath = `${this.pathBP}/animations`
 
-		this.addon.animations?.forEach((animation) => {
+		this.addon.animations?.flat().forEach((animation) => {
 			const fileName = join(animation.dir, animation.fileName)
 			const bpAnim = animation.createBP(new BPAnimationBuilder(animation.fileName))
 			writeJson(`${bpAnimationPath}/${fileName}.animation.json`, bpAnim)
@@ -79,7 +79,7 @@ export class AddonGenerator {
 	private writeAnimControllers() {
 		const bpControllerPath = `${this.pathBP}/animation_controllers`
 
-		this.addon.animControllers?.forEach((controller) => {
+		this.addon.animControllers?.flat().forEach((controller) => {
 			const fileName = join(controller.dir, controller.fileName)
 			const bpController = controller.createBP(new BPAnimControllerBuilder(controller.fileName))
 			writeJson(`${bpControllerPath}/${fileName}.controller.json`, bpController)
@@ -89,7 +89,7 @@ export class AddonGenerator {
 	private writeBlocks() {
 		const bpBlockPath = `${this.pathBP}/blocks`
 
-		this.addon.blocks?.forEach((block) => {
+		this.addon.blocks?.flat().forEach((block) => {
 			const identifier = block.identifier
 			const filePath = identifier.toFilePath(block.dir)
 
@@ -124,7 +124,7 @@ export class AddonGenerator {
 	private writeDialogues() {
 		const dialoguePath = `${this.pathBP}/dialogue`
 
-		this.addon.dialogues?.forEach((dialogue) => {
+		this.addon.dialogues?.flat().forEach((dialogue) => {
 			const fileName = join(dialogue.dir, dialogue.fileName)
 			writeJson(`${dialoguePath}/${fileName}.dialogue.json`, dialogue.create())
 		})
@@ -134,7 +134,7 @@ export class AddonGenerator {
 		const bpEntityPath = `${this.pathBP}/entities`
 		const rpEntityPath = `${this.pathRP}/entity`
 
-		this.addon.entities?.forEach((entity) => {
+		this.addon.entities?.flat().forEach((entity) => {
 			const identifier = entity.identifier
 			const filePath = identifier.toFilePath(entity.dir)
 			if (entity.createBP) {
@@ -161,7 +161,7 @@ export class AddonGenerator {
 	private writeLootTables() {
 		const lootTablePath = `${this.pathBP}/loot_tables`
 
-		this.addon.loot_tables?.forEach((loot_table) => {
+		this.addon.loot_tables?.flat().forEach((loot_table) => {
 			const fileName = join(loot_table.dir, loot_table.fileName)
 			writeJson(`${lootTablePath}/${fileName}.json`, loot_table.create())
 		})
@@ -170,8 +170,7 @@ export class AddonGenerator {
 	private writeItems() {
 		const bpItemPath = `${this.pathBP}/items`
 		const rpItemPath = `${this.pathRP}/items`
-
-		this.addon.items?.forEach((item) => {
+		this.addon.items?.flat().forEach((item) => {
 			const identifier = item.identifier
 			const filePath = identifier.toFilePath(item.dir)
 			if (item.createBP) {
@@ -198,7 +197,7 @@ export class AddonGenerator {
 	private writeRecipes() {
 		const recipePath = `${this.pathBP}/recipes`
 
-		this.addon.recipes?.forEach((recipe) => {
+		this.addon.recipes?.flat().forEach((recipe) => {
 			const fileName = recipe.identifier.toFilePath(recipe.dir)
 			writeJson(`${recipePath}/${fileName}.json`, recipe.create())
 		})
@@ -207,7 +206,7 @@ export class AddonGenerator {
 	private writeRenderControllers() {
 		const recipePath = `${this.pathRP}/render_controllers`
 
-		this.addon.render_controllers?.forEach((render_controller) => {
+		this.addon.render_controllers?.flat().forEach((render_controller) => {
 			const fileName = join(render_controller.dir, render_controller.fileName)
 			writeJson(`${recipePath}/${fileName}.render_controllers.json`, render_controller.create())
 		})
@@ -216,7 +215,7 @@ export class AddonGenerator {
 	private writeTrading() {
 		const tradingPath = `${this.pathBP}/trading`
 
-		this.addon.tradings?.forEach((trading) => {
+		this.addon.tradings?.flat().forEach((trading) => {
 			const fileName = join(trading.dir, trading.fileName)
 			writeJson(`${tradingPath}/${fileName}.json`, trading.create())
 		})

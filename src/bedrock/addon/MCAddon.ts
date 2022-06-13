@@ -10,17 +10,19 @@ import { CoreRecipe } from "../recipe/CoreRecipe"
 import { CoreRenderController } from "../render_controller/CoreRenderController"
 import { CoreTrading } from "../trading/CoreTrading"
 
+type List<T> = Array<T | T[]>
+
 export interface MCAddon {
 	packName: string
-	animations?: CoreAnimation[]
-	animControllers?: CoreAnimController[]
-	blocks?: CoreBlock[]
-	dialogues?: CoreDialogue[]
-	entities?: CoreEntity[]
-	loot_tables?: CoreLootTable[]
-	items?: CoreItem[]
-	recipes?: CoreRecipe[]
-	render_controllers?: CoreRenderController[]
-	tradings?: CoreTrading[]
+	animations?: List<CoreAnimation>
+	animControllers?: List<CoreAnimController>
+	blocks?: List<CoreBlock>
+	dialogues?: List<CoreDialogue>
+	entities?: List<CoreEntity>
+	loot_tables?: List<CoreLootTable>
+	items?: List<CoreItem>
+	recipes?: List<CoreRecipe>
+	render_controllers?: List<CoreRenderController>
+	tradings?: List<CoreTrading>
 	uuids?: MCManifestUUIDs
 }
