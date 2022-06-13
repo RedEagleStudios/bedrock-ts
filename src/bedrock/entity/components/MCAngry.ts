@@ -1,4 +1,5 @@
 import { Range } from "../../../types/Range"
+import { EventTrigger } from "../events/EventTrigger"
 import { Filters } from "../filters/Filter"
 
 export interface MCAngry {
@@ -9,7 +10,7 @@ export interface MCAngry {
 	broadcast_filters?: Filters
 	broadcast_range?: number
 	broadcast_targets?: string[]
-	calm_event?: string
+	calm_event?: string | EventTrigger
 	duration?: number
 	duration_delta?: number
 	filters?: Filters
