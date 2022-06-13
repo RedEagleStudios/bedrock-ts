@@ -16,7 +16,7 @@ export interface MCEntity {
 	description: BPDescription
 	component_groups?: Record<string, Components>
 	components: Components
-	events?: Record<string, Event>
+	events?: Events
 }
 
 export interface BPDescription {
@@ -58,4 +58,11 @@ export interface EventSequence {
 
 export interface EventAction {
 	component_groups: string[]
+}
+
+export type Events = Record<string, Event> & {
+	"minecraft:entity_born"?: Event
+	"minecraft:entity_spawned"?: Event
+	"minecraft:entity_transformed"?: Event
+	"minecraft:on_prime"?: Event
 }
