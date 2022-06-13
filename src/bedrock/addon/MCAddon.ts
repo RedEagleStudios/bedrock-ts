@@ -15,7 +15,7 @@ type List<T> = Array<T | T[]>
 export interface MCAddon {
 	packName: string
 	animations?: List<CoreAnimation>
-	animControllers?: List<CoreAnimController>
+	animation_controllers?: List<CoreAnimController>
 	blocks?: List<CoreBlock>
 	dialogues?: List<CoreDialogue>
 	entities?: List<CoreEntity>
