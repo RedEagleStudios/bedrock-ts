@@ -20,9 +20,11 @@ import {
 	MCBehavior_MoveToLand,
 	MCBehavior_MoveToLava,
 	MCBehavior_MoveToPoi,
+	MCBehavior_MoveToWater,
 	MCBehavior_NearestAttackableTarget,
 	MCBehavior_Panic,
 	MCBehavior_PickupItems,
+	MCBehavior_PlayerRideTamed,
 	MCBehavior_RandomBreach,
 	MCBehavior_RandomFly,
 	MCBehavior_RandomLookAround,
@@ -37,6 +39,7 @@ import {
 	MCBehavior_SlimeRandomDirection,
 	MCBehavior_Sneeze,
 	MCBehavior_StayWhileSitting,
+	MCBehavior_Tempt,
 	MCBreathable,
 	MCCanClimb,
 	MCCanFly,
@@ -49,6 +52,7 @@ import {
 	MCEconomyTradeTable,
 	MCEnvironmentSensor,
 	MCEquipment,
+	MCEquippable,
 	MCExperienceReward,
 	MCExplode,
 	MCFireImmune,
@@ -149,9 +153,11 @@ export interface Components {
 	MCBehavior_MoveToLand?: MCBehavior_MoveToLand
 	MCBehavior_MoveToLava?: MCBehavior_MoveToLava
 	MCBehavior_MoveToPoi?: MCBehavior_MoveToPoi
+	MCBehavior_MoveToWater?: MCBehavior_MoveToWater
 	MCBehavior_NearestAttackableTarget?: MCBehavior_NearestAttackableTarget
 	MCBehavior_Panic?: MCBehavior_Panic
 	MCBehavior_PickupItems?: MCBehavior_PickupItems
+	MCBehavior_PlayerRideTamed?: MCBehavior_PlayerRideTamed
 	MCBehavior_RandomBreach?: MCBehavior_RandomBreach
 	MCBehavior_RandomFly?: MCBehavior_RandomFly
 	MCBehavior_RandomLookAround?: MCBehavior_RandomLookAround
@@ -166,6 +172,7 @@ export interface Components {
 	MCBehavior_SlimeRandomDirection?: MCBehavior_SlimeRandomDirection
 	MCBehavior_Sneeze?: MCBehavior_Sneeze
 	MCBehavior_StayWhileSitting?: MCBehavior_StayWhileSitting
+	MCBehavior_Tempt?: MCBehavior_Tempt
 	MCBreathable?: MCBreathable
 	MCCanClimb?: MCCanClimb
 	MCCanFly?: MCCanFly
@@ -178,6 +185,7 @@ export interface Components {
 	MCEconomyTradeTable?: MCEconomyTradeTable
 	MCEnvironmentSensor?: MCEnvironmentSensor
 	MCEquipment?: MCEquipment
+	MCEquippable?: MCEquippable
 	MCExperienceReward?: MCExperienceReward
 	MCExplode?: MCExplode
 	MCFireImmune?: MCFireImmune
