@@ -10,25 +10,26 @@ export function makeAddon(addon: MCAddon, enableAutolink?: boolean) {
 	const assets = `res`
 	const outDir = `out/${addon.packName}`
 	const ignoreInitial = existsSync("out")
+	const persistent = process.argv[2] !== "build"
 
 	const startTime = performance.now()
 	new AddonGenerator(addon).generate()
 	console.log(`Build finished in ${(performance.now() - startTime).toPrecision(5)}ms`)
 
-	if (process.argv[2] === "build") {
+	if (!persistent) {
 		const world = readdirSync(assets).find((v) => v.indexOf(".mcworld") !== -1)
 		if (world) {
 			copySync(`${assets}/${world}`, `out/${world}`)
 		}
-		return
 	}
 
-	if (enableAutolink && !ignoreInitial) {
+	if (process.platform === "win32" && enableAutolink && !ignoreInitial) {
 		autolink(addon.packName)
 	}
 
 	watch(assets, {
 		ignoreInitial,
+		persistent,
 		ignored: ["**/*.mcworld"],
 	}).on("all", (event, path) => {
 		if (path.indexOf("BP") === -1 && path.indexOf("RP") === -1) return
