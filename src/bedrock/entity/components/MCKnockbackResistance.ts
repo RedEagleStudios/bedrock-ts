@@ -1,3 +1,3 @@
 export interface MCKnockbackResistance {
-	value: number
+  value: number
 }

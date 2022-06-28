@@ -1,3 +1,3 @@
 export interface MCLoot {
-	table: string
+  table: string
 }

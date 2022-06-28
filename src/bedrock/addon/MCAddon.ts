@@ -13,16 +13,16 @@ import { CoreTrading } from "../trading/CoreTrading"
 type List<T> = Array<T | T[]>
 
 export interface MCAddon {
-	packName: string
-	animations?: List<CoreAnimation>
-	animation_controllers?: List<CoreAnimController>
-	blocks?: List<CoreBlock>
-	dialogues?: List<CoreDialogue>
-	entities?: List<CoreEntity>
-	loot_tables?: List<CoreLootTable>
-	items?: List<CoreItem>
-	recipes?: List<CoreRecipe>
-	render_controllers?: List<CoreRenderController>
-	tradings?: List<CoreTrading>
-	uuids?: MCManifestUUIDs
+  packName: string
+  animations?: List<CoreAnimation>
+  animation_controllers?: List<CoreAnimController>
+  blocks?: List<CoreBlock>
+  dialogues?: List<CoreDialogue>
+  entities?: List<CoreEntity>
+  loot_tables?: List<CoreLootTable>
+  items?: List<CoreItem>
+  recipes?: List<CoreRecipe>
+  render_controllers?: List<CoreRenderController>
+  tradings?: List<CoreTrading>
+  uuids?: MCManifestUUIDs
 }

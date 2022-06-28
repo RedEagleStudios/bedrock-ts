@@ -1,5 +1,5 @@
 export interface MCHealth {
-	max?: number
-	min?: number
-	value?: number
+  max?: number
+  min?: number
+  value?: number
 }

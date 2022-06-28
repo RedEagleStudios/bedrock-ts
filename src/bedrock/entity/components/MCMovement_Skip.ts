@@ -1,3 +1,3 @@
 export interface MCMovement_Skip {
-	max_turn?: number
+  max_turn?: number
 }

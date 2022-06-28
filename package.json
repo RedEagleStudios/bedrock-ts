@@ -21,7 +21,7 @@
     "prepack": "tsc",
     "watch": "tsc -p tsconfig.json -w",
     "serve": "ts-node-dev --respawn --transpile-only --watch src/**/*.ts src/main.ts",
-    "fix": "eslint src --ext .ts --fix"
+    "lint": "eslint ."
   },
   "dependencies": {
     "fs-extra": "^10.1.0",
@@ -39,14 +39,14 @@
     "@types/lodash.transform": "^4.6.6",
     "@types/lodash.upperfirst": "^4.3.6",
     "@types/yargs": "^17.0.10",
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
-    "eslint": "^8.3.0",
-    "eslint-config-prettier": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-sort": "^2.4.0",
-    "prettier": "^2.5.1",
-    "prettier-plugin-organize-imports": "^2.3.4",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^3.0.0",
     "typescript": "^4.7.2"
   }
 }

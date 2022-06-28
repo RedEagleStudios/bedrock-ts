@@ -7,6 +7,6 @@ import { formatJson } from "./formatJson"
  * @returns Object with formatted keys
  */
 export function readJson<T>(path: string): T {
-	const json = readFileSync(path).toString()
-	return formatJson(parse(json)) as unknown as T
+  const json = readFileSync(path).toString()
+  return formatJson(parse(json)) as unknown as T
 }

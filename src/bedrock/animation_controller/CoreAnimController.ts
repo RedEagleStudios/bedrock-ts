@@ -2,7 +2,7 @@ import { BPAnimControllerBuilder } from "../../builder/animation_controller/BPAn
 import { BPAnimController } from "./BPAnimController"
 
 export interface CoreAnimController {
-	dir?: string
-	fileName: string
-	createBP(builder: BPAnimControllerBuilder): BPAnimController
+  dir?: string
+  fileName: string
+  createBP(builder: BPAnimControllerBuilder): BPAnimController
 }

@@ -5,19 +5,19 @@ import { assign } from "../../utils/assign"
 import { Builder } from "../Builder"
 
 export class BPItemBuilder extends Builder<BPItem> {
-	constructor(identifier: Identifier) {
-		super({
-			format_version: "1.16.0",
-			MCItem: {
-				description: {
-					identifier: identifier,
-				},
-				components: {},
-			},
-		})
-	}
+  constructor(identifier: Identifier) {
+    super({
+      format_version: "1.16.0",
+      MCItem: {
+        description: {
+          identifier: identifier,
+        },
+        components: {},
+      },
+    })
+  }
 
-	public setComponents(components: BPItemComponents) {
-		assign(this.object.MCItem.components, components)
-	}
+  public setComponents(components: BPItemComponents) {
+    assign(this.object.MCItem.components, components)
+  }
 }

@@ -1,3 +1,3 @@
 export interface MCSkinId {
-	value: number
+  value: number
 }

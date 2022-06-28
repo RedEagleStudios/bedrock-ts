@@ -1,3 +1,3 @@
 export interface MCFrictionModifier {
-	value: number
+  value: number
 }

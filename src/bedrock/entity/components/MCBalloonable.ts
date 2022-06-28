@@ -1,3 +1,3 @@
 export interface MCBalloonable {
-	mass?: number
+  mass?: number
 }

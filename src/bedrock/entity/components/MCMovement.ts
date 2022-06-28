@@ -1,4 +1,4 @@
 export interface MCMovement {
-	max?: number
-	value: number
+  max?: number
+  value: number
 }

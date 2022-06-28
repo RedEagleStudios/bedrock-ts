@@ -5,21 +5,8 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "@typescript-eslint/eslint-plugin", "prettier"],
-  "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
-  "rules": {
-    "prettier/prettier": [
-      "warn",
-      {
-        "endOfLine": "lf",
-        "printWidth": 120,
-        "semi": false,
-        "tabWidth": 4,
-        "useTabs": true,
-        "plugins": ["prettier-plugin-organize-imports"]
-      }
-    ]
-  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
   "overrides": [
     {
       "files": ["src/bedrock/entity/components/*.ts"],

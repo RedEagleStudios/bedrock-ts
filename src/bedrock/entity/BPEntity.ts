@@ -8,61 +8,61 @@ import { Filters } from "./filters/Filter"
 type FormatVersion = "1.16.0" | "1.17.0" | "1.17.10"
 
 export interface BPEntity {
-	format_version: FormatVersion
-	MCEntity: MCEntity
+  format_version: FormatVersion
+  MCEntity: MCEntity
 }
 
 export interface MCEntity {
-	description: BPDescription
-	component_groups?: Record<string, Components>
-	components: Components
-	events?: Events
+  description: BPDescription
+  component_groups?: Record<string, Components>
+  components: Components
+  events?: Events
 }
 
 export interface BPDescription {
-	identifier: Identifier
-	is_spawnable?: boolean
-	is_summonable?: boolean
-	is_experimental?: boolean
-	scripts?: BPScripts
-	animations?: Record<string, string>
-	runtime_identifier?: RuntimeIdentifier
+  identifier: Identifier
+  is_spawnable?: boolean
+  is_summonable?: boolean
+  is_experimental?: boolean
+  scripts?: BPScripts
+  animations?: Record<string, string>
+  runtime_identifier?: RuntimeIdentifier
 }
 
 export interface BPScripts {
-	animate?: StringOrRecord[]
+  animate?: StringOrRecord[]
 }
 
 export interface Event {
-	add?: EventAction
-	filters?: Filters
-	randomize?: EventRandomize[]
-	remove?: EventAction
-	sequence?: EventSequence[]
-	trigger?: string | EventTriggerFiltered
+  add?: EventAction
+  filters?: Filters
+  randomize?: EventRandomize[]
+  remove?: EventAction
+  sequence?: EventSequence[]
+  trigger?: string | EventTriggerFiltered
 }
 
 export interface EventRandomize {
-	add?: EventAction
-	remove?: EventAction
-	trigger?: string | EventTriggerFiltered
-	weight?: number
+  add?: EventAction
+  remove?: EventAction
+  trigger?: string | EventTriggerFiltered
+  weight?: number
 }
 
 export interface EventSequence {
-	add?: EventAction
-	filters?: Filters
-	remove?: EventAction
-	trigger?: string | EventTriggerFiltered
+  add?: EventAction
+  filters?: Filters
+  remove?: EventAction
+  trigger?: string | EventTriggerFiltered
 }
 
 export interface EventAction {
-	component_groups: string[]
+  component_groups: string[]
 }
 
 export type Events = Record<string, Event> & {
-	"minecraft:entity_born"?: Event
-	"minecraft:entity_spawned"?: Event
-	"minecraft:entity_transformed"?: Event
-	"minecraft:on_prime"?: Event
+  "minecraft:entity_born"?: Event
+  "minecraft:entity_spawned"?: Event
+  "minecraft:entity_transformed"?: Event
+  "minecraft:on_prime"?: Event
 }

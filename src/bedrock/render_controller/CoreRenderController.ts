@@ -1,7 +1,7 @@
 import { RenderController } from "./RenderController"
 
 export interface CoreRenderController {
-	dir?: string
-	fileName: string
-	create(): RenderController
+  dir?: string
+  fileName: string
+  create(): RenderController
 }

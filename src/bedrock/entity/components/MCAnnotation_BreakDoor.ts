@@ -1,4 +1,4 @@
 export interface MCAnnotation_BreakDoor {
-	break_time?: number
-	min_difficulty?: string
+  break_time?: number
+  min_difficulty?: string
 }

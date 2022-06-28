@@ -6,5 +6,5 @@
  * @param source The source object from which to copy properties.
  */
 export function assign<T extends object>(target: NonNullable<T>, source: Partial<NonNullable<T>>): NonNullable<T> {
-	return Object.assign(target, source)
+  return Object.assign(target, source)
 }

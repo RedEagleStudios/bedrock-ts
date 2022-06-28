@@ -7,15 +7,15 @@ import { deepTransform } from "./deepTransform"
  * @returns Object with formatted keys
  */
 export function formatJson<T>(object: object): T {
-	return deepTransform(object, (key) => {
-		if (key.indexOf("minecraft:") === -1) return key
-		key = key.split(":")[1]
-		key = upperFirst(key)
-		return (
-			"MC" +
-			key
-				.replace(/([a-z])_([a-z])/g, (str) => str[0] + str[2].toUpperCase())
-				.replace(/\.([a-z])/, (str) => "_" + str[1].toUpperCase())
-		)
-	}) as unknown as T
+  return deepTransform(object, (key) => {
+    if (key.indexOf("minecraft:") === -1) return key
+    key = key.split(":")[1]
+    key = upperFirst(key)
+    return (
+      "MC" +
+      key
+        .replace(/([a-z])_([a-z])/g, (str) => str[0] + str[2].toUpperCase())
+        .replace(/\.([a-z])/, (str) => "_" + str[1].toUpperCase())
+    )
+  }) as unknown as T
 }

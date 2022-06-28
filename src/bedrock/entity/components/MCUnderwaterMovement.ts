@@ -1,3 +1,3 @@
 export interface MCUnderwaterMovement {
-	value: number
+  value: number
 }

@@ -1,3 +1,3 @@
 export interface MCPushThrough {
-	value: number
+  value: number
 }

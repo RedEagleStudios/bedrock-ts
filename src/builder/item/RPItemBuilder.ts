@@ -4,25 +4,25 @@ import { assign } from "../../utils/assign"
 import { Builder } from "../Builder"
 
 export class RPItemBuilder extends Builder<RPItem> {
-	constructor(identifier: Identifier) {
-		super({
-			format_version: "1.10.0",
-			MCItem: {
-				description: {
-					identifier: identifier,
-				},
-				components: {
-					MCIcon: identifier.removeNamespace(),
-				},
-			},
-		})
-	}
+  constructor(identifier: Identifier) {
+    super({
+      format_version: "1.10.0",
+      MCItem: {
+        description: {
+          identifier: identifier,
+        },
+        components: {
+          MCIcon: identifier.removeNamespace(),
+        },
+      },
+    })
+  }
 
-	public setCategory(category: RPItemCategory) {
-		this.object.MCItem.description.category = category
-	}
+  public setCategory(category: RPItemCategory) {
+    this.object.MCItem.description.category = category
+  }
 
-	public setComponents(components: RPItemComponents) {
-		assign(this.object.MCItem.components, components)
-	}
+  public setComponents(components: RPItemComponents) {
+    assign(this.object.MCItem.components, components)
+  }
 }
